@@ -14,7 +14,16 @@ class Content2 extends StatelessWidget {
       color: Colors.white,
       width: width,
       height: 500,
-      child: Center(child: Text('CONTENT 2')),
+      child: Center(
+          child:Row(
+            children: [
+              Card(
+                color: Colors.black,
+                child: Text('data'),
+              ),
+            ],
+          ),
+      ),
     );
   }
 }
