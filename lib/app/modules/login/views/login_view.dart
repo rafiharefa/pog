@@ -15,7 +15,7 @@ class LoginView extends GetView<LoginController> {
       ),
       body: Center(
         child: Text(
-          'LoginView is working',
+          'LoginView is workings',
           style: TextStyle(fontSize: 20),
         ),
       ),
