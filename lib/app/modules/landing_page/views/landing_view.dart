@@ -6,12 +6,12 @@ import 'package:pog/app_color.dart';
 
 import '../../component/footer.dart';
 import '../../component/nav_bar.dart';
-import '../controllers/home_controller.dart';
+import '../controllers/landing_controller.dart';
 import 'component/content_1.dart';
 import 'component/content_2.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class LandingView extends GetView<LandingController> {
+  const LandingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -19,9 +19,6 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        toolbarHeight: 100,
-        elevation: 0,
-        backgroundColor: Colors.white,
         title: NavBar(),
       ),
       body: Center(
