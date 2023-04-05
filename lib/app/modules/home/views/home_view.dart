@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColor.grey,
       appBar: AppBar(
@@ -30,7 +31,7 @@ class HomeView extends GetView<HomeController> {
               SizedBox(height: 50),
               Content1(),
               SizedBox(height: 150),
-              Content2(width: width),
+              Content2(width: width, height: height),
               Footer(),
             ],
           ),
