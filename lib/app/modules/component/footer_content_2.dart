@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class FooterContent2 extends StatelessWidget {
+  const FooterContent2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text('Pi Organizer', style: GoogleFonts.montserrat(fontSize: 40, fontWeight: FontWeight.w700, color: Colors.white)),
+        Text('Organize your\nevents better', style: GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white)),
+      ],
+    );
+  }
+}
