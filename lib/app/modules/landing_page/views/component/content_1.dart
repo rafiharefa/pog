@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/home_page/views/home_page_view.dart';
 
 import '../../../../../app_color.dart';
 
@@ -58,17 +60,26 @@ class Content1 extends StatelessWidget {
             SizedBox(height: 24),
             Text('Plan your events and reach out to more people ', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.white)),
             SizedBox(height: 40),
-            Container(
-                width: 272,
-                height: 97,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(100),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black, offset: Offset(10, 10))
-                    ]
-                ),
-                child: Center(child: Text('GET STARTED', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700)))),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                key: UniqueKey(),
+                onTap: (){
+                  Get.toNamed('/home-page');
+                },
+                child: Container(
+                    width: 272,
+                    height: 97,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black, offset: Offset(10, 10))
+                        ]
+                    ),
+                    child: Center(child: Text('GET STARTED', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700)))),
+              ),
+            ),
 
 
           ],

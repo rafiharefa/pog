@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LandingController extends GetxController {
-  //TODO: Implement HomeController
+class EventsPageController extends GetxController {
+  //TODO: Implement EventsPageController
 
   final count = 0.obs;
   @override

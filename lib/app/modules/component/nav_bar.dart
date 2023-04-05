@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/events_page/views/events_page_view.dart';
+import 'package:pog/app/modules/home_page/views/home_page_view.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({
@@ -16,13 +19,27 @@ class NavBar extends StatelessWidget {
         Expanded(
           child: Row(
             children: [
-              TextButton(onPressed: (){}, child: Text('About Us', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20))),
+              TextButton(
+                key: UniqueKey(),
+                  onPressed: (){
+                Get.offNamed('/home-page');
+              }, child: Text('HOME', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20))),
               SizedBox(width: 20),
-              TextButton(onPressed: (){}, child: Text('Events', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
+              PopupMenuButton(
+                child: Text('ORGANIZATIONS', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
+                  itemBuilder: (context){
+                return
+                [
+                  PopupMenuItem(child: Text('BLOGS', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 15))),
+                  PopupMenuItem(child: Text('EVENTS', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 15))),
+                ];
+              }),
               SizedBox(width: 20),
-              TextButton(onPressed: (){}, child: Text('Author', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
+              TextButton(onPressed: (){}, child: Text('AUTHOR', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
               SizedBox(width: 20),
-              TextButton(onPressed: (){}, child: Text('Contact Us', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
+              TextButton(onPressed: (){}, child: Text('ABOUT', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
+              SizedBox(width: 20),
+              TextButton(onPressed: (){}, child: Text('CONTACT', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20))),
             ],
           ),
         )

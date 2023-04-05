@@ -10,9 +10,14 @@ void main() {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      defaultTransition: Transition.fade,
+      transitionDuration: Duration(seconds: 1),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black
+          ),
           elevation: 10,
           toolbarHeight: 100
         ),

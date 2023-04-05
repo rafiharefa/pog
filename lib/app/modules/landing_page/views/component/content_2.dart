@@ -48,11 +48,11 @@ class Content2 extends StatelessWidget {
                                 Icon(Icons.ac_unit_rounded, size: 200),
                                 //title
                                 Text('Women in Tech',
-                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700),
+                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                                 ),
                                 //detail
                                 Text('An online Speaker session presided by the leading Female Professionals in today’s World. We had Speakers from different parts of the world, doing ground-breaking work in different fields such as CyberSecurity, Aerospace, Ed-Tech, etc.',
-                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400),
+                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400, color: Colors.black),
                                   textAlign: TextAlign.justify,
                                 )
                               ],
@@ -85,11 +85,11 @@ class Content2 extends StatelessWidget {
                                 Icon(Icons.ac_unit_rounded, size: 200),
                                 //title
                                 Text('UNHASHED: Demystifying the Blockchain',
-                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700),
+                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                                 ),
                                 //detail
                                 Text('An offline, hands-on Blockchain based Developing session on developing Smart Contracts through Zilliqa Blockchain. More than 400 people registered for the event. Developers were taught how to develop Smart Contracts using SCILLA.',
-                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400),
+                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400, color: Colors.black),
                                   textAlign: TextAlign.justify,
                                 )
                               ],
@@ -122,11 +122,11 @@ class Content2 extends StatelessWidget {
                                 Icon(Icons.ac_unit_rounded, size: 200),
                                 //title
                                 Text('OSSmosis',
-                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700),
+                                style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                                 ),
                                 //detail
                                 Text('A hackathon, where participants submitted their Open-Source Software Development projects. developing Smart Contracts through Zilliqa Blockchain. More than 400 people registered for the event. Developers were taught how to develop',
-                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400),
+                                style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400, color: Colors.black),
                                   textAlign: TextAlign.justify,
                                 )
                               ],
