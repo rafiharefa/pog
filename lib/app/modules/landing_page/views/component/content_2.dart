@@ -45,7 +45,10 @@ class Content2 extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //gambar
-                                Icon(Icons.ac_unit_rounded, size: 200),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset('dummy3.png', height: 260)),
+
                                 //title
                                 Text('Women in Tech',
                                 style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
@@ -82,9 +85,11 @@ class Content2 extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //gambar
-                                Icon(Icons.ac_unit_rounded, size: 200),
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset('dummy1.png', height: 260)),
                                 //title
-                                Text('UNHASHED: Demystifying the Blockchain',
+                                Text('UNHASHED: Demystifying the Blockchain', maxLines: 1,
                                 style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                                 ),
                                 //detail
@@ -119,7 +124,9 @@ class Content2 extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //gambar
-                                Icon(Icons.ac_unit_rounded, size: 200),
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset('dummy2.png', height: 260)),
                                 //title
                                 Text('OSSmosis',
                                 style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),

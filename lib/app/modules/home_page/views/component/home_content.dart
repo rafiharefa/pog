@@ -21,23 +21,27 @@ class HomeContent extends StatelessWidget {
           ),
           child: Container(
             width: 300,
-            height: 400,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //gambar
-                  Icon(Icons.ac_unit_rounded, size: 200),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset('dummy3.png', height: 260)),
+                  SizedBox(height: 10),
                   //title
                   Text('Women in Tech',
                     style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                   ),
+                  SizedBox(height: 10),
                   //detail
                   Text('An online Speaker session presided by the leading Female Professionals in today’s World. We had Speakers from different parts of the world, doing ground-breaking work in different fields such as CyberSecurity, Aerospace, Ed-Tech, etc.',
                     style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400,color: Colors.black),
                     textAlign: TextAlign.justify,
                   ),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -86,23 +90,27 @@ class HomeContent extends StatelessWidget {
           ),
           child: Container(
             width: 300,
-            height: 400,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //gambar
-                  Icon(Icons.ac_unit_rounded, size: 200),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset('dummy1.png', height: 260)),
+                  SizedBox(height: 10),
                   //title
-                  Text('UNHASHED: Demystifying the Blockchain',
+                  Text('UNHASHED: Demystifying the Blockchain', maxLines: 1, overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
                   ),
+                  SizedBox(height: 10),
                   //detail
                   Text('An online Speaker session presided by the leading Female Professionals in today’s World. We had Speakers from different parts of the world, doing ground-breaking work in different fields such as CyberSecurity, Aerospace, Ed-Tech, etc.',
                     style: GoogleFonts.notoSans(fontSize: 10, fontWeight: FontWeight.w400,color: Colors.black),
                     textAlign: TextAlign.justify,
                   ),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
