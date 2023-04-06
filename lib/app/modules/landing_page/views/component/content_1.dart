@@ -65,7 +65,7 @@ class Content1 extends StatelessWidget {
               child: GestureDetector(
                 key: UniqueKey(),
                 onTap: (){
-                  Get.toNamed('/home-page');
+                  Get.toNamed('/auth');
                 },
                 child: Container(
                     width: 272,

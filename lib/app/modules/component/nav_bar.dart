@@ -12,21 +12,33 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(child: Icon(Icons.ac_unit_rounded, color:  Colors.black, size: 60)),
+        Expanded(child: IconButton(
+          onPressed: (){
+            Get.offAllNamed('/landing');
+          },
+            iconSize: 60,
+           icon: Icon(Icons.ac_unit_rounded, color:  Colors.black,)
+        )),
 
         Expanded(
+          flex: 5,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
                 key: UniqueKey(),
                   onPressed: (){
-                Get.offNamed('/home-page');
+                Get.offAllNamed('/home-page');
               }, child: Text('HOME', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20))),
               SizedBox(width: 20),
               PopupMenuButton(
-                child: Text('ORGANIZATIONS', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
+                child: Row(
+                  children: [
+                    Text('ORGANIZATIONS', style: GoogleFonts.notoSans(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20)),
+                    Icon(Icons.arrow_drop_down, color: Colors.black,),
+                  ]
+                ),
                   itemBuilder: (context){
                 return
                 [
