@@ -17,7 +17,7 @@ class LandingView extends GetView<LandingController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: AppColor.grey,
+      backgroundColor: AppColor.orange,
       appBar: AppBar(
         title: NavBar(),
       ),
