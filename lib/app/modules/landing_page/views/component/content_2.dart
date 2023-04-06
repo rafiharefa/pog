@@ -87,7 +87,7 @@ class Content2 extends StatelessWidget {
                                 //gambar
                                 ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset('dummy1.png', height: 260)),
+                                    child: Image.asset('assets/dummy1.png', height: 260)),
                                 //title
                                 Text('UNHASHED: Demystifying the Blockchain', maxLines: 1,
                                 style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
@@ -126,7 +126,7 @@ class Content2 extends StatelessWidget {
                                 //gambar
                                 ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset('dummy2.png', height: 260)),
+                                    child: Image.asset('assets/dummy2.png', height: 260)),
                                 //title
                                 Text('OSSmosis',
                                 style: GoogleFonts.ibmPlexMono(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),

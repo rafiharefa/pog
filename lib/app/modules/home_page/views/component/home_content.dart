@@ -29,7 +29,7 @@ class HomeContent extends StatelessWidget {
                   //gambar
                   ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('dummy3.png', height: 260)),
+                      child: Image.asset('assets/dummy3.png', height: 260)),
                   SizedBox(height: 10),
                   //title
                   Text('Women in Tech',
@@ -98,7 +98,7 @@ class HomeContent extends StatelessWidget {
                   //gambar
                   ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('dummy1.png', height: 260)),
+                      child: Image.asset('assets/dummy1.png', height: 260)),
                   SizedBox(height: 10),
                   //title
                   Text('UNHASHED: Demystifying the Blockchain', maxLines: 1, overflow: TextOverflow.ellipsis,

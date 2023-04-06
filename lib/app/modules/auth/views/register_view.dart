@@ -91,7 +91,7 @@ class RegisterView extends GetView<AuthController> {
                                 borderRadius: BorderRadius.circular(10),
                               )
                           ),
-                          icon: Image.asset('search.png', width: 20),
+                          icon: Image.asset('assets/search.png', width: 20),
                           label: Text(' GOOGLE SIGN UP', style: GoogleFonts.ibmPlexMono(color: Colors.black ,fontWeight: FontWeight.w600, fontSize: 20))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
