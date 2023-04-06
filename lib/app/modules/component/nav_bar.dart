@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/events_page/views/events_page_view.dart';
-import 'package:pog/app/modules/home_page/views/home_page_view.dart';
+
 
 class NavBar extends StatelessWidget {
   const NavBar({

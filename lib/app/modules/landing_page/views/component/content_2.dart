@@ -47,7 +47,7 @@ class Content2 extends StatelessWidget {
                                 //gambar
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                    child: Image.asset('dummy3.png', height: 260)),
+                                    child: Image.asset('assets/dummy3.png', height: 260)),
 
                                 //title
                                 Text('Women in Tech',
