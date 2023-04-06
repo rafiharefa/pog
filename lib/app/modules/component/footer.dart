@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app_color.dart';
 
 import 'footer_content_1.dart';
 import 'footer_content_2.dart';
@@ -12,27 +14,30 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Center(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //info 1
-                FooterContent1(),
-                //info 2
-                FooterContent2(),
-                //info 3
-                FooterContent3(),
-              ],
-            ),
-            SizedBox(height: 20),
-            Text('created by group 6 Software Engineering 4A',
-                style: GoogleFonts.montserrat(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w400))
-          ],
+    return Center(
+      child: Container(
+        color: AppColor.grey,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //info 1
+                  Expanded(flex: 2,child: FooterContent1()),
+                  //info 2
+                  Expanded(child: FooterContent2()),
+                  //info 3
+                  Expanded(flex: 2,child: FooterContent3()),
+                ],
+              ),
+              SizedBox(height: 20),
+              Text('created by group 6 Software Engineering 4A',
+                  style: GoogleFonts.montserrat(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w400))
+            ],
+          ),
         ),
       ),
     );

@@ -14,7 +14,7 @@ class FooterContent1 extends StatelessWidget {
       children: [
         //POG
         Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(Icons.ac_unit_rounded, color: Colors.white, size: 44),
               SizedBox(width: 5),
