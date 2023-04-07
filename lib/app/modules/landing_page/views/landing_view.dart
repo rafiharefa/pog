@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app_color.dart';
 
 import '../../component/footer.dart';
@@ -17,14 +18,16 @@ class LandingView extends GetView<LandingController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: NavBar(),
+        title: LandingNavbar(),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
+              WhiteContainer(),
               SizedBox(height: 50),
               Content1(),
               SizedBox(height: 150),

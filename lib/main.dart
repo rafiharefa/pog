@@ -14,11 +14,11 @@ void main() {
       transitionDuration: Duration(seconds: 1),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.white.withOpacity(.7),
           iconTheme: IconThemeData(
             color: Colors.black
           ),
-          elevation: 10,
+          elevation: 0,
           toolbarHeight: 100
         ),
       textTheme: TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle()).apply(bodyColor: Colors.white, displayColor: Colors.white)

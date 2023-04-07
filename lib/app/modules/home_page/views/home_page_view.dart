@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
+import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app_color.dart';
 
 import '../controllers/home_page_controller.dart';
@@ -17,6 +18,7 @@ class HomePageView extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         title: NavBar(),
@@ -25,6 +27,7 @@ class HomePageView extends GetView<HomePageController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              WhiteContainer(),
               SizedBox(height: 20),
               //title
               Text("Events you've registered",

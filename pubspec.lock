@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  carousel_widget_3d:
+    dependency: "direct main"
+    description:
+      name: carousel_widget_3d
+      sha256: c5d250f82572d1f8a40b06e7759fa01f1327722817a9aba4129544f1411f6855
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   characters:
     dependency: transitive
     description:
