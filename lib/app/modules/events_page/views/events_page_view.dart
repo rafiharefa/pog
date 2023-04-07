@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
+import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/views/component/events_content.dart';
 
 import '../../../../app_color.dart';
@@ -14,6 +15,7 @@ class EventsPageView extends GetView<EventsPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         title: NavBar(),
@@ -22,6 +24,7 @@ class EventsPageView extends GetView<EventsPageController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              WhiteContainer(),
               SizedBox(height: 20),
               Text('Current Available Events',
                 style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: AppColor.white),
