@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688391498512",
+    "project_id": "piorganizer",
+    "storage_bucket": "piorganizer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688391498512:android:083799dfcd896a1ae8d395",
+        "android_client_info": {
+          "package_name": "com.example.pog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688391498512-8us803ctsbd6pqbn76a5d8d31ms7m667.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzxIoo_NoT1vs9Uy1xOoNo-adGFmoGhKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688391498512-8us803ctsbd6pqbn76a5d8d31ms7m667.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
