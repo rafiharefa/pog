@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 
 class FooterContent1 extends StatelessWidget {
   const FooterContent1({
@@ -34,8 +36,12 @@ class FooterContent1 extends StatelessWidget {
         SizedBox(height: 10),
         //sosmed
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
+            IconButton(icon: Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white), onPressed: (){
+              AuthController.instance.logout();
+              Get.offAllNamed('/landing');
+            },),
             Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
           ],
         ),
