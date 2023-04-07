@@ -35,26 +35,12 @@ class AuthController extends GetxController {
     try{
       await auth.createUserWithEmailAndPassword(email: email, password: password);
     }catch(e){
-      Get.snackbar(
-          'About User', 'User Messege',
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM,
-      titleText: Text('Create Account Failed'),
-      messageText: Text(e.toString())
-      );
     }
   }
   void login(String email, String password) async{
     try{
       await auth.signInWithEmailAndPassword(email: email, password: password);
     }catch(e){
-      Get.snackbar(
-          'About User', 'User Messege',
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM,
-      titleText: Text('Login Failed'),
-      messageText: Text(e.toString())
-      );
     }
   }
   void logout() async{
