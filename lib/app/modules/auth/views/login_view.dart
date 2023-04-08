@@ -5,6 +5,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
+import 'package:pog/app/modules/auth/views/auth_view.dart';
 import 'package:pog/app/modules/auth/views/register_view.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 
@@ -154,6 +155,7 @@ class LoginView extends GetView <AuthController>{
                       ),
                       ElevatedButton.icon(
                           onPressed: (){
+                            controller.signInWithGoogle();
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
