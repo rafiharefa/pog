@@ -179,7 +179,7 @@ class RegisterView extends GetView<AuthController> {
                       ),
                       ElevatedButton.icon(
                           onPressed: (){
-                            _formKey.currentState!.saveAndValidate();
+                            controller.signInWithGoogle();
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
