@@ -23,22 +23,7 @@ class AuthController extends GetxController {
   List<String? Function(String?)> validator = [FormBuilderValidators.required(),FormBuilderValidators.email()];
 
   List<String> textfield = ['username', 'email', 'password'];
-
-  // Future<void> signInWithGoogle() async{
-  //   final GoogleSignIn googleSignIn = GoogleSignIn();
-  //   final GoogleSignInAccount? googleSignInAccount =
-  //       await googleSignIn.signIn();
-  //   final GoogleSignInAuthentication googleSignInAuthentication =
-  //       await googleSignInAccount!.authentication;
-  //   final AuthCredential authCredential =
-  //       await GoogleAuthProvider.credential(
-  //         accessToken: googleSignInAuthentication.accessToken,
-  //         idToken: googleSignInAuthentication.idToken
-  //       );
-  //   final UserCredential userCredential =
-  //       await auth.signInWithCredential(authCredential);
-  // }
-
+  
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
