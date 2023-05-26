@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,8 +40,8 @@ class RegisterView extends GetView<AuthController> {
             children: [
               WhiteContainer(),
               Container(
-                width: 500,
-                height: 600,
+                width: 600,
+                height: 800,
                 decoration: BoxDecoration(
                   color: Colors.white ,
                   boxShadow: [
@@ -56,41 +57,86 @@ class RegisterView extends GetView<AuthController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      SizedBox(height: 25),
+
                       Text('SET UP ACCOUNT', style: GoogleFonts.ibmPlexMono(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w700)),
-                      SizedBox(
-                        width: 350,
-                        height: 70,
-                        child: FormBuilderTextField(
-                            validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(),
-                            ]),
-                            name: 'name',
-                            cursorColor: Colors.black,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'name',
-                              labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(Icons.person_outline, color: Colors.black,),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: AppColor.orange)
-                              ),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: Colors.black)
-                              ),
-                            )),
+
+                      SizedBox(height: 25),
+
+                      Container(
+                        width: 550,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //firstname
+                            SizedBox(
+                              width: 250,
+                              height: 70,
+                              child: FormBuilderTextField(
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(),
+                                  ]),
+                                  name: 'firstname',
+                                  cursorColor: Colors.black,
+                                  textAlign: TextAlign.center,
+                                  decoration: InputDecoration(
+                                    labelText: 'first name',
+                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    focusColor: AppColor.orange,
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: Icon(Icons.person_outline, color: Colors.black,),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
+                                    ),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: Colors.black)
+                                    ),
+                                  )),
+                            ),
+
+                            //lastname
+                            SizedBox(
+                              width: 230,
+                              height: 70,
+                              child: FormBuilderTextField(
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(),
+                                  ]),
+                                  name: 'lastname',
+                                  cursorColor: Colors.black,
+                                  textAlign: TextAlign.center,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'last name',
+                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    focusColor: AppColor.orange,
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
+                                    ),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: Colors.black)
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
+
+                      //email
                       SizedBox(
-                        width: 350,
+                        width: 550,
                         height: 70,
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(),
-                                FormBuilderValidators.email(),
+                              FormBuilderValidators.required(),
+                              FormBuilderValidators.email()
                             ]),
                             name: 'email',
                             cursorColor: Colors.black,
@@ -112,14 +158,16 @@ class RegisterView extends GetView<AuthController> {
                               ),
                             )),
                       ),
+
+                      //password
                       SizedBox(
-                        width: 350,
+                        width: 550,
                         height: 70,
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(),
+                              FormBuilderValidators.required(),
                               FormBuilderValidators.minLength(6,
-                              errorText: 'Password must greater than 6'
+                                  errorText: 'Password must greater than 6'
                               ),
                             ]),
                             name: 'password',
@@ -142,21 +190,133 @@ class RegisterView extends GetView<AuthController> {
                               ),
                             )),
                       ),
+
+                      //address
+                      SizedBox(
+                        width: 550,
+                        height: 70,
+                        child: FormBuilderTextField(
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(),
+                            ]),
+                            name: 'address',
+                            cursorColor: Colors.black,
+                            decoration: InputDecoration(
+                              labelText: 'address',
+                              labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                              focusColor: AppColor.orange,
+                              floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: Icon(Icons.pin_drop_outlined, color: Colors.black,),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(width: 1, color: AppColor.orange)
+                              ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(width: 1, color: Colors.black)
+                              ),
+                            )),
+                      ),
+
+                      Container(
+                        width: 550,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //phone
+                            SizedBox(
+                              width: 250,
+                              height: 70,
+                              child: FormBuilderTextField(
+                                  validator: FormBuilderValidators.compose([
+                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.numeric()
+                                  ]),
+                                  name: 'phone',
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    labelText: 'phone',
+                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    focusColor: AppColor.orange,
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: Icon(Icons.phone, color: Colors.black,),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
+                                    ),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(40),
+                                        borderSide: BorderSide(width: 1, color: Colors.black)
+                                    ),
+                                  )),
+                            ),
+
+                            //sex
+                            SizedBox(
+                              width: 200,
+                              height: 70,
+                              child: FormBuilderRadioGroup(
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                ]),
+                                name: 'sex',
+                                decoration: InputDecoration(
+                                  border: InputBorder.none
+                                ),
+                                wrapAlignment: WrapAlignment.spaceBetween,
+                                activeColor: AppColor.orange,
+                                options: [
+                                  FormBuilderFieldOption(value: 'Male', child: Text('Male', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400, color: Colors.black),)),
+                                  FormBuilderFieldOption(value: 'Female', child: Text('Female', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400, color: Colors.black))),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //birth date
+                      SizedBox(
+                        width: 550,
+                        height: 70,
+                        child: FormBuilderDateTimePicker(
+                            name: 'birth_date',
+                          inputType: InputType.date,
+                          validator: FormBuilderValidators.required(),
+                          format: DateFormat('yyyy-MM-dd'),
+                          decoration: InputDecoration(
+                            labelText: 'birth date',
+                            labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                            focusColor: AppColor.orange,
+                            floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                            prefixIcon: Icon(Icons.date_range_outlined, color: Colors.black,),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(width: 1, color: AppColor.orange)
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(width: 1, color: Colors.black)
+                            ),
+                          ),
+                        ),
+                      ),
+
                       ElevatedButton(
                           onPressed: (){
                             _formKey.currentState?.saveAndValidate();
-                            AuthController.instance.register(
-                                _formKey.currentState!.value['email'],
-                                _formKey.currentState!.value['password']
-                            );
+                            AuthController.instance.register(_formKey.currentState!.value['email'], _formKey.currentState!.value['password']);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.orange,
-                            fixedSize: Size(350, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              backgroundColor: AppColor.orange,
+                              fixedSize: Size(350, 50),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
                               )
-                            ),
+                          ),
                           child: Text('SIGN UP', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w600, fontSize: 20))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -193,7 +353,7 @@ class RegisterView extends GetView<AuthController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already have an account?', style: GoogleFonts.montserrat(color: Colors.black,fontWeight: FontWeight.w400)),
+                          Text("I have an Account!", style: GoogleFonts.montserrat(color: Colors.black,fontWeight: FontWeight.w400)),
                           TextButton(
                             onPressed: (){
                               controller.toggleScreen();
