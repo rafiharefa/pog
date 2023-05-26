@@ -1,15 +1,50 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:googleapis/drive/v3.dart' as drive;
-import 'package:googleapis_auth/auth_io.dart';
-import 'package:googleapis_auth/googleapis_auth.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+
 
 class AuthController extends GetxController {
   //TODO: Implement AuthController
 
   static AuthController instance = Get.find();
+
+  RxList users = [].obs;
+
+  Future fetchUsers() async{
+    final response = await http.get(Uri.parse('http://localhost:8000/users'));
+    users.value = jsonDecode(response.body);
+  }
+  
+  void createUser(String lastname, String firstname,String email,String password,String address,String birth_date,String phone_number,String sex) async{
+
+    String id_user = 'USR${users.length+1}';
+
+    try{
+      final response = await http.post(
+        Uri.parse('http://localhost:8000/users/createUser'),
+        headers:<String, String>{
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+
+        body: jsonEncode(<String, String>{'id_user': id_user, 'lastname': lastname, 'firstname' : firstname,
+          'email': email, 'password':password, 'address':address, 'birth_date': birth_date, 'phone_number':phone_number, 'sex': sex})
+
+    );
+
+      if (response.statusCode == 200) {
+        fetchUsers();
+      }
+
+    }catch(e){
+      print('error: $e');
+    }
+  }
+  
+  
 
   late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -19,25 +54,6 @@ class AuthController extends GetxController {
   void toggleScreen(){
     whatScreen.value = !whatScreen.value;
   }
-
-  List<String? Function(String?)> validator = [FormBuilderValidators.required(),FormBuilderValidators.email()];
-
-  List<String> textfield = ['username', 'email', 'password'];
-
-  // Future<void> signInWithGoogle() async{
-  //   final GoogleSignIn googleSignIn = GoogleSignIn();
-  //   final GoogleSignInAccount? googleSignInAccount =
-  //       await googleSignIn.signIn();
-  //   final GoogleSignInAuthentication googleSignInAuthentication =
-  //       await googleSignInAccount!.authentication;
-  //   final AuthCredential authCredential =
-  //       await GoogleAuthProvider.credential(
-  //         accessToken: googleSignInAuthentication.accessToken,
-  //         idToken: googleSignInAuthentication.idToken
-  //       );
-  //   final UserCredential userCredential =
-  //       await auth.signInWithCredential(authCredential);
-  // }
 
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
@@ -60,8 +76,7 @@ class AuthController extends GetxController {
     await googleSignIn.signOut();
     await FirebaseAuth.instance.signOut();
   }
-
-
+  
   _initialScreen(User? user){
     if(user == null){
       Get.offAllNamed('login');
@@ -90,6 +105,7 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fetchUsers();
   }
 
   @override

@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:intl/intl.dart';
-
+import 'package:quiver/strings.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
@@ -75,6 +75,7 @@ class RegisterView extends GetView<AuthController> {
                               child: FormBuilderTextField(
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(),
+                                    FormBuilderValidators.maxLength(50),
                                   ]),
                                   name: 'firstname',
                                   cursorColor: Colors.black,
@@ -104,6 +105,8 @@ class RegisterView extends GetView<AuthController> {
                               child: FormBuilderTextField(
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(),
+                                    FormBuilderValidators.maxLength(50),
+
                                   ]),
                                   name: 'lastname',
                                   cursorColor: Colors.black,
@@ -136,7 +139,9 @@ class RegisterView extends GetView<AuthController> {
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
-                              FormBuilderValidators.email()
+                              FormBuilderValidators.email(),
+                              FormBuilderValidators.maxLength(50),
+
                             ]),
                             name: 'email',
                             cursorColor: Colors.black,
@@ -169,6 +174,8 @@ class RegisterView extends GetView<AuthController> {
                               FormBuilderValidators.minLength(6,
                                   errorText: 'Password must greater than 6'
                               ),
+                              FormBuilderValidators.maxLength(50),
+
                             ]),
                             name: 'password',
                             cursorColor: Colors.black,
@@ -198,6 +205,8 @@ class RegisterView extends GetView<AuthController> {
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
+                              FormBuilderValidators.maxLength(50),
+
                             ]),
                             name: 'address',
                             cursorColor: Colors.black,
@@ -231,7 +240,9 @@ class RegisterView extends GetView<AuthController> {
                               child: FormBuilderTextField(
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(),
-                                    FormBuilderValidators.numeric()
+                                    FormBuilderValidators.numeric(),
+                                    FormBuilderValidators.maxLength(13),
+
                                   ]),
                                   name: 'phone',
                                   cursorColor: Colors.black,
@@ -307,8 +318,10 @@ class RegisterView extends GetView<AuthController> {
 
                       ElevatedButton(
                           onPressed: (){
-                            _formKey.currentState?.saveAndValidate();
-                            AuthController.instance.register(_formKey.currentState!.value['email'], _formKey.currentState!.value['password']);
+                            _formKey.currentState!.save();
+                            controller.createUser(_formKey.currentState!.value['lastname'], _formKey.currentState!.value['firstname'], _formKey.currentState!.value['email'], _formKey.currentState!.value['password'], _formKey.currentState!.value['address'], _formKey.currentState!.value['birth_date'].toString(), _formKey.currentState!.value['phone'], _formKey.currentState!.value['sex']);
+
+                            // AuthController.instance.register(_formKey.currentState!.value['email'], _formKey.currentState!.value['password']);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
