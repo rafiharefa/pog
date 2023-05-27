@@ -22,7 +22,7 @@ class AuthView extends GetView<AuthController> {
           ? RegisterView(width: width, height: height)
           : LoginView(width: width, height: height));
     } else {
-      return Get.put(HomePageView());
+      return HomePageView();
     }
   }
 }

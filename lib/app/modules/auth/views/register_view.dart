@@ -18,8 +18,6 @@ class RegisterView extends GetView<AuthController> {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormBuilderState>();
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
@@ -52,7 +50,7 @@ class RegisterView extends GetView<AuthController> {
                   border: Border.all(width: 3, color: Colors.black),
                 ),
                 child: FormBuilder(
-                  key: _formKey,
+                  key: controller.formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -370,23 +368,21 @@ class RegisterView extends GetView<AuthController> {
                         ),
                       ),
 
+                      Obx(() => controller.registerError.value == 'true'
+                          ? Text(
+                              'Email is already Exist!',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          : SizedBox()),
+
                       ElevatedButton(
                           onPressed: () {
-                            _formKey.currentState!.saveAndValidate();
-                            controller.createUser(
-                                _formKey.currentState!.value['lastname'],
-                                _formKey.currentState!.value['firstname'],
-                                _formKey.currentState!.value['email'],
-                                _formKey.currentState!.value['password'],
-                                _formKey.currentState!.value['address'],
-                                _formKey.currentState!.value['birth_date']
-                                    .toString(),
-                                _formKey.currentState!.value['phone'],
-                                _formKey.currentState!.value['sex']);
+                            controller.formKey.currentState!.saveAndValidate();
 
                             AuthController.instance.register(
-                                _formKey.currentState!.value['email'],
-                                _formKey.currentState!.value['password']);
+                                controller.formKey.currentState!.value['email'],
+                                controller
+                                    .formKey.currentState!.value['password']);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,

@@ -134,6 +134,12 @@ class LoginView extends GetView<AuthController> {
                                       width: 1, color: Colors.black)),
                             )),
                       ),
+                      Obx(() => controller.loginError.value == 'true'
+                          ? Text(
+                              'Wrong Email or Password!',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          : SizedBox()),
                       ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.saveAndValidate();
