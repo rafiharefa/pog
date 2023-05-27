@@ -8,24 +8,10 @@ import 'package:http/http.dart' as http;
 class HomePageController extends GetxController {
   //TODO: Implement HomePageController
 
-  final user = FirebaseAuth.instance.currentUser!;
-
-  RxList userDetail = [].obs;
-
-  Future fetchUser() async {
-    final email = user.email;
-
-    final response =
-        await http.get(Uri.parse('http://localhost:8000/users/$email'));
-
-    userDetail.value = jsonDecode(response.body);
-  }
-
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
-    fetchUser();
   }
 
   @override

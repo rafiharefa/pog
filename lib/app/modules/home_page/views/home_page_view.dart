@@ -24,35 +24,33 @@ class HomePageView extends GetView<HomePageController> {
       appBar: AppBar(
         title: NavBar(),
       ),
-      body: Obx(
-        () => Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                WhiteContainer(),
-                SizedBox(height: 20),
-                //title
-                Text(
-                  controller.userDetail.first['email'],
-                  style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 50,
-                      color: AppColor.white),
-                ),
-                SizedBox(height: 25),
-                //search bar
-                SearchBar(),
-                SizedBox(height: 30),
-                //content
-                HomeContent(),
-                SizedBox(height: 40),
-                //more detail button
-                DetailButton(),
-                SizedBox(height: 40),
-                //footer
-                Footer(),
-              ],
-            ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              WhiteContainer(),
+              SizedBox(height: 20),
+              //title
+              Text(
+                'Events you have registered',
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 50,
+                    color: AppColor.white),
+              ),
+              SizedBox(height: 25),
+              //search bar
+              SearchBar(),
+              SizedBox(height: 30),
+              //content
+              HomeContent(),
+              SizedBox(height: 40),
+              //more detail button
+              DetailButton(),
+              SizedBox(height: 40),
+              //footer
+              Footer(),
+            ],
           ),
         ),
       ),

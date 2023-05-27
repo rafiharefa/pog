@@ -29,7 +29,7 @@ class AuthController extends GetxController {
       String birth_date,
       String phone_number,
       String sex) async {
-    String id_user = 'USR${users.length + 1}';
+    String user_id = 'USR${users.length + 1}';
 
     try {
       final response = await http.post(
@@ -38,7 +38,7 @@ class AuthController extends GetxController {
             'Content-Type': 'application/json; charset=UTF-8'
           },
           body: jsonEncode(<String, String>{
-            'id_user': id_user,
+            'user_id': user_id,
             'lastname': lastname,
             'firstname': firstname,
             'email': email,

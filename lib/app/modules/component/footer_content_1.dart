@@ -49,10 +49,7 @@ class FooterContent1 extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
-              onPressed: () {
-                AuthController.instance.logout();
-                Get.offAllNamed('/landing');
-              },
+              onPressed: () {},
             ),
             Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
           ],
