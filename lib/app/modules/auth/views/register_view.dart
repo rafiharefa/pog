@@ -11,14 +11,13 @@ import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app_color.dart';
 
-
 class RegisterView extends GetView<AuthController> {
   final width;
   final height;
-  const RegisterView({Key? key, required this.width, required this.height}) : super(key: key);
+  const RegisterView({Key? key, required this.width, required this.height})
+      : super(key: key);
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
@@ -28,10 +27,13 @@ class RegisterView extends GetView<AuthController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back, color: Colors.black,),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Center(
@@ -43,12 +45,9 @@ class RegisterView extends GetView<AuthController> {
                 width: 600,
                 height: 800,
                 decoration: BoxDecoration(
-                  color: Colors.white ,
+                  color: Colors.white,
                   boxShadow: [
-                    BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(8, 8)
-                    )
+                    BoxShadow(color: Colors.black, offset: Offset(8, 8))
                   ],
                   border: Border.all(width: 3, color: Colors.black),
                 ),
@@ -59,7 +58,11 @@ class RegisterView extends GetView<AuthController> {
                     children: [
                       SizedBox(height: 25),
 
-                      Text('SET UP ACCOUNT', style: GoogleFonts.ibmPlexMono(fontSize: 40, color: Colors.black, fontWeight: FontWeight.w700)),
+                      Text('SET UP ACCOUNT',
+                          style: GoogleFonts.ibmPlexMono(
+                              fontSize: 40,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700)),
 
                       SizedBox(height: 25),
 
@@ -82,19 +85,26 @@ class RegisterView extends GetView<AuthController> {
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                     labelText: 'first name',
-                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    labelStyle: GoogleFonts.ibmPlexMono(
+                                        fontWeight: FontWeight.w400),
                                     focusColor: AppColor.orange,
-                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                                    prefixIcon: Icon(Icons.person_outline, color: Colors.black,),
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                        color: AppColor.orange,
+                                        fontWeight: FontWeight.w400),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: Icon(
+                                      Icons.person_outline,
+                                      color: Colors.black,
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: Colors.black)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.black)),
                                   )),
                             ),
 
@@ -106,7 +116,6 @@ class RegisterView extends GetView<AuthController> {
                                   validator: FormBuilderValidators.compose([
                                     FormBuilderValidators.required(),
                                     FormBuilderValidators.maxLength(50),
-
                                   ]),
                                   name: 'lastname',
                                   cursorColor: Colors.black,
@@ -114,18 +123,22 @@ class RegisterView extends GetView<AuthController> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'last name',
-                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    labelStyle: GoogleFonts.ibmPlexMono(
+                                        fontWeight: FontWeight.w400),
                                     focusColor: AppColor.orange,
-                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                        color: AppColor.orange,
+                                        fontWeight: FontWeight.w400),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 50),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: Colors.black)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.black)),
                                   )),
                             ),
                           ],
@@ -141,26 +154,32 @@ class RegisterView extends GetView<AuthController> {
                               FormBuilderValidators.required(),
                               FormBuilderValidators.email(),
                               FormBuilderValidators.maxLength(50),
-
                             ]),
                             name: 'email',
                             cursorColor: Colors.black,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'email',
-                              labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                              labelStyle: GoogleFonts.ibmPlexMono(
+                                  fontWeight: FontWeight.w400),
                               focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(Icons.email_outlined, color: Colors.black,),
+                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                  color: AppColor.orange,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: Icon(
+                                Icons.email_outlined,
+                                color: Colors.black,
+                              ),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: AppColor.orange)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: Colors.black)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.black)),
                             )),
                       ),
 
@@ -172,29 +191,34 @@ class RegisterView extends GetView<AuthController> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
                               FormBuilderValidators.minLength(6,
-                                  errorText: 'Password must greater than 6'
-                              ),
+                                  errorText: 'Password must greater than 6'),
                               FormBuilderValidators.maxLength(50),
-
                             ]),
                             name: 'password',
                             cursorColor: Colors.black,
                             obscureText: true,
                             decoration: InputDecoration(
                               labelText: 'password',
-                              labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                              labelStyle: GoogleFonts.ibmPlexMono(
+                                  fontWeight: FontWeight.w400),
                               focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(Icons.lock_outline, color: Colors.black,),
+                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                  color: AppColor.orange,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: Icon(
+                                Icons.lock_outline,
+                                color: Colors.black,
+                              ),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: AppColor.orange)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: Colors.black)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.black)),
                             )),
                       ),
 
@@ -206,25 +230,31 @@ class RegisterView extends GetView<AuthController> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
                               FormBuilderValidators.maxLength(50),
-
                             ]),
                             name: 'address',
                             cursorColor: Colors.black,
                             decoration: InputDecoration(
                               labelText: 'address',
-                              labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                              labelStyle: GoogleFonts.ibmPlexMono(
+                                  fontWeight: FontWeight.w400),
                               focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(Icons.pin_drop_outlined, color: Colors.black,),
+                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                  color: AppColor.orange,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: Icon(
+                                Icons.pin_drop_outlined,
+                                color: Colors.black,
+                              ),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: AppColor.orange)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(width: 1, color: Colors.black)
-                              ),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.black)),
                             )),
                       ),
 
@@ -242,25 +272,31 @@ class RegisterView extends GetView<AuthController> {
                                     FormBuilderValidators.required(),
                                     FormBuilderValidators.numeric(),
                                     FormBuilderValidators.maxLength(13),
-
                                   ]),
                                   name: 'phone',
                                   cursorColor: Colors.black,
                                   decoration: InputDecoration(
                                     labelText: 'phone',
-                                    labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                                    labelStyle: GoogleFonts.ibmPlexMono(
+                                        fontWeight: FontWeight.w400),
                                     focusColor: AppColor.orange,
-                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                                    prefixIcon: Icon(Icons.phone, color: Colors.black,),
+                                    floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                        color: AppColor.orange,
+                                        fontWeight: FontWeight.w400),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: Icon(
+                                      Icons.phone,
+                                      color: Colors.black,
+                                    ),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: AppColor.orange)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(width: 1, color: Colors.black)
-                                    ),
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.black)),
                                   )),
                             ),
 
@@ -273,14 +309,25 @@ class RegisterView extends GetView<AuthController> {
                                   FormBuilderValidators.required(),
                                 ]),
                                 name: 'sex',
-                                decoration: InputDecoration(
-                                  border: InputBorder.none
-                                ),
+                                decoration:
+                                    InputDecoration(border: InputBorder.none),
                                 wrapAlignment: WrapAlignment.spaceBetween,
                                 activeColor: AppColor.orange,
                                 options: [
-                                  FormBuilderFieldOption(value: 'Male', child: Text('Male', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400, color: Colors.black),)),
-                                  FormBuilderFieldOption(value: 'Female', child: Text('Female', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400, color: Colors.black))),
+                                  FormBuilderFieldOption(
+                                      value: 'Male',
+                                      child: Text(
+                                        'Male',
+                                        style: GoogleFonts.ibmPlexMono(
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black),
+                                      )),
+                                  FormBuilderFieldOption(
+                                      value: 'Female',
+                                      child: Text('Female',
+                                          style: GoogleFonts.ibmPlexMono(
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.black))),
                                 ],
                               ),
                             ),
@@ -293,44 +340,63 @@ class RegisterView extends GetView<AuthController> {
                         width: 550,
                         height: 70,
                         child: FormBuilderDateTimePicker(
-                            name: 'birth_date',
+                          name: 'birth_date',
                           inputType: InputType.date,
                           validator: FormBuilderValidators.required(),
                           format: DateFormat('yyyy-MM-dd'),
                           decoration: InputDecoration(
                             labelText: 'birth date',
-                            labelStyle: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w400),
+                            labelStyle: GoogleFonts.ibmPlexMono(
+                                fontWeight: FontWeight.w400),
                             focusColor: AppColor.orange,
-                            floatingLabelStyle: GoogleFonts.ibmPlexMono(color: AppColor.orange,fontWeight: FontWeight.w400),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 50),
-                            prefixIcon: Icon(Icons.date_range_outlined, color: Colors.black,),
+                            floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                color: AppColor.orange,
+                                fontWeight: FontWeight.w400),
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 50),
+                            prefixIcon: Icon(
+                              Icons.date_range_outlined,
+                              color: Colors.black,
+                            ),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(width: 1, color: AppColor.orange)
-                            ),
+                                borderSide: BorderSide(
+                                    width: 1, color: AppColor.orange)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(width: 1, color: Colors.black)
-                            ),
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black)),
                           ),
                         ),
                       ),
 
                       ElevatedButton(
-                          onPressed: (){
-                            _formKey.currentState!.save();
-                            controller.createUser(_formKey.currentState!.value['lastname'], _formKey.currentState!.value['firstname'], _formKey.currentState!.value['email'], _formKey.currentState!.value['password'], _formKey.currentState!.value['address'], _formKey.currentState!.value['birth_date'].toString(), _formKey.currentState!.value['phone'], _formKey.currentState!.value['sex']);
+                          onPressed: () {
+                            _formKey.currentState!.saveAndValidate();
+                            controller.createUser(
+                                _formKey.currentState!.value['lastname'],
+                                _formKey.currentState!.value['firstname'],
+                                _formKey.currentState!.value['email'],
+                                _formKey.currentState!.value['password'],
+                                _formKey.currentState!.value['address'],
+                                _formKey.currentState!.value['birth_date']
+                                    .toString(),
+                                _formKey.currentState!.value['phone'],
+                                _formKey.currentState!.value['sex']);
 
-                            // AuthController.instance.register(_formKey.currentState!.value['email'], _formKey.currentState!.value['password']);
+                            AuthController.instance.register(
+                                _formKey.currentState!.value['email'],
+                                _formKey.currentState!.value['password']);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
                               fixedSize: Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
-                              )
-                          ),
-                          child: Text('SIGN UP', style: GoogleFonts.ibmPlexMono(fontWeight: FontWeight.w600, fontSize: 20))),
+                              )),
+                          child: Text('SIGN UP',
+                              style: GoogleFonts.ibmPlexMono(
+                                  fontWeight: FontWeight.w600, fontSize: 20))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -340,18 +406,21 @@ class RegisterView extends GetView<AuthController> {
                             color: Colors.black,
                           ),
                           SizedBox(width: 5),
-                          Text('OR', style: GoogleFonts.ibmPlexMono(color: Colors.black,fontWeight: FontWeight.w400, fontSize: 20)),
+                          Text('OR',
+                              style: GoogleFonts.ibmPlexMono(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20)),
                           SizedBox(width: 5),
                           Container(
                             width: 157,
                             height: 1,
                             color: Colors.black,
                           ),
-
                         ],
                       ),
                       ElevatedButton.icon(
-                          onPressed: (){
+                          onPressed: () {
                             controller.signInWithGoogle();
                           },
                           style: ElevatedButton.styleFrom(
@@ -359,19 +428,30 @@ class RegisterView extends GetView<AuthController> {
                               fixedSize: Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
-                              )
-                          ),
+                              )),
                           icon: Image.asset('assets/search.png', width: 20),
-                          label: Text(' GOOGLE SIGN UP', style: GoogleFonts.ibmPlexMono(color: Colors.black ,fontWeight: FontWeight.w600, fontSize: 20))),
+                          label: Text(' GOOGLE SIGN UP',
+                              style: GoogleFonts.ibmPlexMono(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("I have an Account!", style: GoogleFonts.montserrat(color: Colors.black,fontWeight: FontWeight.w400)),
+                          Text("I have an Account!",
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400)),
                           TextButton(
-                            onPressed: (){
+                            onPressed: () {
                               controller.toggleScreen();
                             },
-                            child: Text('SIGN IN', style: GoogleFonts.montserrat(color: Colors.black,fontWeight: FontWeight.w700)), )],
+                            child: Text('SIGN IN',
+                                style: GoogleFonts.montserrat(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w700)),
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -386,4 +466,3 @@ class RegisterView extends GetView<AuthController> {
     );
   }
 }
-
