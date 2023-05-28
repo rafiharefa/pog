@@ -32,7 +32,7 @@ class HomePageView extends GetView<HomePageController> {
               SizedBox(height: 20),
               //title
               Text(
-                'Events you have registered',
+                'Your Events',
                 style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w700,
                     fontSize: 50,

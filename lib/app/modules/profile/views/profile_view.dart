@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -5,6 +8,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:googleapis/admin/directory_v1.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -17,6 +22,7 @@ import 'package:intl/intl.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +56,22 @@ class ProfileView extends GetView<ProfileController> {
                             Person person = controller.thisUser.first;
                             return Column(
                               children: [
+                                SizedBox(
+                                  height: 30,
+                                ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    CircleAvatar(
-                                      backgroundColor: Colors.green,
-                                      radius: 100,
+                                    InkWell(
+                                      onTap: () {},
+                                      child: CircleAvatar(
+                                        radius: 70,
+                                        child: Icon(
+                                          Icons.person_2_outlined,
+                                          size: 70,
+                                        ),
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 50,
@@ -389,7 +405,7 @@ class ProfileView extends GetView<ProfileController> {
                                             fontWeight: FontWeight.w600,
                                             fontSize: 15))),
 
-                                SizedBox(height: 200),
+                                SizedBox(height: 100),
 
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,

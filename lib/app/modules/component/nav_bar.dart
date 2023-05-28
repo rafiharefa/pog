@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../organization_page/views/author.dart';
+
 class NavBar extends StatelessWidget {
   const NavBar({
     super.key,
@@ -67,7 +69,9 @@ class NavBar extends StatelessWidget {
                   }),
               SizedBox(width: 20),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(AuthorView());
+                  },
                   child: Text('AUTHOR',
                       style: GoogleFonts.notoSans(
                           color: Colors.black,

@@ -9,6 +9,7 @@ abstract class Routes {
   static const EVENTS_PAGE = _Paths.EVENTS_PAGE;
   static const AUTH = _Paths.AUTH;
   static const PROFILE = _Paths.PROFILE;
+  static const ORGANIZATION_PAGE = _Paths.ORGANIZATION_PAGE;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const EVENTS_PAGE = '/events-page';
   static const AUTH = '/auth';
   static const PROFILE = '/profile';
+  static const ORGANIZATION_PAGE = '/organization-page';
 }

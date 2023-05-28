@@ -8,23 +8,21 @@ import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 import 'package:pog/app/modules/auth/views/auth_view.dart';
 import 'package:pog/app/modules/auth/views/register_view.dart';
 import 'package:pog/app/modules/component/white_container.dart';
+import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
+import 'package:pog/app/modules/organization_page/views/create_organization.dart';
 
 import '../../../../app_color.dart';
 import '../../component/footer.dart';
 
-class LoginView extends GetView<AuthController> {
-  final width;
-  final height;
-
-  const LoginView({Key? key, required this.width, required this.height})
-      : super(key: key);
+class AuthorView extends GetView<OrganizationPageController> {
+  const AuthorView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.grey,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -42,7 +40,7 @@ class LoginView extends GetView<AuthController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
+              Container(height: 100),
               Container(
                 width: 500,
                 height: 500,
@@ -58,9 +56,14 @@ class LoginView extends GetView<AuthController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('SIGN IN',
+                      Text('HI AUTHOR!',
                           style: GoogleFonts.ibmPlexMono(
                               fontSize: 40,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700)),
+                      Text('Enter Your Organization ID and KEY',
+                          style: GoogleFonts.montserrat(
+                              fontSize: 15,
                               color: Colors.black,
                               fontWeight: FontWeight.w700)),
                       SizedBox(
@@ -69,13 +72,12 @@ class LoginView extends GetView<AuthController> {
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
-                              FormBuilderValidators.email()
                             ]),
-                            name: 'email',
+                            name: 'id',
                             cursorColor: Colors.black,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'email',
+                              labelText: 'Organization ID',
                               labelStyle: GoogleFonts.ibmPlexMono(
                                   fontWeight: FontWeight.w400),
                               focusColor: AppColor.orange,
@@ -104,14 +106,12 @@ class LoginView extends GetView<AuthController> {
                         child: FormBuilderTextField(
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
-                              FormBuilderValidators.minLength(6,
-                                  errorText: 'Password must be greater than 6'),
                             ]),
-                            name: 'password',
-                            cursorColor: Colors.black,
+                            name: 'key',
                             obscureText: true,
+                            cursorColor: Colors.black,
                             decoration: InputDecoration(
-                              labelText: 'password',
+                              labelText: 'Organization Key',
                               labelStyle: GoogleFonts.ibmPlexMono(
                                   fontWeight: FontWeight.w400),
                               focusColor: AppColor.orange,
@@ -134,18 +134,9 @@ class LoginView extends GetView<AuthController> {
                                       width: 1, color: Colors.black)),
                             )),
                       ),
-                      Obx(() => controller.loginError.value == 'true'
-                          ? Text(
-                              'Wrong Email or Password!',
-                              style: TextStyle(color: Colors.black),
-                            )
-                          : SizedBox()),
                       ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.saveAndValidate();
-                            AuthController.instance.login(
-                                _formKey.currentState!.value['email'],
-                                _formKey.currentState!.value['password']);
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
@@ -153,59 +144,21 @@ class LoginView extends GetView<AuthController> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
-                          child: Text('SIGN IN',
+                          child: Text('ENTER',
                               style: GoogleFonts.ibmPlexMono(
                                   fontWeight: FontWeight.w600, fontSize: 20))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 157,
-                            height: 1,
-                            color: Colors.black,
-                          ),
-                          SizedBox(width: 5),
-                          Text('OR',
-                              style: GoogleFonts.ibmPlexMono(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20)),
-                          SizedBox(width: 5),
-                          Container(
-                            width: 157,
-                            height: 1,
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                      ElevatedButton.icon(
-                          onPressed: () {
-                            controller.signInWithGoogle();
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              fixedSize: Size(350, 50),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          icon: Image.asset('assets/search.png', width: 20),
-                          label: Text(' GOOGLE SIGN IN',
-                              style: GoogleFonts.ibmPlexMono(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20))),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Don't have an account?",
+                          Text("Create You Own Organization?",
                               style: GoogleFonts.montserrat(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400)),
                           TextButton(
                             onPressed: () {
-                              controller.toggleScreen();
+                              Get.off(CreateOrganizationView());
                             },
-                            child: Text('SIGN UP',
+                            child: Text('CLICK HERE',
                                 style: GoogleFonts.montserrat(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w700)),

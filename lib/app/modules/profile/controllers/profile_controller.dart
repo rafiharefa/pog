@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
+import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +10,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:googleapis/admin/directory_v1.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:pog/app_color.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../../data/persons.dart';
 import '../../component/fast_snack.dart';

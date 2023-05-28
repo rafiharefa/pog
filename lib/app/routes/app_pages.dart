@@ -8,6 +8,8 @@ import '../modules/home_page/bindings/home_page_binding.dart';
 import '../modules/home_page/views/home_page_view.dart';
 import '../modules/landing_page/bindings/landing_binding.dart';
 import '../modules/landing_page/views/landing_view.dart';
+import '../modules/organization_page/bindings/organization_page_binding.dart';
+import '../modules/organization_page/views/organization_page_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 
@@ -16,7 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PROFILE;
+  static const INITIAL = Routes.HOME_PAGE;
 
   static final routes = [
     GetPage(
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORGANIZATION_PAGE,
+      page: () => const OrganizationPageView(),
+      binding: OrganizationPageBinding(),
     ),
   ];
 }

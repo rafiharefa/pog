@@ -189,7 +189,7 @@ class RegisterView extends GetView<AuthController> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(),
                               FormBuilderValidators.minLength(6,
-                                  errorText: 'Password must greater than 6'),
+                                  errorText: 'Password must be greater than 6'),
                               FormBuilderValidators.maxLength(50),
                             ]),
                             name: 'password',
