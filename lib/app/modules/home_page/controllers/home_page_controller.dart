@@ -1,13 +1,8 @@
-import 'dart:convert';
+// ignore_for_file: unnecessary_overrides
 
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
-import 'package:http/http.dart' as http;
 
 class HomePageController extends GetxController {
-  //TODO: Implement HomePageController
-
   final count = 0.obs;
   @override
   void onInit() {

@@ -19,7 +19,7 @@ class NavBar extends StatelessWidget {
                   Get.offAllNamed('/landing');
                 },
                 iconSize: 60,
-                icon: Icon(
+                icon: const Icon(
                   Icons.ac_unit_rounded,
                   color: Colors.black,
                 ))),
@@ -38,7 +38,7 @@ class NavBar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               PopupMenuButton(
                   child: Row(children: [
                     Text('ORGANIZATIONS',
@@ -46,7 +46,7 @@ class NavBar extends StatelessWidget {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    Icon(
+                    const Icon(
                       Icons.arrow_drop_down,
                       color: Colors.black,
                     ),
@@ -67,17 +67,17 @@ class NavBar extends StatelessWidget {
                                   fontSize: 15))),
                     ];
                   }),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {
-                    Get.to(AuthorView());
+                    Get.to(const AuthorView());
                   },
                   child: Text('AUTHOR',
                       style: GoogleFonts.notoSans(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {},
                   child: Text('ABOUT',
@@ -85,7 +85,7 @@ class NavBar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {},
                   child: Text('CONTACT',
@@ -93,7 +93,7 @@ class NavBar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {
                     Get.offAllNamed('/profile');
@@ -126,7 +126,7 @@ class LandingNavbar extends StatelessWidget {
                   Get.offAllNamed('/landing');
                 },
                 iconSize: 60,
-                icon: Icon(
+                icon: const Icon(
                   Icons.ac_unit_rounded,
                   color: Colors.black,
                 ))),
@@ -145,7 +145,7 @@ class LandingNavbar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               PopupMenuButton(
                   child: Row(children: [
                     Text('ORGANIZATIONS',
@@ -153,7 +153,7 @@ class LandingNavbar extends StatelessWidget {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),
-                    Icon(
+                    const Icon(
                       Icons.arrow_drop_down,
                       color: Colors.black,
                     ),
@@ -174,7 +174,7 @@ class LandingNavbar extends StatelessWidget {
                                   fontSize: 15))),
                     ];
                   }),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {},
                   child: Text('ABOUT',
@@ -182,7 +182,7 @@ class LandingNavbar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               TextButton(
                   onPressed: () {},
                   child: Text('CONTACT',

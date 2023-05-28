@@ -18,24 +18,24 @@ class EventsPageView extends GetView<EventsPageController> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: NavBar(),
+        title: const NavBar(),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
-              SizedBox(height: 20),
+              const WhiteContainer(),
+              const SizedBox(height: 20),
               Text('Current Available Events',
                 style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: AppColor.white),
               ),
 
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-              EventsContent(),
-              SizedBox(height: 40),
+              const EventsContent(),
+              const SizedBox(height: 40),
 
-              Footer()
+              const Footer()
 
             ],
           ),

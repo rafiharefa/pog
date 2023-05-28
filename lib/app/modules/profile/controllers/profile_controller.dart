@@ -1,25 +1,18 @@
+// ignore_for_file: non_constant_identifier_names, unused_local_variable, unnecessary_overrides
+
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
-import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:googleapis/admin/directory_v1.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker_web/image_picker_web.dart';
-import 'package:pog/app_color.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../../data/persons.dart';
 import '../../component/fast_snack.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
-
   final formKey = GlobalKey<FormBuilderState>();
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -35,10 +28,10 @@ class ProfileController extends GetxController {
 
     userDetail.value = jsonDecode(response.body);
 
-    userDetail.forEach((json) {
+    for (var json in userDetail) {
       Person users = Person.fromJson(json);
       thisUser.add(users);
-    });
+    }
   }
 
   void updateUser() async {

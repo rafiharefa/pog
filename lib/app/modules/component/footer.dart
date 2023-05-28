@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app_color.dart';
 
@@ -24,7 +23,7 @@ class Footer extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   //info 1
                   Expanded(flex: 2,child: FooterContent1()),
                   //info 2
@@ -33,7 +32,7 @@ class Footer extends StatelessWidget {
                   Expanded(flex: 2,child: FooterContent3()),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text('created by group 6 Software Engineering 4A',
                   style: GoogleFonts.montserrat(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w400))
             ],

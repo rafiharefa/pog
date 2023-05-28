@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print, unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,11 +8,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class AuthController extends GetxController {
-  //TODO: Implement AuthController
-
   static AuthController instance = Get.find();
 
   RxList users = [].obs;
@@ -89,7 +88,7 @@ class AuthController extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      Get.offAllNamed('login');
+      Get.offAllNamed('/landing');
     } else {
       Get.offAllNamed('home-page');
     }

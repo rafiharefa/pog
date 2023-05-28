@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 
 class FooterContent1 extends StatelessWidget {
   const FooterContent1({
@@ -16,15 +14,15 @@ class FooterContent1 extends StatelessWidget {
       children: [
         //POG
         Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Icon(Icons.ac_unit_rounded, color: Colors.white, size: 44),
-          SizedBox(width: 5),
+          const Icon(Icons.ac_unit_rounded, color: Colors.white, size: 44),
+          const SizedBox(width: 5),
           Text('POG',
               style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w700,
                   fontSize: 40,
                   color: Colors.white)),
         ]),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         //Detail
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,16 +40,16 @@ class FooterContent1 extends StatelessWidget {
                     fontSize: 10))
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         //sosmed
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
-              icon: Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
+              icon: const Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
               onPressed: () {},
             ),
-            Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
+            const Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
           ],
         ),
       ],

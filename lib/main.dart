@@ -19,14 +19,14 @@ void main() async {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       defaultTransition: Transition.fade,
-      transitionDuration: Duration(seconds: 1),
+      transitionDuration: const Duration(seconds: 1),
       theme: ThemeData(
           appBarTheme: AppBarTheme(
               backgroundColor: Colors.white.withOpacity(.7),
-              iconTheme: IconThemeData(color: Colors.black),
+              iconTheme: const IconThemeData(color: Colors.black),
               elevation: 0,
               toolbarHeight: 100),
-          textTheme: TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle())
+          textTheme: const TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle())
               .apply(bodyColor: Colors.white, displayColor: Colors.white)),
     ),
   );

@@ -13,7 +13,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
         title: const Text('OrganizationPageView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'OrganizationPageView is working',
           style: TextStyle(fontSize: 20),

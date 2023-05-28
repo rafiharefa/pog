@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -5,8 +7,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
-import 'package:pog/app/modules/auth/views/auth_view.dart';
-import 'package:pog/app/modules/auth/views/register_view.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 
 import '../../../../app_color.dart';
@@ -32,7 +32,7 @@ class LoginView extends GetView<AuthController> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -42,14 +42,14 @@ class LoginView extends GetView<AuthController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
+              const WhiteContainer(),
               Container(
                 width: 500,
                 height: 500,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    BoxShadow(color: Colors.black, offset: Offset(8, 8))
+                    const BoxShadow(color: Colors.black, offset: Offset(8, 8))
                   ],
                   border: Border.all(width: 3, color: Colors.black),
                 ),
@@ -83,8 +83,8 @@ class LoginView extends GetView<AuthController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.person_outline,
                                 color: Colors.black,
                               ),
@@ -94,7 +94,7 @@ class LoginView extends GetView<AuthController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -119,8 +119,8 @@ class LoginView extends GetView<AuthController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: Colors.black,
                               ),
@@ -130,16 +130,16 @@ class LoginView extends GetView<AuthController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
                       Obx(() => controller.loginError.value == 'true'
-                          ? Text(
+                          ? const Text(
                               'Wrong Email or Password!',
                               style: TextStyle(color: Colors.black),
                             )
-                          : SizedBox()),
+                          : const SizedBox()),
                       ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.saveAndValidate();
@@ -149,7 +149,7 @@ class LoginView extends GetView<AuthController> {
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -164,13 +164,13 @@ class LoginView extends GetView<AuthController> {
                             height: 1,
                             color: Colors.black,
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Text('OR',
                               style: GoogleFonts.ibmPlexMono(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20)),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Container(
                             width: 157,
                             height: 1,
@@ -184,7 +184,7 @@ class LoginView extends GetView<AuthController> {
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -216,8 +216,8 @@ class LoginView extends GetView<AuthController> {
                   ),
                 ),
               ),
-              SizedBox(height: 100),
-              Footer(),
+              const SizedBox(height: 100),
+              const Footer(),
             ],
           ),
         ),

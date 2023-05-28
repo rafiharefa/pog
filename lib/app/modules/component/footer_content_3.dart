@@ -15,11 +15,11 @@ class FooterContent3 extends StatelessWidget {
         TextButton(onPressed: (){}, child: Text('About',
             style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
         )),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextButton(onPressed: (){}, child: Text('Contact Us',
             style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
         )),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextButton(onPressed: (){}, child: Text('FAQ',
             style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
         )),

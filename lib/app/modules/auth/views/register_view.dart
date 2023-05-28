@@ -1,9 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:intl/intl.dart';
-import 'package:quiver/strings.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
@@ -28,7 +28,7 @@ class RegisterView extends GetView<AuthController> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -38,13 +38,13 @@ class RegisterView extends GetView<AuthController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
+              const WhiteContainer(),
               Container(
                 width: 600,
                 height: 800,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(color: Colors.black, offset: Offset(8, 8))
                   ],
                   border: Border.all(width: 3, color: Colors.black),
@@ -54,7 +54,7 @@ class RegisterView extends GetView<AuthController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       Text('SET UP ACCOUNT',
                           style: GoogleFonts.ibmPlexMono(
@@ -62,9 +62,9 @@ class RegisterView extends GetView<AuthController> {
                               color: Colors.black,
                               fontWeight: FontWeight.w700)),
 
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
-                      Container(
+                      SizedBox(
                         width: 550,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,8 +90,8 @@ class RegisterView extends GetView<AuthController> {
                                         color: AppColor.orange,
                                         fontWeight: FontWeight.w400),
                                     contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 50),
-                                    prefixIcon: Icon(
+                                        const EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: const Icon(
                                       Icons.person_outline,
                                       color: Colors.black,
                                     ),
@@ -101,7 +101,7 @@ class RegisterView extends GetView<AuthController> {
                                             width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 1, color: Colors.black)),
                                   )),
                             ),
@@ -128,14 +128,14 @@ class RegisterView extends GetView<AuthController> {
                                         color: AppColor.orange,
                                         fontWeight: FontWeight.w400),
                                     contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 50),
+                                        const EdgeInsets.symmetric(horizontal: 50),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
                                         borderSide: BorderSide(
                                             width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 1, color: Colors.black)),
                                   )),
                             ),
@@ -165,8 +165,8 @@ class RegisterView extends GetView<AuthController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.email_outlined,
                                 color: Colors.black,
                               ),
@@ -176,7 +176,7 @@ class RegisterView extends GetView<AuthController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -204,8 +204,8 @@ class RegisterView extends GetView<AuthController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: Colors.black,
                               ),
@@ -215,7 +215,7 @@ class RegisterView extends GetView<AuthController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -240,8 +240,8 @@ class RegisterView extends GetView<AuthController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.pin_drop_outlined,
                                 color: Colors.black,
                               ),
@@ -251,12 +251,12 @@ class RegisterView extends GetView<AuthController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
 
-                      Container(
+                      SizedBox(
                         width: 550,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -282,8 +282,8 @@ class RegisterView extends GetView<AuthController> {
                                         color: AppColor.orange,
                                         fontWeight: FontWeight.w400),
                                     contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 50),
-                                    prefixIcon: Icon(
+                                        const EdgeInsets.symmetric(horizontal: 50),
+                                    prefixIcon: const Icon(
                                       Icons.phone,
                                       color: Colors.black,
                                     ),
@@ -293,7 +293,7 @@ class RegisterView extends GetView<AuthController> {
                                             width: 1, color: AppColor.orange)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(40),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 1, color: Colors.black)),
                                   )),
                             ),
@@ -308,7 +308,7 @@ class RegisterView extends GetView<AuthController> {
                                 ]),
                                 name: 'sex',
                                 decoration:
-                                    InputDecoration(border: InputBorder.none),
+                                    const InputDecoration(border: InputBorder.none),
                                 wrapAlignment: WrapAlignment.spaceBetween,
                                 activeColor: AppColor.orange,
                                 options: [
@@ -351,8 +351,8 @@ class RegisterView extends GetView<AuthController> {
                                 color: AppColor.orange,
                                 fontWeight: FontWeight.w400),
                             contentPadding:
-                                EdgeInsets.symmetric(horizontal: 50),
-                            prefixIcon: Icon(
+                                const EdgeInsets.symmetric(horizontal: 50),
+                            prefixIcon: const Icon(
                               Icons.date_range_outlined,
                               color: Colors.black,
                             ),
@@ -363,17 +363,17 @@ class RegisterView extends GetView<AuthController> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(40),
                                 borderSide:
-                                    BorderSide(width: 1, color: Colors.black)),
+                                    const BorderSide(width: 1, color: Colors.black)),
                           ),
                         ),
                       ),
 
                       Obx(() => controller.registerError.value == 'true'
-                          ? Text(
+                          ? const Text(
                               'Email is already Exist!',
                               style: TextStyle(color: Colors.black),
                             )
-                          : SizedBox()),
+                          : const SizedBox()),
 
                       ElevatedButton(
                           onPressed: () {
@@ -386,7 +386,7 @@ class RegisterView extends GetView<AuthController> {
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -401,13 +401,13 @@ class RegisterView extends GetView<AuthController> {
                             height: 1,
                             color: Colors.black,
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Text('OR',
                               style: GoogleFonts.ibmPlexMono(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20)),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Container(
                             width: 157,
                             height: 1,
@@ -421,7 +421,7 @@ class RegisterView extends GetView<AuthController> {
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -453,8 +453,8 @@ class RegisterView extends GetView<AuthController> {
                   ),
                 ),
               ),
-              SizedBox(height: 100),
-              Footer(),
+              const SizedBox(height: 100),
+              const Footer(),
             ],
           ),
         ),

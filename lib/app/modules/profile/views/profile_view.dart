@@ -1,15 +1,12 @@
-import 'dart:typed_data';
 
-import 'package:file_picker/file_picker.dart';
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:googleapis/admin/directory_v1.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image_picker_web/image_picker_web.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -29,20 +26,20 @@ class ProfileView extends GetView<ProfileController> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: NavBar(),
+        title: const NavBar(),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
+              const WhiteContainer(),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 100.0, vertical: 50),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(color: Colors.black, offset: Offset(10, 10))
                     ],
                     border: Border.all(width: 5, color: Colors.black),
@@ -56,7 +53,7 @@ class ProfileView extends GetView<ProfileController> {
                             Person person = controller.thisUser.first;
                             return Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 30,
                                 ),
                                 Row(
@@ -65,7 +62,7 @@ class ProfileView extends GetView<ProfileController> {
                                   children: [
                                     InkWell(
                                       onTap: () {},
-                                      child: CircleAvatar(
+                                      child: const CircleAvatar(
                                         radius: 70,
                                         child: Icon(
                                           Icons.person_2_outlined,
@@ -73,7 +70,7 @@ class ProfileView extends GetView<ProfileController> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 50,
                                     ),
                                     Column(
@@ -96,7 +93,7 @@ class ProfileView extends GetView<ProfileController> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 50,
                                 ),
                                 //email
@@ -112,7 +109,7 @@ class ProfileView extends GetView<ProfileController> {
                                             color: Colors.black),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: FormBuilderTextField(
                                           readOnly: true,
@@ -135,9 +132,9 @@ class ProfileView extends GetView<ProfileController> {
                                                     fontWeight:
                                                         FontWeight.w500),
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     horizontal: 50),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.email_outlined,
                                               color: Colors.black,
                                             ),
@@ -150,14 +147,14 @@ class ProfileView extends GetView<ProfileController> {
                                             border: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                     width: 1,
                                                     color: Colors.black)),
                                           )),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 //address
                                 Row(
                                   children: [
@@ -171,7 +168,7 @@ class ProfileView extends GetView<ProfileController> {
                                             color: Colors.black),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: FormBuilderTextField(
                                           validator:
@@ -192,9 +189,9 @@ class ProfileView extends GetView<ProfileController> {
                                                     fontWeight:
                                                         FontWeight.w500),
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     horizontal: 50),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.pin_drop_outlined,
                                               color: Colors.black,
                                             ),
@@ -207,14 +204,14 @@ class ProfileView extends GetView<ProfileController> {
                                             border: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                     width: 1,
                                                     color: Colors.black)),
                                           )),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 //phone
                                 Row(
                                   children: [
@@ -228,7 +225,7 @@ class ProfileView extends GetView<ProfileController> {
                                             color: Colors.black),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: FormBuilderTextField(
                                           validator:
@@ -249,9 +246,9 @@ class ProfileView extends GetView<ProfileController> {
                                                     fontWeight:
                                                         FontWeight.w500),
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     horizontal: 50),
-                                            prefixIcon: Icon(
+                                            prefixIcon: const Icon(
                                               Icons.phone_outlined,
                                               color: Colors.black,
                                             ),
@@ -264,14 +261,14 @@ class ProfileView extends GetView<ProfileController> {
                                             border: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                     width: 1,
                                                     color: Colors.black)),
                                           )),
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 //birth_date
@@ -287,7 +284,7 @@ class ProfileView extends GetView<ProfileController> {
                                             color: Colors.black),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: FormBuilderDateTimePicker(
                                         initialValue: DateFormat('yyyy-MM-dd')
@@ -306,9 +303,9 @@ class ProfileView extends GetView<ProfileController> {
                                               GoogleFonts.montserrat(
                                                   color: AppColor.orange,
                                                   fontWeight: FontWeight.w500),
-                                          contentPadding: EdgeInsets.symmetric(
+                                          contentPadding: const EdgeInsets.symmetric(
                                               horizontal: 50),
-                                          prefixIcon: Icon(
+                                          prefixIcon: const Icon(
                                             Icons.date_range_outlined,
                                             color: Colors.black,
                                           ),
@@ -321,7 +318,7 @@ class ProfileView extends GetView<ProfileController> {
                                           border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                   width: 1,
                                                   color: Colors.black)),
                                         ),
@@ -329,7 +326,7 @@ class ProfileView extends GetView<ProfileController> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 //sex
@@ -345,8 +342,8 @@ class ProfileView extends GetView<ProfileController> {
                                             color: Colors.black),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
-                                    Container(
+                                    const SizedBox(width: 10),
+                                    SizedBox(
                                       width: 250,
                                       child: FormBuilderRadioGroup(
                                         validator:
@@ -355,7 +352,7 @@ class ProfileView extends GetView<ProfileController> {
                                         ]),
                                         name: 'sex',
                                         initialValue: person.sex,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                             border: InputBorder.none),
                                         wrapAlignment:
                                             WrapAlignment.spaceBetween,
@@ -384,7 +381,7 @@ class ProfileView extends GetView<ProfileController> {
                                   ],
                                 ),
 
-                                SizedBox(
+                                const SizedBox(
                                   height: 50,
                                 ),
                                 ElevatedButton(
@@ -395,7 +392,7 @@ class ProfileView extends GetView<ProfileController> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: AppColor.orange,
-                                        fixedSize: Size(180, 30),
+                                        fixedSize: const Size(180, 30),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(5),
@@ -405,7 +402,7 @@ class ProfileView extends GetView<ProfileController> {
                                             fontWeight: FontWeight.w600,
                                             fontSize: 15))),
 
-                                SizedBox(height: 100),
+                                const SizedBox(height: 100),
 
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -417,7 +414,7 @@ class ProfileView extends GetView<ProfileController> {
                                         },
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.redAccent,
-                                            fixedSize: Size(100, 30),
+                                            fixedSize: const Size(100, 30),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(40),
@@ -431,7 +428,7 @@ class ProfileView extends GetView<ProfileController> {
                               ],
                             );
                           } else {
-                            return Center(
+                            return const Center(
                               child: Text('No Data'),
                             );
                           }
@@ -439,7 +436,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              Footer(),
+              const Footer(),
             ],
           ),
         ),

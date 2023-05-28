@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:intl/intl.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/author.dart';
-import 'package:quiver/strings.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 import 'package:pog/app/modules/component/footer.dart';
-import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app_color.dart';
 
 class CreateOrganizationView extends GetView<OrganizationPageController> {
@@ -29,7 +24,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
           onPressed: () {
             Get.offAllNamed('/home-page');
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -47,7 +42,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                 height: 800,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(color: Colors.black, offset: Offset(8, 8))
                   ],
                   border: Border.all(width: 3, color: Colors.black),
@@ -57,7 +52,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       Text('SET UP ORGANIZATION',
                           style: GoogleFonts.ibmPlexMono(
@@ -65,7 +60,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                               color: Colors.black,
                               fontWeight: FontWeight.w700)),
 
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       //name
                       SizedBox(
@@ -88,8 +83,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.abc_outlined,
                                 color: Colors.black,
                               ),
@@ -99,7 +94,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -125,8 +120,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.align_horizontal_left_outlined,
                                 color: Colors.black,
                               ),
@@ -136,7 +131,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -163,8 +158,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.email_outlined,
                                 color: Colors.black,
                               ),
@@ -174,7 +169,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -202,8 +197,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: Colors.black,
                               ),
@@ -213,7 +208,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -238,8 +233,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.pin_drop_outlined,
                                 color: Colors.black,
                               ),
@@ -249,7 +244,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -275,8 +270,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.phone,
                                 color: Colors.black,
                               ),
@@ -286,7 +281,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -294,10 +289,13 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                       ElevatedButton(
                           onPressed: () {
                             controller.formKey.currentState!.saveAndValidate();
+                            if (controller.formKey.currentState!.isValid) {
+                              controller.createOrganization();
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -313,7 +311,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                                   fontWeight: FontWeight.w400)),
                           TextButton(
                             onPressed: () {
-                              Get.off(AuthorView());
+                              Get.off(const AuthorView());
                             },
                             child: Text('CLICK HERE',
                                 style: GoogleFonts.montserrat(
@@ -326,8 +324,8 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                   ),
                 ),
               ),
-              SizedBox(height: 100),
-              Footer(),
+              const SizedBox(height: 100),
+              const Footer(),
             ],
           ),
         ),

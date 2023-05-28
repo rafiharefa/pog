@@ -1,13 +1,11 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
-import 'package:pog/app/modules/auth/views/auth_view.dart';
-import 'package:pog/app/modules/auth/views/register_view.dart';
-import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/create_organization.dart';
 
@@ -18,7 +16,7 @@ class AuthorView extends GetView<OrganizationPageController> {
   const AuthorView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormBuilderState>();
+    final formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -30,7 +28,7 @@ class AuthorView extends GetView<OrganizationPageController> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -47,12 +45,12 @@ class AuthorView extends GetView<OrganizationPageController> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
-                    BoxShadow(color: Colors.black, offset: Offset(8, 8))
+                    const BoxShadow(color: Colors.black, offset: Offset(8, 8))
                   ],
                   border: Border.all(width: 3, color: Colors.black),
                 ),
                 child: FormBuilder(
-                  key: _formKey,
+                  key: formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -85,8 +83,8 @@ class AuthorView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.person_outline,
                                 color: Colors.black,
                               ),
@@ -96,7 +94,7 @@ class AuthorView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
@@ -119,8 +117,8 @@ class AuthorView extends GetView<OrganizationPageController> {
                                   color: AppColor.orange,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: Icon(
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: Colors.black,
                               ),
@@ -130,17 +128,17 @@ class AuthorView extends GetView<OrganizationPageController> {
                                       width: 1, color: AppColor.orange)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                       width: 1, color: Colors.black)),
                             )),
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            _formKey.currentState!.saveAndValidate();
+                            formKey.currentState!.saveAndValidate();
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,
-                              fixedSize: Size(350, 50),
+                              fixedSize: const Size(350, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
@@ -156,7 +154,7 @@ class AuthorView extends GetView<OrganizationPageController> {
                                   fontWeight: FontWeight.w400)),
                           TextButton(
                             onPressed: () {
-                              Get.off(CreateOrganizationView());
+                              Get.off(const CreateOrganizationView());
                             },
                             child: Text('CLICK HERE',
                                 style: GoogleFonts.montserrat(
@@ -169,8 +167,8 @@ class AuthorView extends GetView<OrganizationPageController> {
                   ),
                 ),
               ),
-              SizedBox(height: 100),
-              Footer(),
+              const SizedBox(height: 100),
+              const Footer(),
             ],
           ),
         ),

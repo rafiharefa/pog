@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/home_page/views/home_page_view.dart';
 
 import '../../../../../app_color.dart';
 
@@ -32,7 +31,7 @@ class Content1 extends StatelessWidget {
                     BoxShadow(
                         color: Colors.black.withOpacity(.5),
                         blurRadius: 10,
-                        offset: Offset(4, 4)
+                        offset: const Offset(4, 4)
                     )
                   ]
               ),
@@ -42,7 +41,7 @@ class Content1 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -58,9 +57,9 @@ class Content1 extends StatelessWidget {
                     color: Colors.white,fontWeight: FontWeight.bold,fontSize: 48)),
               ],
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Text('Plan your events and reach out to more people ', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.white)),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
@@ -74,7 +73,7 @@ class Content1 extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(100),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(color: Colors.black, offset: Offset(10, 10))
                         ]
                     ),
@@ -85,9 +84,9 @@ class Content1 extends StatelessWidget {
 
           ],
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         //Photo
-        Icon(Icons.ac_unit_rounded, size: 400, color: Colors.white),
+        const Icon(Icons.ac_unit_rounded, size: 400, color: Colors.white),
       ],
     );
   }
