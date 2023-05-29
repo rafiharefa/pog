@@ -19,6 +19,9 @@ class HomePageView extends GetView<HomePageController> {
     Get.put(HomePageController());
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Get.toNamed('/organization-page');
+      }),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(

@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/author.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
+import 'package:pog/app/modules/organization_page/views/organization_page_view.dart';
 import 'package:pog/app_color.dart';
 
 class CreateOrganizationView extends GetView<OrganizationPageController> {
   const CreateOrganizationView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(OrganizationPageController());
+    OrganizationPageController controller =
+        Get.put(OrganizationPageController());
+
+    controller.fetchOrganization();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -287,10 +292,17 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                       ),
 
                       ElevatedButton(
-                          onPressed: () {
-                            controller.formKey.currentState!.saveAndValidate();
+                          onPressed: () async {
+                            controller.formKey.currentState!.validate();
                             if (controller.formKey.currentState!.isValid) {
+                              controller.formKey.currentState!.save();
                               controller.createOrganization();
+                              FastSnack('Organization Created!');
+                              await controller
+                                  .selectOrganization(controller.temp_id);
+                              Get.toNamed('/organization-page');
+                            } else {
+                              controller.thisOrganization.clear();
                             }
                           },
                           style: ElevatedButton.styleFrom(

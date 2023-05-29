@@ -6,16 +6,21 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/create_organization.dart';
+import 'package:pog/data/organizations.dart';
 
 import '../../../../app_color.dart';
 import '../../component/footer.dart';
 
 class AuthorView extends GetView<OrganizationPageController> {
   const AuthorView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    OrganizationPageController controller =
+        Get.put(OrganizationPageController());
     final formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
@@ -133,8 +138,31 @@ class AuthorView extends GetView<OrganizationPageController> {
                             )),
                       ),
                       ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             formKey.currentState!.saveAndValidate();
+
+                            if (formKey.currentState!.isValid) {
+                              await controller.selectOrganization(
+                                  formKey.currentState!.value['id']);
+
+                              if (controller.thisOrganization.isNotEmpty) {
+                                Organization organization =
+                                    controller.thisOrganization.first;
+                                if (formKey.currentState!.value['key'] ==
+                                    organization.organization_key) {
+                                  controller.isAuthor.value = true;
+                                  Get.toNamed('/organization-page');
+                                } else {
+                                  FastSnack('Invalid Organization ID or KEY');
+                                  controller.thisOrganization.clear();
+                                }
+                              } else {
+                                FastSnack('Invalid Organization ID or KEY');
+                                controller.thisOrganization.clear();
+                              }
+                            } else {
+                              controller.thisOrganization.clear();
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.orange,

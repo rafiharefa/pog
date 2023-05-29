@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides, avoid_print
+// ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import '../../../../data/organizations.dart';
 
 class OrganizationPageController extends GetxController {
   RxList organizations = [].obs;
+  RxList organizationDetail = [].obs;
+  String temp_id = '';
+
+  RxBool isAuthor = false.obs;
 
   Future fetchOrganization() async {
     final response =
@@ -18,8 +23,6 @@ class OrganizationPageController extends GetxController {
   }
 
   void createOrganization() async {
-    fetchOrganization();
-
     final formK = formKey.currentState!.value;
     String key = formK['key'];
     String name = formK['name'];
@@ -29,6 +32,7 @@ class OrganizationPageController extends GetxController {
     String address = formK['address'];
 
     String id = 'ORG${organizations.length + 1}';
+    temp_id = id;
 
     try {
       final response = await http.post(
@@ -49,6 +53,20 @@ class OrganizationPageController extends GetxController {
       }
     } catch (e) {
       print('error: $e');
+    }
+  }
+
+  RxList<Organization> thisOrganization = <Organization>[].obs;
+
+  Future selectOrganization(String form_id) async {
+    final response = await http
+        .get(Uri.parse('http://localhost:8000/organizations/$form_id'));
+
+    organizationDetail.value = jsonDecode(response.body);
+
+    for (var json in organizationDetail) {
+      Organization organization = Organization.fromJson(json);
+      thisOrganization.add(organization);
     }
   }
 
