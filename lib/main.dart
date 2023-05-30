@@ -26,8 +26,9 @@ void main() async {
               iconTheme: const IconThemeData(color: Colors.black),
               elevation: 0,
               toolbarHeight: 100),
-          textTheme: const TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle())
-              .apply(bodyColor: Colors.white, displayColor: Colors.white)),
+          textTheme:
+              const TextTheme(bodyLarge: TextStyle(), bodyMedium: TextStyle())
+                  .apply(bodyColor: Colors.white, displayColor: Colors.white)),
     ),
   );
 }

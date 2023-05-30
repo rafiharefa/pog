@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/organization_page/views/my_organizations_view.dart';
 
 import '../organization_page/views/author.dart';
 
@@ -39,34 +40,15 @@ class NavBar extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
               const SizedBox(width: 20),
-              PopupMenuButton(
-                  child: Row(children: [
-                    Text('ORGANIZATIONS',
-                        style: GoogleFonts.notoSans(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)),
-                    const Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.black,
-                    ),
-                  ]),
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                          child: Text('BLOGS',
-                              style: GoogleFonts.notoSans(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15))),
-                      PopupMenuItem(
-                          child: Text('EVENTS',
-                              style: GoogleFonts.notoSans(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15))),
-                    ];
-                  }),
+              TextButton(
+                  onPressed: () {
+                    Get.off(MyOrganizationsView());
+                  },
+                  child: Text('ORGANIZATIONS',
+                      style: GoogleFonts.notoSans(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20))),
               const SizedBox(width: 20),
               TextButton(
                   onPressed: () {

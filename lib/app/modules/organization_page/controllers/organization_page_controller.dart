@@ -6,9 +6,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:pog/app/modules/profile/controllers/profile_controller.dart';
+import 'package:pog/data/persons.dart';
 import '../../../../data/organizations.dart';
 
 class OrganizationPageController extends GetxController {
+  ProfileController profileController = Get.put(ProfileController());
+
+  RxList<Person> thisUser = <Person>[].obs;
+
+  RxList members = [].obs;
+
+  Future fetchMembers() async {
+    final response = await http.get(Uri.parse('http://localhost:8000/members'));
+
+    members.value = jsonDecode(response.body);
+  }
+
+  void joinOrganization(String organization_id) async {
+    Person person = thisUser.first;
+
+    String member_id = 'MEM${members.length + 1}';
+
+    final response =
+        await http.post(Uri.parse('http://localhost:8000/members/insertMember'),
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: jsonEncode({
+              'member_id': member_id,
+              'user_id': person.user_id,
+              'organization_id': organization_id
+            }));
+
+    fetchMembers();
+  }
+
   RxList organizations = [].obs;
   RxList organizationDetail = [].obs;
   String temp_id = '';
@@ -76,8 +107,10 @@ class OrganizationPageController extends GetxController {
 
   final count = 0.obs;
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    thisUser.value = profileController.thisUser.value;
+    fetchMembers();
   }
 
   @override

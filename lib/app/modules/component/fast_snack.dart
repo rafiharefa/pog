@@ -7,9 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 SnackbarController FastSnack(String message) {
   return Get.snackbar('', '',
       snackPosition: SnackPosition.BOTTOM,
-      titleText: Text(
+      margin: EdgeInsets.fromLTRB(50, 20, 50, 20),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      messageText: Text(
         message,
         textAlign: TextAlign.center,
-        style: GoogleFonts.bebasNeue(color: Colors.black, fontSize: 30),
+        style: GoogleFonts.bebasNeue(color: Colors.black, fontSize: 50),
       ));
 }
