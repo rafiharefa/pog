@@ -19,7 +19,7 @@ class SearchBar extends StatelessWidget {
           child: FormBuilder(
               child: FormBuilderTextField(name: 'search',
                   cursorColor: Colors.black,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       hintText: ' Search',
                       focusedBorder: InputBorder.none,
                       suffixIcon: Icon(Icons.search)

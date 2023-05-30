@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/events_page/views/events_page_view.dart';
 
 class DetailButton extends StatelessWidget {
   const DetailButton({
@@ -21,7 +20,7 @@ class DetailButton extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black,
                     offset: Offset(6, 6)

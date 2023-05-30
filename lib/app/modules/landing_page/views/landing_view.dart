@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app_color.dart';
 
@@ -21,18 +20,18 @@ class LandingView extends GetView<LandingController> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: LandingNavbar(),
+        title: const LandingNavbar(),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
-              SizedBox(height: 50),
-              Content1(),
-              SizedBox(height: 150),
+              const WhiteContainer(),
+              const SizedBox(height: 50),
+              const Content1(),
+              const SizedBox(height: 150),
               Content2(width: width, height: height),
-              Footer(),
+              const Footer(),
             ],
           ),
         ),

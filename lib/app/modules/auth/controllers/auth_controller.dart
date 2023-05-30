@@ -1,37 +1,78 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print, unnecessary_overrides
+
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:googleapis/drive/v3.dart' as drive;
-import 'package:googleapis_auth/auth_io.dart';
-import 'package:googleapis_auth/googleapis_auth.dart';
+import 'package:http/http.dart' as http;
 
 class AuthController extends GetxController {
-  //TODO: Implement AuthController
-
   static AuthController instance = Get.find();
+
+  RxList users = [].obs;
+
+  Future fetchUsers() async {
+    final response = await http.get(Uri.parse('http://localhost:8000/users'));
+    users.value = jsonDecode(response.body);
+  }
+
+  void createUser(
+      String lastname,
+      String firstname,
+      String email,
+      String password,
+      String address,
+      String birth_date,
+      String phone_number,
+      String sex) async {
+    String user_id = 'USR${users.length + 1}';
+
+    try {
+      final response = await http.post(
+          Uri.parse('http://localhost:8000/users/createUser'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+          body: jsonEncode(<String, String>{
+            'user_id': user_id,
+            'lastname': lastname,
+            'firstname': firstname,
+            'email': email,
+            'password': password,
+            'address': address,
+            'birth_date': birth_date,
+            'phone_number': phone_number,
+            'sex': sex
+          }));
+
+      if (response.statusCode == 200) {
+        fetchUsers();
+      }
+    } catch (e) {
+      print('error: $e');
+    }
+  }
 
   late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
 
   var whatScreen = false.obs;
 
-  void toggleScreen(){
+  void toggleScreen() {
     whatScreen.value = !whatScreen.value;
   }
 
-  List<String? Function(String?)> validator = [FormBuilderValidators.required(),FormBuilderValidators.email()];
 
-  List<String> textfield = ['username', 'email', 'password'];
-  
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
-    googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    googleProvider.setCustomParameters({
-      'login_hint': 'user@example.com'
-    });
+    googleProvider
+        .addScope('https://www.googleapis.com/auth/contacts.readonly');
+    googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithPopup(googleProvider);
@@ -46,35 +87,83 @@ class AuthController extends GetxController {
     await FirebaseAuth.instance.signOut();
   }
 
-
-  _initialScreen(User? user){
-    if(user == null){
-      Get.offAllNamed('login');
-    }else{
+  _initialScreen(User? user) {
+    if (user == null) {
+      Get.offAllNamed('/landing');
+    } else {
       Get.offAllNamed('home-page');
     }
   }
 
-  void register(String email, String password) async{
-    try{
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
-    }catch(e){
+  RxString registerError = 'false'.obs;
+
+  final formKey = GlobalKey<FormBuilderState>();
+
+  void register(String email, String password) async {
+    try {
+      List<String> signInMethods =
+          await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+
+      if (signInMethods.contains('password')) {
+        print('Email sudah terdaftar');
+        // Tindakan yang sesuai jika email sudah terdaftar
+        registerError.value = 'true';
+      } else {
+        print('Email belum terdaftar');
+        // Tindakan yang sesuai jika email belum terdaftar
+
+        await auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+
+        createUser(
+            formKey.currentState!.value['lastname'],
+            formKey.currentState!.value['firstname'],
+            formKey.currentState!.value['email'],
+            formKey.currentState!.value['password'],
+            formKey.currentState!.value['address'],
+            formKey.currentState!.value['birth_date'].toString(),
+            formKey.currentState!.value['phone'],
+            formKey.currentState!.value['sex']);
+      }
+    } catch (e) {
+      print('Terjadi kesalahan: ${e.toString()}');
+      // Tindakan yang sesuai untuk kesalahan
     }
   }
-  void login(String email, String password) async{
-    try{
+
+  RxString loginError = 'false'.obs;
+
+  void login(String email, String password) async {
+    try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-    }catch(e){
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        if (e.code == 'user-not-found') {
+          loginError.value = 'true';
+          // Tindakan yang sesuai jika email tidak terdaftar
+        } else if (e.code == 'wrong-password') {
+          print('Password salah');
+          loginError.value = 'true';
+          // Tindakan yang sesuai jika password salah
+        } else {
+          print('Terjadi kesalahan: ${e.message}');
+          loginError.value = 'true';
+          // Tindakan yang sesuai untuk kesalahan lainnya
+        }
+      }
     }
   }
-  void logout() async{
+
+  void logout() async {
     await auth.signOut();
+    signOut();
   }
 
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    fetchUsers();
   }
 
   @override

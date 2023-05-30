@@ -16,35 +16,43 @@ class HomePageView extends GetView<HomePageController> {
   const HomePageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put(HomePageController());
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Get.toNamed('/organization-page');
+      }),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: NavBar(),
+        title: const NavBar(),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              WhiteContainer(),
-              SizedBox(height: 20),
+              const WhiteContainer(),
+              const SizedBox(height: 20),
               //title
-              Text("Events you've registered",
-              style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: AppColor.white),
+              Text(
+                'Your Events',
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 50,
+                    color: AppColor.white),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               //search bar
-              SearchBar(),
-              SizedBox(height: 30),
+              const SearchBar(),
+              const SizedBox(height: 30),
               //content
-              HomeContent(),
-              SizedBox(height: 40),
+              const HomeContent(),
+              const SizedBox(height: 40),
               //more detail button
-              DetailButton(),
-              SizedBox(height: 40),
+              const DetailButton(),
+              const SizedBox(height: 40),
               //footer
-              Footer(),
+              const Footer(),
             ],
           ),
         ),
@@ -52,6 +60,3 @@ class HomePageView extends GetView<HomePageController> {
     );
   }
 }
-
-
-

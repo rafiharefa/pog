@@ -12,17 +12,17 @@ class AuthView extends GetView<AuthController> {
   const AuthView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     final user = FirebaseAuth.instance.currentUser;
 
-    var width =  MediaQuery.of(context).size.width;
-    var height =  MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
 
-      if(user == null){
-        return Obx(() => controller.whatScreen.value == true ?
-        RegisterView(width: width, height: height) : LoginView(width: width, height: height));
-      }else{
-        return HomePageView();
-      }
+    if (user == null) {
+      return Obx(() => controller.whatScreen.value == true
+          ? RegisterView(width: width, height: height)
+          : LoginView(width: width, height: height));
+    } else {
+      return const HomePageView();
+    }
   }
 }

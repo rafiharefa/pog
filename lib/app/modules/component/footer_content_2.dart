@@ -13,7 +13,7 @@ class FooterContent2 extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text('Pi Organizer', style: GoogleFonts.montserrat(fontSize: 40, fontWeight: FontWeight.w700, color: Colors.white)),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text('Organize your events', style: GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white)),
         Text('Better', style: GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white)),
       ],

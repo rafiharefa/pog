@@ -28,8 +28,8 @@ class Content2 extends GetView<LandingController>{
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("What's Happening?", style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: Color.fromRGBO(46, 54, 62, 1))),
-              SizedBox(height: 40),
+              Text("What's Happening?", style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: const Color.fromRGBO(46, 54, 62, 1))),
+              const SizedBox(height: 40),
               Obx(() =>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,10 +43,10 @@ class Content2 extends GetView<LandingController>{
                           child: CircleAvatar(
                             radius: 40,
                             backgroundColor: AppColor.orange,
-                            child: Icon(Icons.arrow_back, color: Colors.white, size: 40,),
+                            child: const Icon(Icons.arrow_back, color: Colors.white, size: 40,),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: 500,
                           height: 550,
                           child: Carousel3d(
@@ -69,7 +69,7 @@ class Content2 extends GetView<LandingController>{
                           child: CircleAvatar(
                             radius: 40,
                             backgroundColor: AppColor.orange,
-                            child: Icon(Icons.arrow_forward, color: Colors.white, size: 40,),
+                            child: const Icon(Icons.arrow_forward, color: Colors.white, size: 40,),
                           ),
                         ),
                       ],
