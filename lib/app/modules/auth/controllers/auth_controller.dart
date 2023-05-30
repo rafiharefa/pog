@@ -65,6 +65,7 @@ class AuthController extends GetxController {
     whatScreen.value = !whatScreen.value;
   }
 
+
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
