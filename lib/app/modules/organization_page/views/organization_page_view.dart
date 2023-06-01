@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
+import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
 import 'package:pog/app_color.dart';
@@ -18,7 +19,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
       backgroundColor: AppColor.grey,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: OrgNavBar(),
+        title: controller.isAuthor.value == true ? OrgNavBar() : NavBar(),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(

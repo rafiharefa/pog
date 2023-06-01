@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -11,11 +12,37 @@ import 'package:pog/data/persons.dart';
 import '../../../../data/organizations.dart';
 
 class OrganizationPageController extends GetxController {
-  ProfileController profileController = Get.put(ProfileController());
-
   RxList<Person> thisUser = <Person>[].obs;
+  final user = FirebaseAuth.instance.currentUser!;
+
+  RxList userDetail = [].obs;
+
+  Future fetchUser() async {
+    final email = user.email;
+
+    final response =
+        await http.get(Uri.parse('http://localhost:8000/users/$email'));
+
+    userDetail.value = jsonDecode(response.body);
+
+    for (var json in userDetail) {
+      Person users = Person.fromJson(json);
+      thisUser.add(users);
+    }
+  }
 
   RxList members = [].obs;
+  RxList memberOrganizations = [].obs;
+
+  //fetching organizations data that user registered
+  Future fetchMemberOrganizations() async {
+    String user_id;
+    user_id = thisUser.first.user_id;
+    final response = await http
+        .get(Uri.parse('http://localhost:8000/members/organizations/$user_id'));
+
+    memberOrganizations.value = jsonDecode(response.body);
+  }
 
   Future fetchMembers() async {
     final response = await http.get(Uri.parse('http://localhost:8000/members'));
@@ -89,15 +116,16 @@ class OrganizationPageController extends GetxController {
 
   RxList<Organization> thisOrganization = <Organization>[].obs;
 
-  Future selectOrganization(String form_id) async {
+  Future selectOrganization(String organization_id) async {
     final response = await http
-        .get(Uri.parse('http://localhost:8000/organizations/$form_id'));
+        .get(Uri.parse('http://localhost:8000/organizations/$organization_id'));
 
     organizationDetail.value = jsonDecode(response.body);
 
     for (var json in organizationDetail) {
       Organization organization = Organization.fromJson(json);
-      thisOrganization.add(organization);
+      thisOrganization.clear();
+      thisOrganization.insert(0, organization);
     }
   }
 
@@ -109,7 +137,8 @@ class OrganizationPageController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    thisUser.value = profileController.thisUser.value;
+    await fetchUser();
+    fetchMemberOrganizations();
     fetchMembers();
   }
 

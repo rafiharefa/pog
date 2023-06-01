@@ -152,6 +152,7 @@ class AuthorView extends GetView<OrganizationPageController> {
                                     organization.organization_key) {
                                   controller.isAuthor.value = true;
                                   Get.toNamed('/organization-page');
+                                  controller.isAuthor.value = true;
                                 } else {
                                   FastSnack('Invalid Organization ID or KEY');
                                   controller.thisOrganization.clear();

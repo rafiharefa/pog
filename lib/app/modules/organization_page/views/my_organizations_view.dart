@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/fast_snack.dart';
+import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
@@ -20,6 +21,7 @@ class MyOrganizationsView extends GetView {
     final formKey = GlobalKey<FormBuilderState>();
 
     controller.fetchOrganization();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
@@ -28,18 +30,86 @@ class MyOrganizationsView extends GetView {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             WhiteContainer(),
             const SizedBox(height: 20),
             //title
             Text(
-              'Your Events',
+              'Your Organizations',
               style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w700,
                   fontSize: 50,
                   color: AppColor.white),
             ),
+            const SizedBox(height: 20),
+
+            Obx(() {
+              return Container(
+                color: AppColor.grey,
+                width: 1000,
+                height: 400,
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: controller.memberOrganizations.map((element) {
+                    return MouseRegion(
+                      cursor: MaterialStateMouseCursor.clickable,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await controller
+                              .selectOrganization(element['organization_id']);
+
+                          Get.toNamed('/organization-page');
+                        },
+                        child: Container(
+                          height: 200,
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(70)),
+                          child: Row(
+                            children: [
+                              SizedBox(width: 20),
+                              CircleAvatar(
+                                child: Icon(Icons.person_2_outlined, size: 50),
+                                radius: 70,
+                              ),
+                              SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    element['organization_name'],
+                                    style: GoogleFonts.bebasNeue(
+                                        fontSize: 30, color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  SizedBox(
+                                    width: 700,
+                                    child: Text(element['organization_desc'],
+                                        maxLines: 5,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.montserrat(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              );
+            }),
+
             SizedBox(height: 20),
+
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
@@ -141,6 +211,11 @@ class MyOrganizationsView extends GetView {
                 ),
               ),
             ),
+
+            SizedBox(
+              height: 20,
+            ),
+            Footer()
           ],
         ),
       ),

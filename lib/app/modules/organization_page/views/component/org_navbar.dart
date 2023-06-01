@@ -72,6 +72,7 @@ class OrgNavBar extends StatelessWidget {
                   key: UniqueKey(),
                   onPressed: () {
                     Get.offAllNamed('/home-page');
+                    controller.isAuthor.value = false;
                   },
                   child: Text('EXIT AUTHOR',
                       style: GoogleFonts.notoSans(
