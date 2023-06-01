@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
+import 'package:pog/app/modules/organization_page/views/edit_organization_view.dart';
 import 'package:pog/app_color.dart';
 import 'package:pog/data/organizations.dart';
 
@@ -38,6 +40,17 @@ class OrgNavBar extends StatelessWidget {
                   key: UniqueKey(),
                   onPressed: () {},
                   child: Text('CREATE EVENT',
+                      style: GoogleFonts.notoSans(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20))),
+              const SizedBox(width: 20),
+              TextButton(
+                  key: UniqueKey(),
+                  onPressed: () {
+                    Get.to(EditOrganization());
+                  },
+                  child: Text('EDIT ORGANIZATION',
                       style: GoogleFonts.notoSans(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

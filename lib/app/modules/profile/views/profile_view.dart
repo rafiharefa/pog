@@ -1,4 +1,3 @@
-
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -61,13 +61,30 @@ class ProfileView extends GetView<ProfileController> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
-                                      onTap: () {},
-                                      child: const CircleAvatar(
-                                        radius: 70,
-                                        child: Icon(
-                                          Icons.person_2_outlined,
-                                          size: 70,
-                                        ),
+                                      onTap: () async {
+                                        await controller.selectFile();
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          CircleAvatar(
+                                              backgroundColor: AppColor.orange,
+                                              backgroundImage: person
+                                                      .image_url.isNotEmpty
+                                                  ? NetworkImage(
+                                                      person.image_url)
+                                                  : NetworkImage(
+                                                      'https://img.freepik.com/free-icon/user_318-804790.jpg'),
+                                              radius: 70,
+                                              child: controller.isLoading ==
+                                                      true
+                                                  ? CircularProgressIndicator()
+                                                  : null),
+                                          Positioned(
+                                              bottom: 5,
+                                              right: 5,
+                                              child: Icon(
+                                                  Icons.add_a_photo_outlined)),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(
@@ -303,8 +320,9 @@ class ProfileView extends GetView<ProfileController> {
                                               GoogleFonts.montserrat(
                                                   color: AppColor.orange,
                                                   fontWeight: FontWeight.w500),
-                                          contentPadding: const EdgeInsets.symmetric(
-                                              horizontal: 50),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 50),
                                           prefixIcon: const Icon(
                                             Icons.date_range_outlined,
                                             color: Colors.black,

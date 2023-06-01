@@ -71,8 +71,9 @@ class MyOrganizationsView extends GetView {
                             children: [
                               SizedBox(width: 20),
                               CircleAvatar(
-                                child: Icon(Icons.person_2_outlined, size: 50),
-                                radius: 70,
+                                backgroundImage:
+                                    NetworkImage(element['image_url']),
+                                radius: 80,
                               ),
                               SizedBox(width: 20),
                               Column(
@@ -172,6 +173,8 @@ class MyOrganizationsView extends GetView {
                                           'YOU ARE ALREADY IN THIS ORGANIZATION');
                                     } else {
                                       controller.joinOrganization(id);
+
+                                      controller.refreshPage();
                                     }
                                   } else {
                                     FastSnack('INVALID ID');

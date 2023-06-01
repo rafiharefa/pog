@@ -1,17 +1,93 @@
 // ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:typed_data';
+import 'dart:html' as html;
 
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:pog/app/modules/profile/controllers/profile_controller.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 import 'package:pog/data/persons.dart';
 import '../../../../data/organizations.dart';
+import '../../component/fast_snack.dart';
 
 class OrganizationPageController extends GetxController {
+  Future<void> updateOrganization(String name, String desc, String address,
+      String email, String phone) async {
+    Organization organization = thisOrganization.first;
+    String image_url = imageUrl.value;
+    String id = organization.organization_id;
+
+    String image;
+
+    if (imageUrl.value == '') {
+      image = organization.image_url;
+    } else {
+      image = imageUrl.value;
+    }
+
+    final response = await http.put(
+        Uri.parse(
+            'http://localhost:8000/organizations/updateOrganization/${id}'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: jsonEncode(<String, String>{
+          'organization_name': name,
+          'organization_desc': desc,
+          'organization_address': address,
+          'email': email,
+          'phone_number': phone,
+          'image_url': image
+        }));
+    FastSnack('CHANGES SAVED!');
+  }
+
+  Uint8List? selectedImageBytes;
+  RxString selectedFile = ''.obs;
+  RxString imageUrl = ''.obs;
+  RxBool isLoading = false.obs;
+
+  selectFile() async {
+    FilePickerResult? fileResult = await FilePicker.platform.pickFiles();
+
+    if (fileResult != null) selectedFile.value = fileResult.files.first.name;
+
+    selectedImageBytes = fileResult!.files.first.bytes;
+
+    uploadFile();
+  }
+
+  void refreshPage() {
+    html.window.location.reload();
+  }
+
+  Future uploadFile() async {
+    try {
+      firebase_storage.UploadTask uploadTask;
+
+      firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
+          .ref()
+          .child('organizations')
+          .child('/${selectedFile.value}');
+
+      final metadata =
+          firebase_storage.SettableMetadata(contentType: 'image/jpeg');
+
+      uploadTask = ref.putData(selectedImageBytes!, metadata);
+      isLoading.value = true;
+      await uploadTask.whenComplete(() => isLoading.value = false);
+      imageUrl.value = await ref.getDownloadURL();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   RxList<Person> thisUser = <Person>[].obs;
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -89,6 +165,8 @@ class OrganizationPageController extends GetxController {
     String email = formK['email'];
     String address = formK['address'];
 
+    String image_url = 'https://img.freepik.com/free-icon/user_318-804790.jpg';
+
     String id = 'ORG${organizations.length + 1}';
     temp_id = id;
 
@@ -103,7 +181,8 @@ class OrganizationPageController extends GetxController {
             'organization_desc': desc,
             'organization_address': address,
             'email': email,
-            'phone': phone
+            'phone': phone,
+            'image_url': image_url
           }));
 
       if (response.statusCode == 200) {

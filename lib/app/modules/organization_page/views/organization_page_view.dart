@@ -8,6 +8,7 @@ import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
 import 'package:pog/app_color.dart';
 import 'package:pog/data/organizations.dart';
+import 'package:pog/data/persons.dart';
 
 import '../controllers/organization_page_controller.dart';
 
@@ -59,7 +60,13 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                           Positioned(
                             top: 100,
                             child: CircleAvatar(
-                              child: Icon(Icons.person_outline),
+                              child: controller.isLoading == true
+                                  ? CircularProgressIndicator()
+                                  : null,
+                              backgroundImage: organization.image_url.isNotEmpty
+                                  ? NetworkImage(organization.image_url)
+                                  : NetworkImage(
+                                      'https://img.freepik.com/free-icon/user_318-804790.jpg'),
                               radius: 100,
                             ),
                           ),

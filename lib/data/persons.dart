@@ -10,6 +10,7 @@ class Person {
   String birth_date;
   String phone_number;
   String sex;
+  String image_url;
 
   Person(
       {required this.user_id,
@@ -20,7 +21,8 @@ class Person {
       required this.phone_number,
       required this.address,
       required this.birth_date,
-      required this.sex});
+      required this.sex,
+      required this.image_url});
 
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
@@ -32,6 +34,7 @@ class Person {
         birth_date: json['birth_date'],
         sex: json['sex'],
         address: json['address'],
-        email: json['email']);
+        email: json['email'],
+        image_url: json['image_url']);
   }
 }

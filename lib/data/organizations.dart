@@ -8,6 +8,7 @@ class Organization {
   String organization_address;
   String email;
   String phone_number;
+  String image_url;
 
   Organization(
       {required this.organization_id,
@@ -16,7 +17,8 @@ class Organization {
       required this.organization_desc,
       required this.organization_address,
       required this.email,
-      required this.phone_number});
+      required this.phone_number,
+      required this.image_url});
 
   factory Organization.fromJson(Map<String, dynamic> json) {
     return Organization(
@@ -26,6 +28,7 @@ class Organization {
         organization_desc: json['organization_desc'],
         organization_address: json['organization_address'],
         email: json['email'],
-        phone_number: json['phone_number']);
+        phone_number: json['phone_number'],
+        image_url: json['image_url']);
   }
 }

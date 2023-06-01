@@ -29,6 +29,7 @@ class AuthController extends GetxController {
       String phone_number,
       String sex) async {
     String user_id = 'USR${users.length + 1}';
+    String image_url = 'https://img.freepik.com/free-icon/user_318-804790.jpg';
 
     try {
       final response = await http.post(
@@ -45,7 +46,8 @@ class AuthController extends GetxController {
             'address': address,
             'birth_date': birth_date,
             'phone_number': phone_number,
-            'sex': sex
+            'sex': sex,
+            'image_url': image_url
           }));
 
       if (response.statusCode == 200) {
@@ -64,7 +66,6 @@ class AuthController extends GetxController {
   void toggleScreen() {
     whatScreen.value = !whatScreen.value;
   }
-
 
   Future<UserCredential> signInWithGoogle() async {
     // Create a new provider

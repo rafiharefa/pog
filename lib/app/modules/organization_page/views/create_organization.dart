@@ -300,6 +300,7 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                               FastSnack('Organization Created!');
                               await controller
                                   .selectOrganization(controller.temp_id);
+                              controller.isAuthor.value = true;
                               Get.toNamed('/organization-page');
                             } else {
                               controller.thisOrganization.clear();
