@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names
+// ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names, avoid_web_libraries_in_flutter, unused_local_variable
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -11,16 +11,60 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:pog/data/applications.dart';
 
 import 'package:pog/data/persons.dart';
 import '../../../../data/organizations.dart';
 import '../../component/fast_snack.dart';
 
 class OrganizationPageController extends GetxController {
+  var center = 0.obs;
+
+  RxBool isClicked = false.obs;
+
+  RxList applications = [].obs;
+  RxList<Applicants> thisApplicant = <Applicants>[].obs;
+
+  Future fetchApplicants() async {
+    final response =
+        await http.get(Uri.parse('http://localhost:8000/applications'));
+
+    applications.value = jsonDecode(response.body);
+
+    for (var json in applications) {
+      Applicants applicants = Applicants.fromJson(json);
+      thisApplicant.add(applicants);
+    }
+  }
+
+  void addApplicant(String event_id, String type) async {
+    await fetchApplicants();
+
+    String application_id = 'APP${applications.length + 1}';
+
+    Person person = thisUser.first;
+
+    try {
+      final response = await http.post(
+          Uri.parse('http://localhost:8000/applications/insertApplicant'),
+          headers: {'Content-Type': 'application/json; charset=UTF-8'},
+          body: jsonEncode({
+            'application_id': application_id,
+            'application_type': type,
+            'user_id': person.user_id,
+            'event_id': event_id,
+          }));
+
+      fetchApplicants();
+      FastSnack('SUCCESSFULLY REGISTER EVENT AS $type');
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<void> updateOrganization(String name, String desc, String address,
       String email, String phone) async {
     Organization organization = thisOrganization.first;
-    String image_url = imageUrl.value;
     String id = organization.organization_id;
 
     String image;
@@ -31,9 +75,9 @@ class OrganizationPageController extends GetxController {
       image = imageUrl.value;
     }
 
+    // ignore: unused_local_variable
     final response = await http.put(
-        Uri.parse(
-            'http://localhost:8000/organizations/updateOrganization/${id}'),
+        Uri.parse('http://localhost:8000/organizations/updateOrganization/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8'
         },
@@ -46,6 +90,37 @@ class OrganizationPageController extends GetxController {
           'image_url': image
         }));
     FastSnack('CHANGES SAVED!');
+  }
+
+  RxList organizationEvents = [].obs;
+
+  Future fetchOrganizationEvents() async {
+    Organization organization = thisOrganization.first;
+
+    String organization_id = organization.organization_id;
+
+    final response = await http
+        .get(Uri.parse('http://localhost:8000/events/$organization_id'));
+
+    organizationEvents.value = jsonDecode(response.body);
+  }
+
+  void nextCard() {
+    if (center.value < organizationEvents.length) {
+      center.value++;
+    } else {
+      center.value = 0;
+      center.value++;
+    }
+  }
+
+  void previousCard() {
+    if (center.value > 0) {
+      center.value--;
+    } else {
+      center.value = organizationEvents.length;
+      center.value--;
+    }
   }
 
   Uint8List? selectedImageBytes;
@@ -130,15 +205,6 @@ class OrganizationPageController extends GetxController {
     Person person = thisUser.first;
 
     String member_id = 'MEM${members.length + 1}';
-
-    final response =
-        await http.post(Uri.parse('http://localhost:8000/members/insertMember'),
-            headers: {'Content-Type': 'application/json; charset=UTF-8'},
-            body: jsonEncode({
-              'member_id': member_id,
-              'user_id': person.user_id,
-              'organization_id': organization_id
-            }));
 
     fetchMembers();
   }
@@ -229,6 +295,8 @@ class OrganizationPageController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+
+    organizationEvents.value.clear();
   }
 
   void increment() => count.value++;

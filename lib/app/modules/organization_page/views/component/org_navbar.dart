@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
+import 'package:pog/app/modules/events_page/views/create_event_view.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/edit_organization_view.dart';
-import 'package:pog/app_color.dart';
 import 'package:pog/data/organizations.dart';
 
 class OrgNavBar extends StatelessWidget {
@@ -38,7 +37,9 @@ class OrgNavBar extends StatelessWidget {
             children: [
               TextButton(
                   key: UniqueKey(),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(CreateEventView());
+                  },
                   child: Text('CREATE EVENT',
                       style: GoogleFonts.notoSans(
                           color: Colors.black,
@@ -48,7 +49,7 @@ class OrgNavBar extends StatelessWidget {
               TextButton(
                   key: UniqueKey(),
                   onPressed: () {
-                    Get.to(EditOrganization());
+                    Get.to(const EditOrganization());
                   },
                   child: Text('EDIT ORGANIZATION',
                       style: GoogleFonts.notoSans(
@@ -63,7 +64,7 @@ class OrgNavBar extends StatelessWidget {
                         title: 'ORGANIZATION ID AND KEY',
                         titleStyle: GoogleFonts.bebasNeue(
                             color: Colors.black, fontSize: 30),
-                        contentPadding: EdgeInsets.all(20),
+                        contentPadding: const EdgeInsets.all(20),
                         middleText:
                             'ID : ${organization.organization_id} - KEY : ${organization.organization_key}',
                         middleTextStyle: GoogleFonts.montserrat(

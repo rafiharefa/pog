@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -24,17 +26,18 @@ class EditOrganization extends GetView {
       backgroundColor: AppColor.grey,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: OrgNavBar(),
+        title: const OrgNavBar(),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            WhiteContainer(),
+            const WhiteContainer(),
             Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 70, vertical: 70),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 70, vertical: 70),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: const [
@@ -51,10 +54,10 @@ class EditOrganization extends GetView {
                         Stack(
                           alignment: Alignment.topCenter,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 350,
                             ),
-                            Container(
+                            SizedBox(
                               width: double.infinity,
                               height: 200,
                               child: Image.network(
@@ -70,15 +73,15 @@ class EditOrganization extends GetView {
                                   controller.selectFile();
                                 },
                                 child: CircleAvatar(
-                                  child: controller.isLoading == true
-                                      ? CircularProgressIndicator()
-                                      : null,
                                   backgroundImage: organization
                                           .image_url.isNotEmpty
                                       ? NetworkImage(organization.image_url)
-                                      : NetworkImage(
+                                      : const NetworkImage(
                                           'https://img.freepik.com/free-icon/user_318-804790.jpg'),
                                   radius: 100,
+                                  child: controller.isLoading == true
+                                      ? const CircularProgressIndicator()
+                                      : null,
                                 ),
                               ),
                             ),
@@ -87,7 +90,7 @@ class EditOrganization extends GetView {
 
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: FormBuilderTextField(
@@ -109,10 +112,10 @@ class EditOrganization extends GetView {
                           ),
                         ),
 
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 150,
                             child: FormBuilderTextField(
@@ -135,25 +138,18 @@ class EditOrganization extends GetView {
                           ),
                         ),
 
-                        SizedBox(height: 30),
-                        Text('CURRENT EVENTS',
-                            style: GoogleFonts.bebasNeue(
-                              color: Colors.black,
-                              fontSize: 50,
-                            )),
-
                         //PLACE EVENTS HERE!!!
 
-                        SizedBox(height: 300),
+                        const SizedBox(height: 30),
                         Text('ADDRESS',
                             style: GoogleFonts.bebasNeue(
                               color: Colors.black,
                               fontSize: 50,
                             )),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: FormBuilderTextField(
@@ -175,17 +171,17 @@ class EditOrganization extends GetView {
                           ),
                         ),
 
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Text('CONTACT US',
                             style: GoogleFonts.bebasNeue(
                               color: Colors.black,
                               fontSize: 50,
                             )),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 200,
                               height: 50,
                               child: FormBuilderTextField(
@@ -208,8 +204,8 @@ class EditOrganization extends GetView {
                                     fontWeight: FontWeight.w500, fontSize: 20),
                               ),
                             ),
-                            SizedBox(width: 10),
-                            Container(
+                            const SizedBox(width: 10),
+                            SizedBox(
                               width: 200,
                               height: 50,
                               child: FormBuilderTextField(
@@ -234,7 +230,7 @@ class EditOrganization extends GetView {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
                         ElevatedButton(
@@ -265,14 +261,14 @@ class EditOrganization extends GetView {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15))),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 100,
                         ),
                       ],
                     ),
                   );
                 })),
-            Footer()
+            const Footer()
           ],
         ),
       ),

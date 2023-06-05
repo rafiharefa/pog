@@ -26,13 +26,13 @@ class MyOrganizationsView extends GetView {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: NavBar(),
+        title: const NavBar(),
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            WhiteContainer(),
+            const WhiteContainer(),
             const SizedBox(height: 20),
             //title
             Text(
@@ -63,19 +63,19 @@ class MyOrganizationsView extends GetView {
                         },
                         child: Container(
                           height: 200,
-                          margin: EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(70)),
                           child: Row(
                             children: [
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               CircleAvatar(
                                 backgroundImage:
                                     NetworkImage(element['image_url']),
                                 radius: 80,
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +85,7 @@ class MyOrganizationsView extends GetView {
                                     style: GoogleFonts.bebasNeue(
                                         fontSize: 30, color: Colors.black),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   SizedBox(
@@ -109,7 +109,7 @@ class MyOrganizationsView extends GetView {
               );
             }),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             MouseRegion(
               cursor: SystemMouseCursors.click,
@@ -120,7 +120,7 @@ class MyOrganizationsView extends GetView {
                       title: 'Enter Organization ID',
                       titleStyle: GoogleFonts.bebasNeue(
                           color: Colors.black, fontSize: 30),
-                      contentPadding: EdgeInsets.all(30),
+                      contentPadding: const EdgeInsets.all(30),
                       content: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -150,10 +150,9 @@ class MyOrganizationsView extends GetView {
                                           width: 1, color: Colors.black)),
                                 ),
                               )),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           ElevatedButton(
                               onPressed: () async {
-                                bool notError = false;
                                 Person person = controller.thisUser.first;
                                 formKey.currentState!.saveAndValidate();
 
@@ -215,10 +214,10 @@ class MyOrganizationsView extends GetView {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Footer()
+            const Footer()
           ],
         ),
       ),

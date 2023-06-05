@@ -42,7 +42,7 @@ class NavBar extends StatelessWidget {
               const SizedBox(width: 20),
               TextButton(
                   onPressed: () {
-                    Get.off(MyOrganizationsView());
+                    Get.off(const MyOrganizationsView());
                   },
                   child: Text('ORGANIZATIONS',
                       style: GoogleFonts.notoSans(
@@ -127,35 +127,6 @@ class LandingNavbar extends StatelessWidget {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
-              const SizedBox(width: 20),
-              PopupMenuButton(
-                  child: Row(children: [
-                    Text('ORGANIZATIONS',
-                        style: GoogleFonts.notoSans(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)),
-                    const Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.black,
-                    ),
-                  ]),
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                          child: Text('BLOGS',
-                              style: GoogleFonts.notoSans(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15))),
-                      PopupMenuItem(
-                          child: Text('EVENTS',
-                              style: GoogleFonts.notoSans(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15))),
-                    ];
-                  }),
               const SizedBox(width: 20),
               TextButton(
                   onPressed: () {},

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
+import 'package:pog/app/modules/events_page/views/create_event_view.dart';
 import 'package:pog/app/modules/organization_page/views/edit_organization_view.dart';
 import 'package:pog/app_color.dart';
 
@@ -21,7 +22,7 @@ class HomePageView extends GetView<HomePageController> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Get.to(EditOrganization());
+        Get.to(const CreateEventView());
       }),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,

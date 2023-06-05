@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -6,7 +6,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -72,14 +71,14 @@ class ProfileView extends GetView<ProfileController> {
                                                       .image_url.isNotEmpty
                                                   ? NetworkImage(
                                                       person.image_url)
-                                                  : NetworkImage(
+                                                  : const NetworkImage(
                                                       'https://img.freepik.com/free-icon/user_318-804790.jpg'),
                                               radius: 70,
                                               child: controller.isLoading ==
                                                       true
-                                                  ? CircularProgressIndicator()
+                                                  ? const CircularProgressIndicator()
                                                   : null),
-                                          Positioned(
+                                          const Positioned(
                                               bottom: 5,
                                               right: 5,
                                               child: Icon(

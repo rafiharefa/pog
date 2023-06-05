@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LandingCard extends StatelessWidget {
+class EventCard extends StatelessWidget {
   final image;
   final title;
   final detail;
-  const LandingCard(
+  const EventCard(
       {super.key,
       required this.image,
       required this.title,

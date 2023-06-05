@@ -7,7 +7,6 @@ import 'package:pog/app/modules/organization_page/views/author.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
-import 'package:pog/app/modules/organization_page/views/organization_page_view.dart';
 import 'package:pog/app_color.dart';
 
 class CreateOrganizationView extends GetView<OrganizationPageController> {
