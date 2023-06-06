@@ -583,42 +583,42 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                     : MouseRegion(
                                                                                         cursor: SystemMouseCursors.click,
                                                                                         child: GestureDetector(
-                                                                                          onTap: () async {
-                                                                                            controller.addApplicant(controller.organizationEvents[index]['event_id'], 'committee');
-                                                                                            Get.back();
-                                                                                          child: AnimatedContainer(
-                                                                                            duration: Duration(milliseconds: 500),
-                                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: [
-                                                                                              const BoxShadow(
-                                                                                                color: Colors.black,
-                                                                                                blurRadius: 2,
-                                                                                                offset: Offset(2, 2),
-                                                                                              )
-                                                                                            ]),
-                                                                                            width: 120,
-                                                                                            height: 30,
-                                                                                            child: Center(
-                                                                                              child: Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                children: [
-                                                                                                  Icon(
-                                                                                                    Icons.ac_unit_outlined,
-                                                                                                    size: 20,
-                                                                                                    color: Colors.white,
-                                                                                                  ),
-                                                                                                  SizedBox(
-                                                                                                    width: 5,
-                                                                                                  ),
-                                                                                                  Text(
-                                                                                                    'AS COMMITTEE',
-                                                                                                    textAlign: TextAlign.center,
-                                                                                                    style: GoogleFonts.bebasNeue(fontSize: 15, color: Colors.white),
-                                                                                                  ),
-                                                                                                ],
+                                                                                            onTap: () async {
+                                                                                              controller.addApplicant(controller.organizationEvents[index]['event_id'], 'committee');
+                                                                                              Get.back();
+                                                                                            },
+                                                                                            child: AnimatedContainer(
+                                                                                              duration: Duration(milliseconds: 500),
+                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: [
+                                                                                                const BoxShadow(
+                                                                                                  color: Colors.black,
+                                                                                                  blurRadius: 2,
+                                                                                                  offset: Offset(2, 2),
+                                                                                                )
+                                                                                              ]),
+                                                                                              width: 120,
+                                                                                              height: 30,
+                                                                                              child: Center(
+                                                                                                child: Row(
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                  children: [
+                                                                                                    Icon(
+                                                                                                      Icons.ac_unit_outlined,
+                                                                                                      size: 20,
+                                                                                                      color: Colors.white,
+                                                                                                    ),
+                                                                                                    SizedBox(
+                                                                                                      width: 5,
+                                                                                                    ),
+                                                                                                    Text(
+                                                                                                      'AS COMMITTEE',
+                                                                                                      textAlign: TextAlign.center,
+                                                                                                      style: GoogleFonts.bebasNeue(fontSize: 15, color: Colors.white),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
                                                                                               ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
+                                                                                            )),
                                                                                       );
                                                                       }),
                                                                     ],
