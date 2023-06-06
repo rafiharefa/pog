@@ -22,8 +22,8 @@ class OrganizationPageController extends GetxController {
 
   RxBool isClicked = false.obs;
 
-  RxList applications = [].obs;
   RxList<Applicants> thisApplicant = <Applicants>[].obs;
+  RxList applications = [].obs;
 
   Future fetchApplicants() async {
     final response =
@@ -75,7 +75,6 @@ class OrganizationPageController extends GetxController {
       image = imageUrl.value;
     }
 
-    // ignore: unused_local_variable
     final response = await http.put(
         Uri.parse('http://localhost:8000/organizations/updateOrganization/$id'),
         headers: <String, String>{

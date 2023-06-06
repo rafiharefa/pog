@@ -1,8 +1,49 @@
 // ignore_for_file: unnecessary_overrides
 
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:pog/app/modules/component/fast_snack.dart';
+import 'package:pog/app/modules/profile/controllers/profile_controller.dart';
+import 'package:pog/data/persons.dart';
+import 'package:http/http.dart' as http;
+
+import '../../../../data/organizations.dart';
 
 class HomePageController extends GetxController {
+  ProfileController profileController = Get.put(ProfileController());
+  RxList userEvents = [].obs;
+
+  RxList organizationDetail = [].obs;
+  RxList<Person> thisUser = <Person>[].obs;
+  RxList applications = [].obs;
+
+  Future fetchApplicants() async {
+    final response =
+        await http.get(Uri.parse('http://localhost:8000/applications'));
+
+    applications.value = jsonDecode(response.body);
+  }
+
+  Future selectOrganization(String organization_id) async {
+    final response = await http
+        .get(Uri.parse('http://localhost:8000/organizations/$organization_id'));
+
+    organizationDetail.value = jsonDecode(response.body);
+  }
+
+  Future fetchUserEvents() async {
+    await profileController.fetchUser();
+    thisUser.value = profileController.thisUser.value;
+
+    String user_id = thisUser.first.user_id;
+
+    final response = await http
+        .get(Uri.parse('http://localhost:8000/applications/$user_id'));
+
+    userEvents.value = jsonDecode(response.body);
+  }
+
   final count = 0.obs;
   @override
   void onInit() {
