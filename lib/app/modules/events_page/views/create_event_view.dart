@@ -10,8 +10,10 @@ import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
-import 'package:pog/app_color.dart';
+import 'package:pog/data/app_color.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../data/variable.dart';
 
 class CreateEventView extends GetView {
   const CreateEventView({Key? key}) : super(key: key);
@@ -28,211 +30,220 @@ class CreateEventView extends GetView {
           title: OrgNavBar(),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              WhiteContainer(),
-              Container(
-                width: 600,
-                height: 800,
-                margin: EdgeInsets.symmetric(vertical: 50),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(color: Colors.black, offset: Offset(8, 8))
-                  ],
-                  border: Border.all(width: 3, color: Colors.black),
-                ),
-                child: FormBuilder(
-                  key: formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-
-                      Text('SET UP EVENT',
-                          style: GoogleFonts.ibmPlexMono(
-                              fontSize: 40,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700)),
-                      SizedBox(
-                        height: 30,
-                      ),
-
-                      //image
-                      MouseRegion(
-                        cursor: MaterialStateMouseCursor.clickable,
-                        child: GestureDetector(
-                          onTap: () {
-                            controller.selectFile();
-                          },
-                          child: Container(
-                              width: 200,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(width: 2, color: Colors.black),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        offset: Offset(4, 4),
-                                        color: Colors.black)
-                                  ]),
-                              child: Obx(
-                                  () => controller.selectedFile.value.isEmpty
-                                      ? Center(
-                                          child:
-                                              Icon(Icons.add_a_photo_outlined),
-                                        )
-                                      : Image.memory(
-                                          controller.selectedImageBytes!,
-                                          fit: BoxFit.cover,
-                                        ))),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(Gvar.bg), fit: BoxFit.cover)),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                WhiteContainer(),
+                Container(
+                  width: 600,
+                  height: 800,
+                  margin: EdgeInsets.symmetric(vertical: 50),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(color: Colors.black, offset: Offset(8, 8))
+                      ],
+                      border: Border.all(width: 3, color: Colors.black),
+                      image: DecorationImage(
+                          image: NetworkImage(Gvar.card_bg),
+                          fit: BoxFit.cover)),
+                  child: FormBuilder(
+                    key: formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          height: 30,
                         ),
-                      ),
 
-                      SizedBox(
-                        height: 30,
-                      ),
-
-                      //name
-                      SizedBox(
-                        width: 550,
-                        height: 70,
-                        child: FormBuilderTextField(
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                              FormBuilderValidators.maxLength(50),
-                            ]),
-                            name: 'name',
-                            cursorColor: Colors.black,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Event Name',
-                              labelStyle: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
-                                  color: AppColor.orange,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: const Icon(
-                                Icons.abc_outlined,
+                        Text('SET UP EVENT',
+                            style: GoogleFonts.ibmPlexMono(
+                                fontSize: 40,
                                 color: Colors.black,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
-                                      width: 1, color: AppColor.orange)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(
-                                      width: 1, color: Colors.black)),
-                            )),
-                      ),
-                      //desc
+                                fontWeight: FontWeight.w700)),
+                        SizedBox(
+                          height: 30,
+                        ),
 
-                      SizedBox(
-                        width: 550,
-                        height: 70,
-                        child: FormBuilderTextField(
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                              FormBuilderValidators.maxLength(500),
-                            ]),
-                            name: 'desc',
-                            cursorColor: Colors.black,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Event Description',
-                              labelStyle: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
-                                  color: AppColor.orange,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: const Icon(
-                                Icons.align_horizontal_left_outlined,
-                                color: Colors.black,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
-                                      width: 1, color: AppColor.orange)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(
-                                      width: 1, color: Colors.black)),
-                            )),
-                      ),
-                      //date
+                        //image
+                        MouseRegion(
+                          cursor: MaterialStateMouseCursor.clickable,
+                          child: GestureDetector(
+                            onTap: () {
+                              controller.selectFile();
+                            },
+                            child: Container(
+                                width: 200,
+                                height: 250,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2, color: Colors.black),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          offset: Offset(4, 4),
+                                          color: Colors.black)
+                                    ]),
+                                child: Obx(() => controller
+                                        .selectedFile.value.isEmpty
+                                    ? Center(
+                                        child: Icon(Icons.add_a_photo_outlined),
+                                      )
+                                    : Image.memory(
+                                        controller.selectedImageBytes!,
+                                        fit: BoxFit.cover,
+                                      ))),
+                          ),
+                        ),
 
-                      SizedBox(
-                        width: 550,
-                        height: 70,
-                        child: FormBuilderDateTimePicker(
-                            name: 'event_date',
-                            inputType: InputType.date,
-                            validator: FormBuilderValidators.required(),
-                            format: DateFormat('yyyy-MM-dd'),
-                            decoration: InputDecoration(
-                              labelText: 'Event Date',
-                              labelStyle: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
-                                  color: AppColor.orange,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: const Icon(
-                                Icons.date_range_outlined,
-                                color: Colors.black,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
-                                      width: 1, color: AppColor.orange)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(
-                                      width: 1, color: Colors.black)),
-                            )),
-                      ),
+                        SizedBox(
+                          height: 30,
+                        ),
 
-                      ElevatedButton(
-                          onPressed: () async {
-                            await formKey.currentState!.saveAndValidate();
-                            final FK = formKey.currentState!.value;
-                            controller.createEvent(FK['name'], FK['desc'],
-                                FK['event_date'].toString());
-
-                            Get.back();
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.orange,
-                              fixedSize: const Size(350, 50),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                        //name
+                        SizedBox(
+                          width: 550,
+                          height: 70,
+                          child: FormBuilderTextField(
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                                FormBuilderValidators.maxLength(50),
+                              ]),
+                              name: 'name',
+                              cursorColor: Colors.black,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Event Name',
+                                labelStyle: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w400),
+                                focusColor: AppColor.orange,
+                                floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                    color: AppColor.orange,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                prefixIcon: const Icon(
+                                  Icons.abc_outlined,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: BorderSide(
+                                        width: 1, color: AppColor.orange)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: const BorderSide(
+                                        width: 1, color: Colors.black)),
                               )),
-                          child: Text('CREATE',
-                              style: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w600, fontSize: 20))),
+                        ),
+                        //desc
 
-                      SizedBox(
-                        height: 20,
-                      ),
-                    ],
+                        SizedBox(
+                          width: 550,
+                          height: 70,
+                          child: FormBuilderTextField(
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                                FormBuilderValidators.maxLength(500),
+                              ]),
+                              name: 'desc',
+                              cursorColor: Colors.black,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Event Description',
+                                labelStyle: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w400),
+                                focusColor: AppColor.orange,
+                                floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                    color: AppColor.orange,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                prefixIcon: const Icon(
+                                  Icons.align_horizontal_left_outlined,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: BorderSide(
+                                        width: 1, color: AppColor.orange)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: const BorderSide(
+                                        width: 1, color: Colors.black)),
+                              )),
+                        ),
+                        //date
+
+                        SizedBox(
+                          width: 550,
+                          height: 70,
+                          child: FormBuilderDateTimePicker(
+                              name: 'event_date',
+                              inputType: InputType.date,
+                              validator: FormBuilderValidators.required(),
+                              format: DateFormat('yyyy-MM-dd'),
+                              decoration: InputDecoration(
+                                labelText: 'Event Date',
+                                labelStyle: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w400),
+                                focusColor: AppColor.orange,
+                                floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                    color: AppColor.orange,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                prefixIcon: const Icon(
+                                  Icons.date_range_outlined,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: BorderSide(
+                                        width: 1, color: AppColor.orange)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: const BorderSide(
+                                        width: 1, color: Colors.black)),
+                              )),
+                        ),
+
+                        ElevatedButton(
+                            onPressed: () async {
+                              await formKey.currentState!.saveAndValidate();
+                              final FK = formKey.currentState!.value;
+                              controller.createEvent(FK['name'], FK['desc'],
+                                  FK['event_date'].toString());
+
+                              Get.back();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                fixedSize: const Size(350, 50),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                )),
+                            child: Text('CREATE',
+                                style: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20))),
+
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Footer(),
-            ],
+                Footer(),
+              ],
+            ),
           ),
         ));
   }

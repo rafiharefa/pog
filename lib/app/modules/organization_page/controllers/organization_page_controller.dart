@@ -88,7 +88,9 @@ class OrganizationPageController extends GetxController {
           'phone_number': phone,
           'image_url': image
         }));
-    FastSnack('CHANGES SAVED!');
+    fetchOrganization().then((value) => FastSnack('CHANGES SAVED!'));
+    selectOrganization(id);
+    Get.back();
   }
 
   RxList organizationEvents = [].obs;
@@ -135,10 +137,6 @@ class OrganizationPageController extends GetxController {
     selectedImageBytes = fileResult!.files.first.bytes;
 
     uploadFile();
-  }
-
-  void refreshPage() {
-    html.window.location.reload();
   }
 
   Future uploadFile() async {
@@ -205,7 +203,18 @@ class OrganizationPageController extends GetxController {
 
     String member_id = 'MEM${members.length + 1}';
 
-    fetchMembers();
+    final response =
+        await http.post(Uri.parse('http://localhost:8000/members/insertMember'),
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: jsonEncode({
+              'member_id': member_id,
+              'user_id': person.user_id,
+              'organization_id': organization_id
+            }));
+
+    fetchMembers().then((value) => FastSnack('Successfully Joined'));
+    fetchMemberOrganizations();
+    Get.back();
   }
 
   RxList organizations = [].obs;

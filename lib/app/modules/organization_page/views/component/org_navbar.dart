@@ -5,6 +5,7 @@ import 'package:pog/app/modules/events_page/views/create_event_view.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/edit_organization_view.dart';
 import 'package:pog/data/organizations.dart';
+import 'package:pog/data/variable.dart';
 
 class OrgNavBar extends StatelessWidget {
   const OrgNavBar({
@@ -26,8 +27,8 @@ class OrgNavBar extends StatelessWidget {
                   Get.offAllNamed('/landing');
                 },
                 iconSize: 60,
-                icon: const Icon(
-                  Icons.ac_unit_rounded,
+                icon: Image.network(
+                  Gvar.logo1,
                   color: Colors.black,
                 ))),
         Expanded(

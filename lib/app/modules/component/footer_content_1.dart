@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pog/data/variable.dart';
 
 class FooterContent1 extends StatelessWidget {
   const FooterContent1({
@@ -14,7 +15,10 @@ class FooterContent1 extends StatelessWidget {
       children: [
         //POG
         Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const Icon(Icons.ac_unit_rounded, color: Colors.white, size: 44),
+          Image.network(
+            Gvar.logo1,
+            width: 30,
+          ),
           const SizedBox(width: 5),
           Text('POG',
               style: GoogleFonts.montserrat(
@@ -45,11 +49,17 @@ class FooterContent1 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            IconButton(
-              icon: const Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
-              onPressed: () {},
+            Image.network(
+              Gvar.logo1,
+              width: 15,
             ),
-            const Icon(Icons.ac_unit_rounded, size: 18, color: Colors.white),
+            SizedBox(
+              width: 5,
+            ),
+            Image.network(
+              Gvar.logo1,
+              width: 15,
+            ),
           ],
         ),
       ],

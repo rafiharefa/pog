@@ -11,7 +11,8 @@ import 'package:pog/app/modules/organization_page/controllers/organization_page_
 import 'package:pog/app/modules/organization_page/views/create_organization.dart';
 import 'package:pog/data/organizations.dart';
 
-import '../../../../app_color.dart';
+import '../../../../data/app_color.dart';
+import '../../../../data/variable.dart';
 import '../../component/footer.dart';
 
 class AuthorView extends GetView<OrganizationPageController> {
@@ -39,166 +40,177 @@ class AuthorView extends GetView<OrganizationPageController> {
           ),
         ),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(height: 100),
-              Container(
-                width: 500,
-                height: 500,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    const BoxShadow(color: Colors.black, offset: Offset(8, 8))
-                  ],
-                  border: Border.all(width: 3, color: Colors.black),
-                ),
-                child: FormBuilder(
-                  key: formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text('HI AUTHOR!',
-                          style: GoogleFonts.ibmPlexMono(
-                              fontSize: 40,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700)),
-                      Text('Enter Your Organization ID and KEY',
-                          style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700)),
-                      SizedBox(
-                        width: 350,
-                        height: 70,
-                        child: FormBuilderTextField(
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                            ]),
-                            name: 'id',
-                            cursorColor: Colors.black,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Organization ID',
-                              labelStyle: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
-                                  color: AppColor.orange,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: const Icon(
-                                Icons.person_outline,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(Gvar.bg), fit: BoxFit.cover)),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(height: 100),
+                Container(
+                  width: 500,
+                  height: 500,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        const BoxShadow(
+                            color: Colors.black, offset: Offset(8, 8))
+                      ],
+                      border: Border.all(width: 3, color: Colors.black),
+                      image: DecorationImage(
+                          image: NetworkImage(Gvar.card_bg_2),
+                          fit: BoxFit.cover)),
+                  child: FormBuilder(
+                    key: formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('HI AUTHOR!',
+                            style: GoogleFonts.ibmPlexMono(
+                                fontSize: 40,
                                 color: Colors.black,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
-                                      width: 1, color: AppColor.orange)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(
-                                      width: 1, color: Colors.black)),
-                            )),
-                      ),
-                      SizedBox(
-                        width: 350,
-                        height: 70,
-                        child: FormBuilderTextField(
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                            ]),
-                            name: 'key',
-                            obscureText: true,
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              labelText: 'Organization Key',
-                              labelStyle: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w400),
-                              focusColor: AppColor.orange,
-                              floatingLabelStyle: GoogleFonts.ibmPlexMono(
-                                  color: AppColor.orange,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              prefixIcon: const Icon(
-                                Icons.lock_outline,
+                                fontWeight: FontWeight.w700)),
+                        Text('Enter Your Organization ID and KEY',
+                            style: GoogleFonts.montserrat(
+                                fontSize: 15,
                                 color: Colors.black,
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(
-                                      width: 1, color: AppColor.orange)),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: const BorderSide(
-                                      width: 1, color: Colors.black)),
-                            )),
-                      ),
-                      ElevatedButton(
-                          onPressed: () async {
-                            formKey.currentState!.saveAndValidate();
+                                fontWeight: FontWeight.w700)),
+                        SizedBox(
+                          width: 350,
+                          height: 70,
+                          child: FormBuilderTextField(
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                              ]),
+                              name: 'id',
+                              cursorColor: Colors.black,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Organization ID',
+                                labelStyle: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w400),
+                                focusColor: AppColor.orange,
+                                floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                    color: AppColor.orange,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                prefixIcon: const Icon(
+                                  Icons.person_outline,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: BorderSide(
+                                        width: 1, color: AppColor.orange)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: const BorderSide(
+                                        width: 1, color: Colors.black)),
+                              )),
+                        ),
+                        SizedBox(
+                          width: 350,
+                          height: 70,
+                          child: FormBuilderTextField(
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                              ]),
+                              name: 'key',
+                              obscureText: true,
+                              cursorColor: Colors.black,
+                              decoration: InputDecoration(
+                                labelText: 'Organization Key',
+                                labelStyle: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w400),
+                                focusColor: AppColor.orange,
+                                floatingLabelStyle: GoogleFonts.ibmPlexMono(
+                                    color: AppColor.orange,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                prefixIcon: const Icon(
+                                  Icons.lock_outline,
+                                  color: Colors.black,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: BorderSide(
+                                        width: 1, color: AppColor.orange)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                    borderSide: const BorderSide(
+                                        width: 1, color: Colors.black)),
+                              )),
+                        ),
+                        ElevatedButton(
+                            onPressed: () async {
+                              formKey.currentState!.saveAndValidate();
 
-                            if (formKey.currentState!.isValid) {
-                              await controller.selectOrganization(
-                                  formKey.currentState!.value['id']);
+                              if (formKey.currentState!.isValid) {
+                                await controller.selectOrganization(
+                                    formKey.currentState!.value['id']);
 
-                              if (controller.thisOrganization.isNotEmpty) {
-                                Organization organization =
-                                    controller.thisOrganization.first;
-                                if (formKey.currentState!.value['key'] ==
-                                    organization.organization_key) {
-                                  controller.isAuthor.value = true;
-                                  Get.toNamed('/organization-page');
-                                  controller.isAuthor.value = true;
+                                if (controller.thisOrganization.isNotEmpty) {
+                                  Organization organization =
+                                      controller.thisOrganization.first;
+                                  if (formKey.currentState!.value['key'] ==
+                                      organization.organization_key) {
+                                    controller.isAuthor.value = true;
+                                    Get.toNamed('/organization-page');
+                                    controller.isAuthor.value = true;
+                                  } else {
+                                    FastSnack('Invalid Organization ID or KEY');
+                                    controller.thisOrganization.clear();
+                                  }
                                 } else {
                                   FastSnack('Invalid Organization ID or KEY');
                                   controller.thisOrganization.clear();
                                 }
                               } else {
-                                FastSnack('Invalid Organization ID or KEY');
                                 controller.thisOrganization.clear();
                               }
-                            } else {
-                              controller.thisOrganization.clear();
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.orange,
-                              fixedSize: const Size(350, 50),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          child: Text('ENTER',
-                              style: GoogleFonts.ibmPlexMono(
-                                  fontWeight: FontWeight.w600, fontSize: 20))),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Create You Own Organization?",
-                              style: GoogleFonts.montserrat(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400)),
-                          TextButton(
-                            onPressed: () {
-                              Get.off(const CreateOrganizationView());
                             },
-                            child: Text('CLICK HERE',
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColor.orange,
+                                fixedSize: const Size(350, 50),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                            child: Text('ENTER',
+                                style: GoogleFonts.ibmPlexMono(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20))),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Create You Own Organization?",
                                 style: GoogleFonts.montserrat(
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w700)),
-                          )
-                        ],
-                      ),
-                    ],
+                                    fontWeight: FontWeight.w400)),
+                            TextButton(
+                              onPressed: () {
+                                Get.off(const CreateOrganizationView());
+                              },
+                              child: Text('CLICK HERE',
+                                  style: GoogleFonts.montserrat(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 100),
-              const Footer(),
-            ],
+                const SizedBox(height: 100),
+                const Footer(),
+              ],
+            ),
           ),
         ),
       ),

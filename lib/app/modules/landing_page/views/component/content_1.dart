@@ -1,10 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../app_color.dart';
+import '../../../../../data/app_color.dart';
+import '../../../../../data/variable.dart';
 
 class Content1 extends StatelessWidget {
   const Content1({
@@ -13,7 +12,6 @@ class Content1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,7 +21,8 @@ class Content1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 161, height: 77,
+              width: 161,
+              height: 77,
               decoration: BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.circular(5),
@@ -31,13 +30,15 @@ class Content1 extends StatelessWidget {
                     BoxShadow(
                         color: Colors.black.withOpacity(.5),
                         blurRadius: 10,
-                        offset: const Offset(4, 4)
-                    )
-                  ]
-              ),
+                        offset: const Offset(4, 4))
+                  ]),
               child: Center(
                 child: Text(
-                  'POG', style: GoogleFonts.montserrat(color: AppColor.grey, fontSize: 50, fontWeight: FontWeight.w700),
+                  'POG',
+                  style: GoogleFonts.montserrat(
+                      color: AppColor.grey,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w700),
                 ),
               ),
             ),
@@ -47,24 +48,35 @@ class Content1 extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('Organize ', style: GoogleFonts.montserrat(
-                        color: AppColor.orange2,fontWeight: FontWeight.bold,fontSize: 48)),
-                    Text('your association', style: GoogleFonts.montserrat(
-                        color: Colors.white,fontWeight: FontWeight.bold,fontSize: 48)),
+                    Text('Organize ',
+                        style: GoogleFonts.montserrat(
+                            color: AppColor.orange2,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 48)),
+                    Text('your association',
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 48)),
                   ],
                 ),
-                Text('better', style: GoogleFonts.montserrat(
-                    color: Colors.white,fontWeight: FontWeight.bold,fontSize: 48)),
+                Text('better',
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 48)),
               ],
             ),
             const SizedBox(height: 24),
-            Text('Plan your events and reach out to more people ', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.white)),
+            Text('Plan your events and reach out to more people ',
+                style:
+                    GoogleFonts.montserrat(fontSize: 24, color: Colors.white)),
             const SizedBox(height: 40),
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 key: UniqueKey(),
-                onTap: (){
+                onTap: () {
                   Get.toNamed('/auth');
                 },
                 child: Container(
@@ -75,18 +87,23 @@ class Content1 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         boxShadow: const [
                           BoxShadow(color: Colors.black, offset: Offset(10, 10))
-                        ]
-                    ),
-                    child: Center(child: Text('GET STARTED', style: GoogleFonts.montserrat(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w700)))),
+                        ]),
+                    child: Center(
+                        child: Text('GET STARTED',
+                            style: GoogleFonts.montserrat(
+                                fontSize: 24,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700)))),
               ),
             ),
-
-
           ],
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 50),
         //Photo
-        const Icon(Icons.ac_unit_rounded, size: 400, color: Colors.white),
+        Image.network(
+          Gvar.logo1,
+          height: 400,
+        ),
       ],
     );
   }

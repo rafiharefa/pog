@@ -25,9 +25,9 @@ class HomePageController extends GetxController {
     applications.value = jsonDecode(response.body);
   }
 
-  Future selectOrganization(String organization_id) async {
-    final response = await http
-        .get(Uri.parse('http://localhost:8000/organizations/$organization_id'));
+  Future selectOrganization() async {
+    final response =
+        await http.get(Uri.parse('http://localhost:8000/organizations'));
 
     organizationDetail.value = jsonDecode(response.body);
   }

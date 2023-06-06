@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/organization_page/views/my_organizations_view.dart';
+import 'package:pog/data/variable.dart';
 
 import '../organization_page/views/author.dart';
 
@@ -20,8 +21,8 @@ class NavBar extends StatelessWidget {
                   Get.offAllNamed('/landing');
                 },
                 iconSize: 60,
-                icon: const Icon(
-                  Icons.ac_unit_rounded,
+                icon: Image.network(
+                  Gvar.logo2,
                   color: Colors.black,
                 ))),
         Expanded(
@@ -108,10 +109,7 @@ class LandingNavbar extends StatelessWidget {
                   Get.offAllNamed('/landing');
                 },
                 iconSize: 60,
-                icon: const Icon(
-                  Icons.ac_unit_rounded,
-                  color: Colors.black,
-                ))),
+                icon: Image.network(Gvar.logo2))),
         Expanded(
           flex: 5,
           child: Row(

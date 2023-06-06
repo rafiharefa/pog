@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app_color.dart';
+import 'package:pog/data/app_color.dart';
 
 import 'footer_content_1.dart';
 import 'footer_content_2.dart';
@@ -15,7 +15,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        color: AppColor.grey,
+        color: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -25,16 +25,19 @@ class Footer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   //info 1
-                  Expanded(flex: 2,child: FooterContent1()),
+                  Expanded(flex: 2, child: FooterContent1()),
                   //info 2
                   Expanded(child: FooterContent2()),
                   //info 3
-                  Expanded(flex: 2,child: FooterContent3()),
+                  Expanded(flex: 2, child: FooterContent3()),
                 ],
               ),
               const SizedBox(height: 20),
               Text('created by group 6 Software Engineering 4A',
-                  style: GoogleFonts.montserrat(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w400))
+                  style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400))
             ],
           ),
         ),
@@ -42,6 +45,3 @@ class Footer extends StatelessWidget {
     );
   }
 }
-
-
-

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pog/app/modules/component/white_container.dart';
-import 'package:pog/app_color.dart';
+import 'package:pog/data/app_color.dart';
 
+import '../../../../data/variable.dart';
 import '../../component/footer.dart';
 import '../../component/nav_bar.dart';
 import '../controllers/landing_controller.dart';
@@ -22,21 +23,27 @@ class LandingView extends GetView<LandingController> {
       appBar: AppBar(
         title: const LandingNavbar(),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const WhiteContainer(),
-              const SizedBox(height: 50),
-              const Content1(),
-              const SizedBox(height: 150),
-              Content2(width: width, height: height),
-              const Footer(),
-            ],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(Gvar.bg), fit: BoxFit.cover)),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const WhiteContainer(),
+                const SizedBox(height: 50),
+                const Content1(),
+                const SizedBox(height: 150),
+                Content2(width: width, height: height),
+                const Footer(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-

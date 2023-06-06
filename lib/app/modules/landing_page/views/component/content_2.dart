@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/landing_page/controllers/landing_controller.dart';
-import 'package:pog/app_color.dart';
+import 'package:pog/data/app_color.dart';
 
 import '../../../../../data/events.dart';
 import 'landing_card.dart';

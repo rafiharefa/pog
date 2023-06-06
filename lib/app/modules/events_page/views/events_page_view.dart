@@ -7,7 +7,7 @@ import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/views/component/events_content.dart';
 
-import '../../../../app_color.dart';
+import '../../../../data/app_color.dart';
 import '../controllers/events_page_controller.dart';
 
 class EventsPageView extends GetView<EventsPageController> {
@@ -25,18 +25,17 @@ class EventsPageView extends GetView<EventsPageController> {
           child: Column(
             children: [
               const WhiteContainer(),
-              const SizedBox(height: 20),
-              Text('Current Available Events',
-                style: GoogleFonts.montserrat(fontWeight: FontWeight.w700, fontSize: 50, color: AppColor.white),
-              ),
-
               const SizedBox(height: 30),
-
-              const EventsContent(),
-              const SizedBox(height: 40),
-
+              Text(
+                'Available Events',
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 50,
+                    color: AppColor.white),
+              ),
+              const SizedBox(height: 30),
+              const SizedBox(height: 30),
               const Footer()
-
             ],
           ),
         ),
