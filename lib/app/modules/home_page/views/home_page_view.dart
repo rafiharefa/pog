@@ -23,9 +23,6 @@ class HomePageView extends GetView<HomePageController> {
     HomePageController controller = Get.put(HomePageController());
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        controller.fetchUserEvents();
-      }),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
@@ -71,7 +68,7 @@ class HomePageView extends GetView<HomePageController> {
                                       height: 500,
                                       child: Center(
                                           child: Text(
-                                        'NO EVENTS REGISTERED!',
+                                        'NO EVENTS ARE REGISTERED!',
                                         style: GoogleFonts.bebasNeue(
                                             fontSize: 30, color: Colors.white),
                                       )))

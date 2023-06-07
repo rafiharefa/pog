@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:http/http.dart' as http;
+import 'package:pog/app/modules/home_page/controllers/home_page_controller.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 
 import '../../../../data/events.dart';
@@ -15,6 +16,23 @@ import '../../component/fast_snack.dart';
 class EventsPageController extends GetxController {
   OrganizationPageController _organizationPageController =
       Get.put(OrganizationPageController());
+
+  HomePageController homePageController = Get.put(HomePageController());
+
+  RxBool isClicked = false.obs;
+
+  //fetch unregistered events
+
+  RxList unreg_events = [].obs;
+
+  Future fetchUnRegisteredEvents() async {
+    String user_id = homePageController.thisUser.first.user_id;
+
+    final response = await http.get(
+        Uri.parse('http://localhost:8000/applications/unRegistered/$user_id'));
+
+    unreg_events.value = jsonDecode(response.body);
+  }
 
   Uint8List? selectedImageBytes;
   RxString selectedFile = ''.obs;

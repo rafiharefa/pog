@@ -11,6 +11,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
+import 'package:pog/app/modules/home_page/controllers/home_page_controller.dart';
 import 'package:pog/data/applications.dart';
 
 import 'package:pog/data/persons.dart';
@@ -37,7 +39,9 @@ class OrganizationPageController extends GetxController {
     }
   }
 
-  void addApplicant(String event_id, String type) async {
+  Future addApplicant(String event_id, String type) async {
+    EventsPageController _ec = Get.put(EventsPageController());
+    HomePageController _hc = Get.put(HomePageController());
     await fetchApplicants();
 
     String application_id = 'APP${applications.length + 1}';
@@ -56,6 +60,9 @@ class OrganizationPageController extends GetxController {
           }));
 
       fetchApplicants();
+      _ec.fetchUnRegisteredEvents();
+      _hc.fetchUserEvents();
+
       FastSnack('SUCCESSFULLY REGISTER EVENT AS $type');
     } catch (e) {
       print(e);
