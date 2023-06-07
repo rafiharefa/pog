@@ -12,17 +12,29 @@ class FooterContent3 extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        TextButton(onPressed: (){}, child: Text('About',
-            style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
-        )),
+        TextButton(
+            onPressed: () {},
+            child: Text('About',
+                style: GoogleFonts.montserrat(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white))),
         const SizedBox(height: 20),
-        TextButton(onPressed: (){}, child: Text('Contact Us',
-            style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
-        )),
+        TextButton(
+            onPressed: () {},
+            child: Text('Contact Us',
+                style: GoogleFonts.montserrat(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white))),
         const SizedBox(height: 20),
-        TextButton(onPressed: (){}, child: Text('FAQ',
-            style: GoogleFonts.montserrat(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white)
-        )),
+        TextButton(
+            onPressed: () {},
+            child: Text('FAQ',
+                style: GoogleFonts.montserrat(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white))),
       ],
     );
   }

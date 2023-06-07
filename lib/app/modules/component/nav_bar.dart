@@ -62,22 +62,6 @@ class NavBar extends StatelessWidget {
                           fontSize: 20))),
               const SizedBox(width: 20),
               TextButton(
-                  onPressed: () {},
-                  child: Text('ABOUT',
-                      style: GoogleFonts.notoSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20))),
-              const SizedBox(width: 20),
-              TextButton(
-                  onPressed: () {},
-                  child: Text('CONTACT',
-                      style: GoogleFonts.notoSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20))),
-              const SizedBox(width: 20),
-              TextButton(
                   onPressed: () {
                     Get.offAllNamed('/profile');
                   },
@@ -126,21 +110,6 @@ class LandingNavbar extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 20))),
               const SizedBox(width: 20),
-              TextButton(
-                  onPressed: () {},
-                  child: Text('ABOUT',
-                      style: GoogleFonts.notoSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20))),
-              const SizedBox(width: 20),
-              TextButton(
-                  onPressed: () {},
-                  child: Text('CONTACT',
-                      style: GoogleFonts.notoSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20))),
             ],
           ),
         )

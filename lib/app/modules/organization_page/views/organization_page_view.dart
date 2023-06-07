@@ -532,7 +532,11 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                               ? MouseRegion(
                                                                                   cursor: SystemMouseCursors.click,
                                                                                   child: GestureDetector(
-                                                                                    onTap: () {},
+                                                                                    onTap: () {
+                                                                                      String event_id = controller.organizationEvents[index]['event_id'];
+                                                                                      controller.deleteEvent(event_id);
+                                                                                      Get.back();
+                                                                                    },
                                                                                     child: Container(
                                                                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: [
                                                                                         const BoxShadow(

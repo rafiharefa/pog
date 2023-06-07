@@ -40,6 +40,10 @@ class EventsPageController extends GetxController {
 
   RxList events = [].obs;
   RxList<Event> thisEvent = <Event>[].obs;
+  RxList totalEventString = [].obs;
+  RxList totalEventRemovedString = [].obs;
+  RxList<int> totalEventInt = <int>[].obs;
+  RxInt lastEventId = 0.obs;
 
   Future fetchEvent() async {
     final response = await http.get(Uri.parse('http://localhost:8000/events'));
@@ -50,6 +54,21 @@ class EventsPageController extends GetxController {
       Event event = Event.fromJson(json);
       thisEvent.add(event);
     }
+
+    if (events.isEmpty) {
+      lastEventId.value = 0;
+    } else {
+      totalEventString.value =
+          events.map((element) => element['event_id']).toList();
+      totalEventString.forEach((element) {
+        totalEventRemovedString.add(element.replaceAll(RegExp(r'[^0-9]'), ''));
+      });
+      totalEventRemovedString.forEach((element) {
+        totalEventInt.add(int.tryParse(element) ?? 0);
+      });
+      lastEventId.value = totalEventInt
+          .reduce((value, element) => value > element ? value : element);
+    }
   }
 
   void createEvent(
@@ -59,7 +78,7 @@ class EventsPageController extends GetxController {
   ) async {
     await fetchEvent();
 
-    final String event_id = "EVT${events.length + 1}";
+    final String event_id = "EVT${lastEventId + 1}";
 
     final String organization_id =
         _organizationPageController.thisOrganization.first.organization_id;

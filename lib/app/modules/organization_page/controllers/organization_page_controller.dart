@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
-import 'dart:html' as html;
 
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,20 +21,59 @@ import '../../component/fast_snack.dart';
 class OrganizationPageController extends GetxController {
   var center = 0.obs;
 
+  Future deleteApplicant(String event_id) async {
+    final response = await http.delete(Uri.parse(
+        'http://localhost:8000/applications/deleteApplicant/$event_id'));
+  }
+
+  void deleteEvent(String event_id) async {
+    await deleteApplicant(event_id);
+
+    final response = await http.delete(
+        Uri.parse('http://localhost:8000/events/deleteEvent/$event_id'));
+
+    FastSnack('SUCCESSFULLY DELETE EVENT $event_id');
+    applications.clear();
+    fetchApplicants();
+    organizationEvents.clear();
+    fetchOrganizationEvents();
+  }
+
   RxBool isClicked = false.obs;
 
   RxList<Applicants> thisApplicant = <Applicants>[].obs;
   RxList applications = [].obs;
 
+  RxList totalApplicantString = [].obs;
+  RxList totalApplicantRemovedString = [].obs;
+  RxList<int> totalApplicantInt = <int>[].obs;
+  RxInt lastApplicantId = 0.obs;
+
   Future fetchApplicants() async {
     final response =
         await http.get(Uri.parse('http://localhost:8000/applications'));
 
-    applications.value = jsonDecode(response.body);
+    applications.value = await jsonDecode(response.body);
 
     for (var json in applications) {
       Applicants applicants = Applicants.fromJson(json);
       thisApplicant.add(applicants);
+    }
+
+    if (applications.isEmpty) {
+      lastApplicantId.value = 0;
+    } else {
+      totalApplicantString.value =
+          applications.map((element) => element['application_id']).toList();
+      totalApplicantString.forEach((element) {
+        totalApplicantRemovedString
+            .add(element.replaceAll(RegExp(r'[^0-9]'), ''));
+      });
+      totalApplicantRemovedString.forEach((element) {
+        totalApplicantInt.add(int.tryParse(element) ?? 0);
+      });
+      lastApplicantId.value = totalApplicantInt
+          .reduce((value, element) => value > element ? value : element);
     }
   }
 
@@ -44,7 +82,7 @@ class OrganizationPageController extends GetxController {
     HomePageController _hc = Get.put(HomePageController());
     await fetchApplicants();
 
-    String application_id = 'APP${applications.length + 1}';
+    String application_id = 'APP${lastApplicantId + 1}';
 
     Person person = thisUser.first;
 
