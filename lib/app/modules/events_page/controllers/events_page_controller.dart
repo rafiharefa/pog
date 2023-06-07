@@ -28,8 +28,8 @@ class EventsPageController extends GetxController {
   Future fetchUnRegisteredEvents() async {
     String user_id = homePageController.thisUser.first.user_id;
 
-    final response = await http.get(
-        Uri.parse('http://localhost:8000/applications/unRegistered/$user_id'));
+    final response = await http.get(Uri.parse(
+        'https://api.pog.otech.id/applications/unRegistered/$user_id'));
 
     unreg_events.value = jsonDecode(response.body);
   }
@@ -46,7 +46,8 @@ class EventsPageController extends GetxController {
   RxInt lastEventId = 0.obs;
 
   Future fetchEvent() async {
-    final response = await http.get(Uri.parse('http://localhost:8000/events'));
+    final response =
+        await http.get(Uri.parse('https://api.pog.otech.id/events'));
 
     events.value = jsonDecode(response.body);
 
@@ -88,19 +89,19 @@ class EventsPageController extends GetxController {
           'https://wp-mktg.prod.getty1.net/istockcontentredesign/wp-content/uploads/sites/5/2020/06/2021_whatarevectorgraphics_hero.jpg';
     }
 
-    final response =
-        await http.post(Uri.parse('http://localhost:8000/events/createEvent'),
-            headers: {'Content-Type': 'application/json; charset=UTF-8'},
-            body: jsonEncode({
-              'event_id': event_id,
-              'event_name': event_name,
-              'event_desc': event_desc,
-              'event_date': event_date,
-              'committee_amount': '0',
-              'participant_amount': '0',
-              'image_url': imageUrl.value,
-              'organization_id': organization_id
-            }));
+    final response = await http.post(
+        Uri.parse('https://api.pog.otech.id/events/createEvent'),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode({
+          'event_id': event_id,
+          'event_name': event_name,
+          'event_desc': event_desc,
+          'event_date': event_date,
+          'committee_amount': '0',
+          'participant_amount': '0',
+          'image_url': imageUrl.value,
+          'organization_id': organization_id
+        }));
 
     FastSnack('EVENT CREATED');
   }

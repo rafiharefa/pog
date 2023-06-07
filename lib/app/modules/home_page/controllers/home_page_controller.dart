@@ -20,14 +20,14 @@ class HomePageController extends GetxController {
 
   Future fetchApplicants() async {
     final response =
-        await http.get(Uri.parse('http://localhost:8000/applications'));
+        await http.get(Uri.parse('https://api.pog.otech.id/applications'));
 
     applications.value = jsonDecode(response.body);
   }
 
   Future selectOrganization() async {
     final response =
-        await http.get(Uri.parse('http://localhost:8000/organizations'));
+        await http.get(Uri.parse('https://api.pog.otech.id/organizations'));
 
     organizationDetail.value = jsonDecode(response.body);
   }
@@ -39,7 +39,7 @@ class HomePageController extends GetxController {
     String user_id = thisUser.first.user_id;
 
     final response = await http
-        .get(Uri.parse('http://localhost:8000/applications/$user_id'));
+        .get(Uri.parse('https://api.pog.otech.id/applications/$user_id'));
 
     userEvents.value = jsonDecode(response.body);
   }
