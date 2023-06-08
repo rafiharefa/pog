@@ -32,7 +32,7 @@ class ProfileController extends GetxController {
 
     selectedImageBytes = fileResult!.files.first.bytes;
 
-    uploadFile();
+    await uploadFile();
   }
 
   Future uploadFile() async {
@@ -48,6 +48,7 @@ class ProfileController extends GetxController {
           firebase_storage.SettableMetadata(contentType: 'image/jpeg');
 
       uploadTask = ref.putData(selectedImageBytes!, metadata);
+
       isLoading.value = true;
       await uploadTask.whenComplete(() => isLoading.value = false);
       imageUrl.value = await ref.getDownloadURL();
