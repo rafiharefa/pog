@@ -15,8 +15,7 @@ class AuthController extends GetxController {
   RxList users = [].obs;
 
   Future fetchUsers() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/users'));
+    final response = await http.get(Uri.parse('http://localhost:8000/users'));
     users.value = jsonDecode(response.body);
   }
 
@@ -30,11 +29,12 @@ class AuthController extends GetxController {
       String phone_number,
       String sex) async {
     String user_id = 'USR${users.length + 1}';
-    String image_url = 'https://img.freepik.com/free-icon/user_318-804790.jpg';
+    String image_url =
+        'https://firebasestorage.googleapis.com/v0/b/piorganizer.appspot.com/o/assets%2Fdummy_card.jpg?alt=media&token=f1f5986a-a3da-4b8f-a450-75e8533f62af&_gl=1*1wpnn9p*_ga*MTQ1NjYxNTMxMC4xNjY0MTI0ODU3*_ga_CW55HF8NVT*MTY4NjEyODUzOC4zNy4xLjE2ODYxMzIwMzUuMC4wLjA.';
 
     try {
       final response = await http.post(
-          Uri.parse('https://api.pog.otech.id/users/createUser'),
+          Uri.parse('http://localhost:8000/users/createUser'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },

@@ -66,7 +66,7 @@ class ProfileController extends GetxController {
     final email = user.email;
 
     final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/users/$email'));
+        await http.get(Uri.parse('http://localhost:8000/users/$email'));
 
     userDetail.value = jsonDecode(response.body);
 
@@ -94,7 +94,7 @@ class ProfileController extends GetxController {
     String sex = formKey.currentState!.value['sex'];
 
     final response = await http.put(
-      Uri.parse('https://api.pog.otech.id/users/updateUser/$user_id'),
+      Uri.parse('http://localhost:8000/users/updateUser/$user_id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8'
       },

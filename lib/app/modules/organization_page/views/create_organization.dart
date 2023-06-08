@@ -24,17 +24,9 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Get.offAllNamed('/home-page');
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
       ),
       body: Container(
         width: double.infinity,
@@ -306,11 +298,10 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                               if (controller.formKey.currentState!.isValid) {
                                 controller.formKey.currentState!.save();
                                 controller.createOrganization();
-                                FastSnack('Organization Created!');
-                                await controller
-                                    .selectOrganization(controller.temp_id);
-                                controller.isAuthor.value = true;
-                                Get.toNamed('/organization-page');
+                                Get.back();
+
+                                controller.selectOrganization(
+                                    controller.temp_id.value);
                               } else {
                                 controller.thisOrganization.clear();
                               }

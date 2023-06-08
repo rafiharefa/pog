@@ -82,7 +82,7 @@ class ProfileView extends GetView<ProfileController> {
                                                     ? NetworkImage(
                                                         person.image_url)
                                                     : const NetworkImage(
-                                                        'https://img.freepik.com/free-icon/user_318-804790.jpg'),
+                                                        'https://firebasestorage.googleapis.com/v0/b/piorganizer.appspot.com/o/assets%2Fdummy_card.jpg?alt=media&token=f1f5986a-a3da-4b8f-a450-75e8533f62af&_gl=1*1wpnn9p*_ga*MTQ1NjYxNTMxMC4xNjY0MTI0ODU3*_ga_CW55HF8NVT*MTY4NjEyODUzOC4zNy4xLjE2ODYxMzIwMzUuMC4wLjA.'),
                                                 radius: 70,
                                                 child: controller.isLoading ==
                                                         true

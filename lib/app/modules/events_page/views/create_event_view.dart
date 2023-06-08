@@ -9,6 +9,7 @@ import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
+import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
 import 'package:pog/data/app_color.dart';
 import 'package:intl/intl.dart';

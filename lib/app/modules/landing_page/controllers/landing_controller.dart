@@ -14,8 +14,7 @@ class LandingController extends GetxController {
   RxList<Event> thisEvent = <Event>[].obs;
 
   Future fetchEvent() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/events'));
+    final response = await http.get(Uri.parse('http://localhost:8000/events'));
 
     events.value = jsonDecode(response.body);
 
