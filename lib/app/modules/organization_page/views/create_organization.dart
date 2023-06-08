@@ -298,10 +298,12 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                               if (controller.formKey.currentState!.isValid) {
                                 controller.formKey.currentState!.save();
                                 controller.createOrganization();
-                                Get.back();
 
-                                controller.selectOrganization(
-                                    controller.temp_id.value);
+                                controller
+                                    .selectOrganization(
+                                        controller.temp_id.value)
+                                    .then((value) =>
+                                        Get.toNamed('/organization-page'));
                               } else {
                                 controller.thisOrganization.clear();
                               }

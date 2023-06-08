@@ -413,159 +413,174 @@ class EventsPageView extends GetView<EventsPageController> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                //as participant
+            SizedBox(
+              width: 400,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //as participant
 
-                Obx(
-                  () => controller.isClicked.value == false
-                      ? AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
-                          width: 120,
-                          height: 30,
-                          color: Colors.transparent,
-                        )
-                      : MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () async {
-                              oc.addApplicant(
-                                  controller.unreg_events[index]['event_id'],
-                                  'participant');
-                              Get.back();
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 500),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    const BoxShadow(
-                                      color: Colors.black,
-                                      blurRadius: 2,
-                                      offset: Offset(2, 2),
-                                    )
-                                  ]),
-                              width: 130,
-                              height: 30,
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.ac_unit_outlined,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      'AS PARTICIPANT',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.bebasNeue(
-                                          fontSize: 15, color: Colors.black),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-
-                //as commit
-                Obx(() {
-                  String user_id = hc.thisUser.first.user_id;
-                  String event_id = controller.unreg_events[index]['event_id'];
-                  return controller.isClicked.value == false
-                      ? MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () async {
-                              controller.isClicked.value = true;
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 1000),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: AppColor.orange,
-                                  boxShadow: [
-                                    const BoxShadow(
-                                      color: Colors.black,
-                                      blurRadius: 2,
-                                      offset: Offset(2, 2),
-                                    )
-                                  ]),
-                              width: 120,
-                              height: 30,
-                              child: Center(
-                                child: Text(
-                                  'Register',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      //as committee
-                      : MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                              onTap: () async {
-                                oc.addApplicant(
-                                    controller.unreg_events[index]['event_id'],
-                                    'committee');
-
-                                Get.back();
-                              },
-                              child: AnimatedContainer(
+                      Obx(
+                        () => controller.isClicked.value == false
+                            ? AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: Colors.black,
-                                    boxShadow: [
-                                      const BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(2, 2),
-                                      )
-                                    ]),
                                 width: 130,
                                 height: 30,
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.ac_unit_outlined,
-                                        size: 20,
+                                color: Colors.transparent,
+                              )
+                            : MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    oc.addApplicant(
+                                        controller.unreg_events[index]
+                                            ['event_id'],
+                                        'participant');
+                                    Get.back();
+                                  },
+                                  child: AnimatedContainer(
+                                    duration: Duration(milliseconds: 500),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
                                         color: Colors.white,
+                                        boxShadow: [
+                                          const BoxShadow(
+                                            color: Colors.black,
+                                            blurRadius: 2,
+                                            offset: Offset(2, 2),
+                                          )
+                                        ]),
+                                    width: 130,
+                                    height: 30,
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.ac_unit_outlined,
+                                            size: 15,
+                                            color: Colors.black,
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            'AS PARTICIPANT',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.bebasNeue(
+                                                fontSize: 12,
+                                                color: Colors.black),
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        'AS COMMITTEE',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.bebasNeue(
-                                            fontSize: 15, color: Colors.white),
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              )),
-                        );
-                }),
-              ],
+                              ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+
+                      //as commit
+                      Obx(() {
+                        String user_id = hc.thisUser.first.user_id;
+                        String event_id =
+                            controller.unreg_events[index]['event_id'];
+                        return controller.isClicked.value == false
+                            ? MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    controller.isClicked.value = true;
+                                  },
+                                  child: AnimatedContainer(
+                                    duration: Duration(milliseconds: 1000),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: AppColor.orange,
+                                        boxShadow: [
+                                          const BoxShadow(
+                                            color: Colors.black,
+                                            blurRadius: 2,
+                                            offset: Offset(2, 2),
+                                          )
+                                        ]),
+                                    width: 130,
+                                    height: 30,
+                                    child: Center(
+                                      child: Text(
+                                        'Register',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            //as committee
+                            : MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                    onTap: () {
+                                      oc.addApplicant(
+                                          controller.unreg_events[index]
+                                              ['event_id'],
+                                          'committee');
+                                      Get.back();
+                                    },
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 500),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: Colors.black,
+                                          boxShadow: [
+                                            const BoxShadow(
+                                              color: Colors.black,
+                                              blurRadius: 2,
+                                              offset: Offset(2, 2),
+                                            )
+                                          ]),
+                                      width: 130,
+                                      height: 30,
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.ac_unit_outlined,
+                                              size: 15,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              'AS COMMITTEE',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.bebasNeue(
+                                                  fontSize: 12,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                              );
+                      }),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),

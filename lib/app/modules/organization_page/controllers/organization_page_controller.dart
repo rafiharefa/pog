@@ -98,7 +98,6 @@ class OrganizationPageController extends GetxController {
           }));
 
       fetchApplicants();
-      _ec.fetchUnRegisteredEvents();
       _hc.fetchUserEvents();
 
       FastSnack('SUCCESSFULLY REGISTER EVENT AS $type');

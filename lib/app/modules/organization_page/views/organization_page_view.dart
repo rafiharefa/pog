@@ -131,37 +131,32 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                             ),
                           ),
                           SizedBox(
-                              width: 550,
-                              height: 600,
-                              child: Obx(
-                                () => FutureBuilder(
-                                    future:
-                                        controller.fetchOrganizationEvents(),
-                                    builder: (context, snapshot) {
-                                      final organization =
-                                          controller.thisOrganization.first;
-                                      return snapshot.connectionState ==
-                                              ConnectionState.waiting
-                                          ? Center(
-                                              child:
-                                                  CircularProgressIndicator())
-                                          : controller
-                                                  .organizationEvents.isEmpty
-                                              ? SizedBox(
-                                                  width: double.infinity,
-                                                  height: 100,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'NO EVENTS FROM THIS ORGANIZATION',
-                                                      style:
-                                                          GoogleFonts.bebasNeue(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 30),
-                                                    ),
-                                                  ),
-                                                )
-                                              : Carousel3d(
+                            width: 550,
+                            height: 600,
+                            child: FutureBuilder(
+                                future: controller.fetchOrganizationEvents(),
+                                builder: (context, snapshot) {
+                                  final organization =
+                                      controller.thisOrganization.first;
+                                  return snapshot.connectionState ==
+                                          ConnectionState.waiting
+                                      ? Center(
+                                          child: CircularProgressIndicator())
+                                      : controller.organizationEvents.isEmpty
+                                          ? SizedBox(
+                                              width: double.infinity,
+                                              height: 100,
+                                              child: Center(
+                                                child: Text(
+                                                  'NO EVENTS FROM THIS ORGANIZATION',
+                                                  style: GoogleFonts.bebasNeue(
+                                                      color: Colors.black,
+                                                      fontSize: 30),
+                                                ),
+                                              ),
+                                            )
+                                          : Obx(
+                                              () => Carousel3d(
                                                   displayRadius: 1,
                                                   center:
                                                       controller.center.value,
@@ -665,9 +660,10 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                 ['event_desc']),
                                                       ),
                                                     );
-                                                  }));
-                                    }),
-                              )),
+                                                  })),
+                                            );
+                                }),
+                          ),
                           InkWell(
                             mouseCursor: SystemMouseCursors.click,
                             onTap: () {
