@@ -59,6 +59,8 @@ class EventsPageView extends GetView<EventsPageController> {
                             ),
                             const SizedBox(height: 30),
                             Obx(() {
+                              hc.fetchUserEvents();
+                              hc.fetchApplicants();
                               return controller.unreg_events.isEmpty
                                   ? SizedBox(
                                       width: double.infinity,
@@ -332,8 +334,7 @@ class EventsPageView extends GetView<EventsPageController> {
                   height: 10,
                 ),
                 Text(
-                  controller.unreg_events[index]['committee_amount']
-                      .toString(),
+                  controller.unreg_events[index]['committee_amount'].toString(),
                   style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
@@ -420,12 +421,13 @@ class EventsPageView extends GetView<EventsPageController> {
                             : MouseRegion(
                                 cursor: SystemMouseCursors.click,
                                 child: GestureDetector(
-                                  onTap: () {
-                                    oc.addApplicant(
+                                  onTap: () async {
+                                    await oc.addApplicant(
                                         controller.unreg_events[index]
                                             ['event_id'],
                                         'participant');
-                                    Get.back();
+
+                                    await Get.offNamed('/events-page');
                                   },
                                   child: AnimatedContainer(
                                     duration: const Duration(milliseconds: 500),
@@ -474,9 +476,6 @@ class EventsPageView extends GetView<EventsPageController> {
 
                       //as commit
                       Obx(() {
-                        String user_id = hc.thisUser.first.user_id;
-                        String event_id =
-                            controller.unreg_events[index]['event_id'];
                         return controller.isClicked.value == false
                             ? MouseRegion(
                                 cursor: SystemMouseCursors.click,
@@ -485,7 +484,8 @@ class EventsPageView extends GetView<EventsPageController> {
                                     controller.isClicked.value = true;
                                   },
                                   child: AnimatedContainer(
-                                    duration: const Duration(milliseconds: 1000),
+                                    duration:
+                                        const Duration(milliseconds: 1000),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
                                         color: AppColor.orange,
@@ -515,15 +515,16 @@ class EventsPageView extends GetView<EventsPageController> {
                             : MouseRegion(
                                 cursor: SystemMouseCursors.click,
                                 child: GestureDetector(
-                                    onTap: () {
-                                      oc.addApplicant(
+                                    onTap: () async {
+                                      await oc.addApplicant(
                                           controller.unreg_events[index]
                                               ['event_id'],
                                           'committee');
-                                      Get.back();
+                                      await Get.offNamed('/events-page');
                                     },
                                     child: AnimatedContainer(
-                                      duration: const Duration(milliseconds: 500),
+                                      duration:
+                                          const Duration(milliseconds: 500),
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(30),

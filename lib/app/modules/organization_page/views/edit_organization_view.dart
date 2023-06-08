@@ -258,9 +258,11 @@ class EditOrganization extends GetView {
                                       formKey.currentState!.value['email'],
                                       formKey.currentState!.value['phone']);
 
-                                  Get.back();
-                                  controller.selectOrganization(
+                                  await controller.fetchOrganization();
+                                  await controller.selectOrganization(
                                       organization.organization_id);
+                                  await controller.fetchOrganizationEvents();
+                                  await Get.offNamed('/organization-page');
                                 }
                               },
                               style: ElevatedButton.styleFrom(

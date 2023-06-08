@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
+import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
 import 'package:pog/data/app_color.dart';
 import 'package:intl/intl.dart';
@@ -216,12 +217,28 @@ class CreateEventView extends GetView {
 
                         ElevatedButton(
                             onPressed: () async {
-                              formKey.currentState!.saveAndValidate();
-                              final FK = formKey.currentState!.value;
-                              controller.createEvent(FK['name'], FK['desc'],
-                                  FK['event_date'].toString());
+                              OrganizationPageController
+                                  organizationPageController =
+                                  Get.put(OrganizationPageController());
 
-                              Get.back();
+                              formKey.currentState!.validate();
+                              if (formKey.currentState!.isValid) {
+                                formKey.currentState!.save();
+                                final FK = formKey.currentState!.value;
+                                controller.createEvent(FK['name'], FK['desc'],
+                                    FK['event_date'].toString());
+                                await organizationPageController
+                                    .fetchOrganization();
+                                await organizationPageController
+                                    .selectOrganization(
+                                        organizationPageController
+                                            .thisOrganization
+                                            .first
+                                            .organization_id);
+                                await organizationPageController
+                                    .fetchOrganizationEvents();
+                                await Get.offNamed('/organization-page');
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.black,

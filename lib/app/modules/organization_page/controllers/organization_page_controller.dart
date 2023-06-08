@@ -34,10 +34,6 @@ class OrganizationPageController extends GetxController {
         .delete(Uri.parse('${Gvar.url}/events/deleteEvent/$event_id'));
 
     FastSnack('SUCCESSFULLY DELETE EVENT $event_id');
-    applications.clear();
-    fetchApplicants();
-    organizationEvents.clear();
-    fetchOrganizationEvents();
   }
 
   RxBool isClicked = false.obs;
@@ -97,8 +93,9 @@ class OrganizationPageController extends GetxController {
                 'event_id': event_id,
               }));
 
-      fetchApplicants();
-      hc.fetchUserEvents();
+      await fetchApplicants();
+      await ec.fetchUnRegisteredEvents();
+      await hc.fetchUserEvents();
 
       FastSnack('SUCCESSFULLY REGISTER EVENT AS $type');
     } catch (e) {
