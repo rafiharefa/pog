@@ -1,16 +1,16 @@
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
+
 import 'package:carousel_widget_3d/carousel_widget_3d.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_card.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
 import 'package:pog/data/app_color.dart';
-import 'package:pog/data/organizations.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../data/variable.dart';
@@ -140,7 +140,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                       controller.thisOrganization.first;
                                   return snapshot.connectionState ==
                                           ConnectionState.waiting
-                                      ? Center(
+                                      ? const Center(
                                           child: CircularProgressIndicator())
                                       : controller.organizationEvents.isEmpty
                                           ? SizedBox(
@@ -187,7 +187,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                 EdgeInsets.zero,
                                                             title: '',
                                                             content: Container(
-                                                              padding: EdgeInsets
+                                                              padding: const EdgeInsets
                                                                   .symmetric(
                                                                       horizontal:
                                                                           20),
@@ -209,249 +209,228 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                         .spaceEvenly,
                                                                 children: [
                                                                   //id
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'ID',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          controller.organizationEvents[index]
-                                                                              [
-                                                                              'event_id'],
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'ID',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    controller.organizationEvents[index]
+                                                                        [
+                                                                        'event_id'],
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
                                                                   //name
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Event Name',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          controller.organizationEvents[index]
-                                                                              [
-                                                                              'event_name'],
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Event Name',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    controller.organizationEvents[index]
+                                                                        [
+                                                                        'event_name'],
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
 
                                                                   //desc
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Description',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          controller.organizationEvents[index]
-                                                                              [
-                                                                              'event_desc'],
-                                                                          maxLines:
-                                                                              5,
-                                                                          textAlign:
-                                                                              TextAlign.justify,
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Description',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    controller.organizationEvents[index]
+                                                                        [
+                                                                        'event_desc'],
+                                                                    maxLines:
+                                                                        5,
+                                                                    textAlign:
+                                                                        TextAlign.justify,
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
 
                                                                   //date
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Date',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          DateFormat.yMMMMd()
-                                                                              .format(dateTime)
-                                                                              .toString(),
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Date',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    DateFormat.yMMMMd()
+                                                                        .format(dateTime)
+                                                                        .toString(),
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
 
                                                                   //comittee amount
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Committees',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          controller
-                                                                              .organizationEvents[index]['committee_amount']
-                                                                              .toString(),
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Committees',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    controller
+                                                                        .organizationEvents[index]['committee_amount']
+                                                                        .toString(),
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
 
                                                                   //participant amount
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Participants',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          controller
-                                                                              .organizationEvents[index]['participant_amount']
-                                                                              .toString(),
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Participants',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    controller
+                                                                        .organizationEvents[index]['participant_amount']
+                                                                        .toString(),
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
 
                                                                   //created by
-                                                                  Container(
-                                                                    child:
-                                                                        Column(
+                                                                  Column(
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
+                                                                    CrossAxisAlignment
+                                                                        .start,
                                                                       children: [
-                                                                        Text(
-                                                                          'Created By',
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w700,
-                                                                              color: Colors.black,
-                                                                              fontSize: 20),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              10,
-                                                                        ),
-                                                                        Text(
-                                                                          organization
-                                                                              .organization_name,
-                                                                          style: GoogleFonts.montserrat(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.black,
-                                                                              fontSize: 15),
-                                                                        )
+                                                                  Text(
+                                                                    'Created By',
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w700,
+                                                                        color: Colors.black,
+                                                                        fontSize: 20),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height:
+                                                                        10,
+                                                                  ),
+                                                                  Text(
+                                                                    organization
+                                                                        .organization_name,
+                                                                    style: GoogleFonts.montserrat(
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.black,
+                                                                        fontSize: 15),
+                                                                  )
                                                                       ],
                                                                     ),
-                                                                  ),
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                     height: 20,
                                                                   ),
                                                                   Row(
@@ -465,7 +444,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                         () => controller.isClicked.value ==
                                                                                 false
                                                                             ? AnimatedContainer(
-                                                                                duration: Duration(milliseconds: 500),
+                                                                                duration: const Duration(milliseconds: 500),
                                                                                 width: 120,
                                                                                 height: 30,
                                                                                 color: Colors.transparent,
@@ -479,9 +458,9 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                     Get.back();
                                                                                   },
                                                                                   child: AnimatedContainer(
-                                                                                    duration: Duration(milliseconds: 500),
-                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.white, boxShadow: [
-                                                                                      const BoxShadow(
+                                                                                    duration: const Duration(milliseconds: 500),
+                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.white, boxShadow: const [
+                                                                                      BoxShadow(
                                                                                         color: Colors.black,
                                                                                         blurRadius: 2,
                                                                                         offset: Offset(2, 2),
@@ -493,12 +472,12 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                       child: Row(
                                                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                                                         children: [
-                                                                                          Icon(
+                                                                                          const Icon(
                                                                                             Icons.ac_unit_outlined,
                                                                                             size: 20,
                                                                                             color: Colors.black,
                                                                                           ),
-                                                                                          SizedBox(
+                                                                                          const SizedBox(
                                                                                             width: 5,
                                                                                           ),
                                                                                           Text(
@@ -513,7 +492,7 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                 ),
                                                                               ),
                                                                       ),
-                                                                      SizedBox(
+                                                                      const SizedBox(
                                                                         width:
                                                                             15,
                                                                       ),
@@ -534,8 +513,8 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                     Get.back();
                                                                                   },
                                                                                   child: Container(
-                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: [
-                                                                                      const BoxShadow(
+                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: const [
+                                                                                      BoxShadow(
                                                                                         color: Colors.black,
                                                                                         blurRadius: 2,
                                                                                         offset: Offset(2, 2),
@@ -572,9 +551,9 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                             controller.isClicked.value = true;
                                                                                           },
                                                                                           child: AnimatedContainer(
-                                                                                            duration: Duration(milliseconds: 1000),
-                                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppColor.orange, boxShadow: [
-                                                                                              const BoxShadow(
+                                                                                            duration: const Duration(milliseconds: 1000),
+                                                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: AppColor.orange, boxShadow: const [
+                                                                                              BoxShadow(
                                                                                                 color: Colors.black,
                                                                                                 blurRadius: 2,
                                                                                                 offset: Offset(2, 2),
@@ -601,9 +580,9 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                               Get.back();
                                                                                             },
                                                                                             child: AnimatedContainer(
-                                                                                              duration: Duration(milliseconds: 500),
-                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: [
-                                                                                                const BoxShadow(
+                                                                                              duration: const Duration(milliseconds: 500),
+                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black, boxShadow: const [
+                                                                                                BoxShadow(
                                                                                                   color: Colors.black,
                                                                                                   blurRadius: 2,
                                                                                                   offset: Offset(2, 2),
@@ -615,12 +594,12 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                                                                                 child: Row(
                                                                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                                                                   children: [
-                                                                                                    Icon(
+                                                                                                    const Icon(
                                                                                                       Icons.ac_unit_outlined,
                                                                                                       size: 20,
                                                                                                       color: Colors.white,
                                                                                                     ),
-                                                                                                    SizedBox(
+                                                                                                    const SizedBox(
                                                                                                       width: 5,
                                                                                                     ),
                                                                                                     Text(

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names, avoid_web_libraries_in_flutter, unused_local_variable
+// ignore_for_file: unnecessary_overrides, avoid_print, non_constant_identifier_names, avoid_web_libraries_in_flutter, unused_local_variable, invalid_use_of_protected_member
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -65,21 +65,21 @@ class OrganizationPageController extends GetxController {
     } else {
       totalApplicantString.value =
           applications.map((element) => element['application_id']).toList();
-      totalApplicantString.forEach((element) {
+      for (var element in totalApplicantString) {
         totalApplicantRemovedString
             .add(element.replaceAll(RegExp(r'[^0-9]'), ''));
-      });
-      totalApplicantRemovedString.forEach((element) {
+      }
+      for (var element in totalApplicantRemovedString) {
         totalApplicantInt.add(int.tryParse(element) ?? 0);
-      });
+      }
       lastApplicantId.value = totalApplicantInt
           .reduce((value, element) => value > element ? value : element);
     }
   }
 
   Future addApplicant(String event_id, String type) async {
-    EventsPageController _ec = Get.put(EventsPageController());
-    HomePageController _hc = Get.put(HomePageController());
+    EventsPageController ec = Get.put(EventsPageController());
+    HomePageController hc = Get.put(HomePageController());
     await fetchApplicants();
 
     String application_id = 'APP${lastApplicantId + 1}';
@@ -98,7 +98,7 @@ class OrganizationPageController extends GetxController {
           }));
 
       fetchApplicants();
-      _hc.fetchUserEvents();
+      hc.fetchUserEvents();
 
       FastSnack('SUCCESSFULLY REGISTER EVENT AS $type');
     } catch (e) {

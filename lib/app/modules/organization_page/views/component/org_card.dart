@@ -33,7 +33,7 @@ class EventCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               //gambar
-              Container(
+              SizedBox(
                 height: 300,
                 child: Image.network(
                   image,
@@ -41,7 +41,7 @@ class EventCard extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -54,7 +54,7 @@ class EventCard extends StatelessWidget {
                     color: Colors.black),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               //detail

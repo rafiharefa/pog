@@ -39,7 +39,7 @@ class OrgNavBar extends StatelessWidget {
               TextButton(
                   key: UniqueKey(),
                   onPressed: () {
-                    Get.to(CreateEventView());
+                    Get.to(const CreateEventView());
                   },
                   child: Text('CREATE EVENT',
                       style: GoogleFonts.notoSans(

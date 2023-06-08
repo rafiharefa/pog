@@ -53,7 +53,7 @@ class FooterContent1 extends StatelessWidget {
               Gvar.logo1,
               width: 15,
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Image.network(

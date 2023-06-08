@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, non_constant_identifier_names, unused_local_variable, avoid_print
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -7,7 +7,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:http/http.dart' as http;
-import 'package:pog/app/modules/home_page/controllers/home_page_controller.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/profile/controllers/profile_controller.dart';
 
@@ -15,7 +14,7 @@ import '../../../../data/events.dart';
 import '../../component/fast_snack.dart';
 
 class EventsPageController extends GetxController {
-  OrganizationPageController _organizationPageController =
+  final OrganizationPageController _organizationPageController =
       Get.put(OrganizationPageController());
 
   ProfileController profileController = Get.put(ProfileController());
@@ -62,12 +61,12 @@ class EventsPageController extends GetxController {
     } else {
       totalEventString.value =
           events.map((element) => element['event_id']).toList();
-      totalEventString.forEach((element) {
+      for (var element in totalEventString) {
         totalEventRemovedString.add(element.replaceAll(RegExp(r'[^0-9]'), ''));
-      });
-      totalEventRemovedString.forEach((element) {
+      }
+      for (var element in totalEventRemovedString) {
         totalEventInt.add(int.tryParse(element) ?? 0);
-      });
+      }
       lastEventId.value = totalEventInt
           .reduce((value, element) => value > element ? value : element);
     }

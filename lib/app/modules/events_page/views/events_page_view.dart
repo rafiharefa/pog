@@ -1,12 +1,12 @@
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
-import 'package:pog/app/modules/events_page/views/component/events_content.dart';
 import 'package:pog/app/modules/home_page/controllers/home_page_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
@@ -40,7 +40,7 @@ class EventsPageView extends GetView<EventsPageController> {
             future: controller.fetchUnRegisteredEvents(),
             builder: (context, snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : Center(
@@ -70,14 +70,14 @@ class EventsPageView extends GetView<EventsPageController> {
                                                 color: Colors.white)),
                                       ),
                                     )
-                                  : Container(
+                                  : SizedBox(
                                       width: 1200,
                                       height: 500,
                                       child: CustomScrollView(
                                         slivers: <Widget>[
                                           SliverGrid.builder(
                                               gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 3,
                                                 mainAxisSpacing:
                                                     10.0, // Spasi vertikal antara item
@@ -148,7 +148,7 @@ class EventsPageView extends GetView<EventsPageController> {
                                                                             5,
                                                                         spreadRadius:
                                                                             2,
-                                                                        offset: Offset(
+                                                                        offset: const Offset(
                                                                             4,
                                                                             4),
                                                                       ),
@@ -167,7 +167,7 @@ class EventsPageView extends GetView<EventsPageController> {
                                                                         [
                                                                         'event_desc']),
                                                               ),
-                                                              SizedBox(
+                                                              const SizedBox(
                                                                 width: 10,
                                                               ),
                                                             ],
@@ -200,7 +200,7 @@ class EventsPageView extends GetView<EventsPageController> {
       contentPadding: EdgeInsets.zero,
       title: '',
       content: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(Gvar.card_bg_2), fit: BoxFit.cover)),
@@ -209,208 +209,194 @@ class EventsPageView extends GetView<EventsPageController> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //id
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'ID',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.unreg_events[index]['event_id'],
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'ID',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.unreg_events[index]['event_id'],
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             //name
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Event Name',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.unreg_events[index]['event_name'],
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Event Name',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.unreg_events[index]['event_name'],
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //desc
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Description',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.unreg_events[index]['event_desc'],
-                    maxLines: 5,
-                    textAlign: TextAlign.justify,
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Description',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.unreg_events[index]['event_desc'],
+                  maxLines: 5,
+                  textAlign: TextAlign.justify,
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //date
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Date',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    DateFormat.yMMMMd().format(dateTime).toString(),
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Date',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  DateFormat.yMMMMd().format(dateTime).toString(),
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //comittee amount
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Committees',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.unreg_events[index]['committee_amount']
-                        .toString(),
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Committees',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.unreg_events[index]['committee_amount']
+                      .toString(),
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //participant amount
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Participants',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.unreg_events[index]['participant_amount']
-                        .toString(),
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Participants',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.unreg_events[index]['participant_amount']
+                      .toString(),
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //created by
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Created By',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    organization_name,
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Created By',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  organization_name,
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -426,7 +412,7 @@ class EventsPageView extends GetView<EventsPageController> {
                       Obx(
                         () => controller.isClicked.value == false
                             ? AnimatedContainer(
-                                duration: Duration(milliseconds: 500),
+                                duration: const Duration(milliseconds: 500),
                                 width: 130,
                                 height: 30,
                                 color: Colors.transparent,
@@ -442,12 +428,12 @@ class EventsPageView extends GetView<EventsPageController> {
                                     Get.back();
                                   },
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
                                         color: Colors.white,
-                                        boxShadow: [
-                                          const BoxShadow(
+                                        boxShadow: const [
+                                          BoxShadow(
                                             color: Colors.black,
                                             blurRadius: 2,
                                             offset: Offset(2, 2),
@@ -460,12 +446,12 @@ class EventsPageView extends GetView<EventsPageController> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.ac_unit_outlined,
                                             size: 15,
                                             color: Colors.black,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 5,
                                           ),
                                           Text(
@@ -482,7 +468,7 @@ class EventsPageView extends GetView<EventsPageController> {
                                 ),
                               ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
 
@@ -499,12 +485,12 @@ class EventsPageView extends GetView<EventsPageController> {
                                     controller.isClicked.value = true;
                                   },
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 1000),
+                                    duration: const Duration(milliseconds: 1000),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(30),
                                         color: AppColor.orange,
-                                        boxShadow: [
-                                          const BoxShadow(
+                                        boxShadow: const [
+                                          BoxShadow(
                                             color: Colors.black,
                                             blurRadius: 2,
                                             offset: Offset(2, 2),
@@ -537,13 +523,13 @@ class EventsPageView extends GetView<EventsPageController> {
                                       Get.back();
                                     },
                                     child: AnimatedContainer(
-                                      duration: Duration(milliseconds: 500),
+                                      duration: const Duration(milliseconds: 500),
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(30),
                                           color: Colors.black,
-                                          boxShadow: [
-                                            const BoxShadow(
+                                          boxShadow: const [
+                                            BoxShadow(
                                               color: Colors.black,
                                               blurRadius: 2,
                                               offset: Offset(2, 2),
@@ -556,12 +542,12 @@ class EventsPageView extends GetView<EventsPageController> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(
+                                            const Icon(
                                               Icons.ac_unit_outlined,
                                               size: 15,
                                               color: Colors.white,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 5,
                                             ),
                                             Text(

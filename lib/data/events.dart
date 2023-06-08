@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class Event {
   String event_id;
   String event_name;

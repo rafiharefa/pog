@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 import 'package:pog/app/modules/component/footer.dart';
-import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/data/app_color.dart';
 
 import '../../../../data/variable.dart';
@@ -46,7 +45,7 @@ class RegisterView extends GetView<AuthController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 Container(

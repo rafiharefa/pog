@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:pog/data/events.dart';
 

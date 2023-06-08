@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/landing_page/controllers/landing_controller.dart';
 import 'package:pog/data/app_color.dart';
 
-import '../../../../../data/events.dart';
 import 'landing_card.dart';
 
 class Content2 extends GetView<LandingController> {
@@ -57,7 +56,7 @@ class Content2 extends GetView<LandingController> {
                     future: controller.fetchEvent(),
                     builder: (context, snapshot) =>
                         snapshot.connectionState == ConnectionState.waiting
-                            ? Center(child: CircularProgressIndicator())
+                            ? const Center(child: CircularProgressIndicator())
                             : Obx(
                                 () => Carousel3d(
                                     displayRadius: 1,
