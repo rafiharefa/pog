@@ -7,6 +7,7 @@ import 'package:pog/app/modules/organization_page/views/author.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
+import 'package:pog/app/modules/organization_page/views/organization_page_view.dart';
 import 'package:pog/data/app_color.dart';
 
 import '../../../../data/variable.dart';
@@ -298,12 +299,6 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
                               if (controller.formKey.currentState!.isValid) {
                                 controller.formKey.currentState!.save();
                                 controller.createOrganization();
-
-                                controller
-                                    .selectOrganization(
-                                        controller.temp_id.value)
-                                    .then((value) =>
-                                        Get.toNamed('/organization-page'));
                               } else {
                                 controller.thisOrganization.clear();
                               }

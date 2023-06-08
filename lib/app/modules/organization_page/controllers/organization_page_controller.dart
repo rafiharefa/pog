@@ -307,7 +307,11 @@ class OrganizationPageController extends GetxController {
           }));
 
       if (response.statusCode == 200) {
-        fetchOrganization().then((value) => FastSnack('Organization Created!'));
+        await selectOrganization(id);
+        Get.toNamed('/organization-page');
+
+        FastSnack('Organization Created!');
+
         isAuthor.value = true;
       }
     } catch (e) {
