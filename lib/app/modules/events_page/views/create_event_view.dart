@@ -1,12 +1,12 @@
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
-import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
@@ -28,7 +28,7 @@ class CreateEventView extends GetView {
         extendBodyBehindAppBar: true,
         backgroundColor: AppColor.grey,
         appBar: AppBar(
-          title: OrgNavBar(),
+          title: const OrgNavBar(),
           centerTitle: true,
         ),
         body: Container(
@@ -40,11 +40,11 @@ class CreateEventView extends GetView {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                WhiteContainer(),
+                const WhiteContainer(),
                 Container(
                   width: 600,
                   height: 800,
-                  margin: EdgeInsets.symmetric(vertical: 50),
+                  margin: const EdgeInsets.symmetric(vertical: 50),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: const [
@@ -59,7 +59,7 @@ class CreateEventView extends GetView {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
 
@@ -68,7 +68,7 @@ class CreateEventView extends GetView {
                                 fontSize: 40,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w700)),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
 
@@ -86,14 +86,14 @@ class CreateEventView extends GetView {
                                     border: Border.all(
                                         width: 2, color: Colors.black),
                                     color: Colors.white,
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                           offset: Offset(4, 4),
                                           color: Colors.black)
                                     ]),
                                 child: Obx(() => controller
                                         .selectedFile.value.isEmpty
-                                    ? Center(
+                                    ? const Center(
                                         child: Icon(Icons.add_a_photo_outlined),
                                       )
                                     : Image.memory(
@@ -103,7 +103,7 @@ class CreateEventView extends GetView {
                           ),
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
 
@@ -217,12 +217,28 @@ class CreateEventView extends GetView {
 
                         ElevatedButton(
                             onPressed: () async {
-                              await formKey.currentState!.saveAndValidate();
-                              final FK = formKey.currentState!.value;
-                              controller.createEvent(FK['name'], FK['desc'],
-                                  FK['event_date'].toString());
+                              OrganizationPageController
+                                  organizationPageController =
+                                  Get.put(OrganizationPageController());
 
-                              Get.back();
+                              formKey.currentState!.validate();
+                              if (formKey.currentState!.isValid) {
+                                formKey.currentState!.save();
+                                final FK = formKey.currentState!.value;
+                                controller.createEvent(FK['name'], FK['desc'],
+                                    FK['event_date'].toString());
+                                await organizationPageController
+                                    .fetchOrganization();
+                                await organizationPageController
+                                    .selectOrganization(
+                                        organizationPageController
+                                            .thisOrganization
+                                            .first
+                                            .organization_id);
+                                await organizationPageController
+                                    .fetchOrganizationEvents();
+                                await Get.offNamed('/organization-page');
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.black,
@@ -235,14 +251,14 @@ class CreateEventView extends GetView {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20))),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                       ],
                     ),
                   ),
                 ),
-                Footer(),
+                const Footer(),
               ],
             ),
           ),

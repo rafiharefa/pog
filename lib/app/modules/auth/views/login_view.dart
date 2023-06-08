@@ -7,7 +7,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
-import 'package:pog/app/modules/component/white_container.dart';
 
 import '../../../../data/app_color.dart';
 import '../../../../data/variable.dart';
@@ -49,7 +48,7 @@ class LoginView extends GetView<AuthController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
                 Container(

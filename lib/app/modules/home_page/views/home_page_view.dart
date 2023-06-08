@@ -1,9 +1,10 @@
+// ignore_for_file: unnecessary_import, depend_on_referenced_packages, non_constant_identifier_names
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pog/app/modules/auth/controllers/auth_controller.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -13,14 +14,13 @@ import 'package:pog/data/variable.dart';
 import '../../organization_page/views/component/org_card.dart';
 import '../controllers/home_page_controller.dart';
 import 'component/detail_button.dart';
-import 'component/search_bar.dart';
 import 'package:intl/intl.dart';
 
 class HomePageView extends GetView<HomePageController> {
   const HomePageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    ScrollController _scrollController = ScrollController();
+    ScrollController scrollController = ScrollController();
     HomePageController controller = Get.put(HomePageController());
 
     return Scaffold(
@@ -41,7 +41,7 @@ class HomePageView extends GetView<HomePageController> {
             future: controller.fetchUserEvents(),
             builder: (context, snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : Center(
@@ -76,21 +76,21 @@ class HomePageView extends GetView<HomePageController> {
                                   : Container(
                                       width: 1095,
                                       height: 500,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           border: Border.symmetric(
                                               vertical: BorderSide(
                                                   width: 2,
                                                   color: Colors.black,
                                                   strokeAlign: BorderSide
                                                       .strokeAlignInside))),
-                                      child: Container(
+                                      child: SizedBox(
                                         width: double.infinity,
                                         height: 500,
                                         child: Obx(
                                           () => Scrollbar(
-                                            controller: _scrollController,
+                                            controller: scrollController,
                                             child: ListView.builder(
-                                              controller: _scrollController,
+                                              controller: scrollController,
                                               scrollDirection: Axis.horizontal,
                                               itemCount:
                                                   controller.userEvents.length,
@@ -152,7 +152,7 @@ class HomePageView extends GetView<HomePageController> {
                                                                   spreadRadius:
                                                                       2,
                                                                   offset:
-                                                                      Offset(
+                                                                      const Offset(
                                                                           4, 4),
                                                                 ),
                                                               ]),
@@ -170,7 +170,7 @@ class HomePageView extends GetView<HomePageController> {
                                                                       index][
                                                                   'event_desc']),
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           width: 10,
                                                         ),
                                                       ],
@@ -207,7 +207,7 @@ class HomePageView extends GetView<HomePageController> {
       contentPadding: EdgeInsets.zero,
       title: '',
       content: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(Gvar.card_bg_2), fit: BoxFit.cover)),
@@ -216,123 +216,116 @@ class HomePageView extends GetView<HomePageController> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //id
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'ID',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.userEvents[index]['event_id'],
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'ID',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.userEvents[index]['event_id'],
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             //name
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Event Name',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.userEvents[index]['event_name'],
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Event Name',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.userEvents[index]['event_name'],
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //desc
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Description',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.userEvents[index]['event_desc'],
-                    maxLines: 5,
-                    textAlign: TextAlign.justify,
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Description',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.userEvents[index]['event_desc'],
+                  maxLines: 5,
+                  textAlign: TextAlign.justify,
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //date
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Date',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    DateFormat.yMMMMd().format(dateTime).toString(),
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Date',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  DateFormat.yMMMMd().format(dateTime).toString(),
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //comittee amount
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,7 +337,7 @@ class HomePageView extends GetView<HomePageController> {
                         color: Colors.black,
                         fontSize: 20),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -357,66 +350,62 @@ class HomePageView extends GetView<HomePageController> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //participant amount
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Participants',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    controller.userEvents[index]['participant_amount']
-                        .toString(),
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Participants',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  controller.userEvents[index]['participant_amount']
+                      .toString(),
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             //created by
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Created By',
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    organization_name,
-                    style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                        fontSize: 15),
-                  )
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Created By',
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  organization_name,
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      fontSize: 15),
+                )
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(

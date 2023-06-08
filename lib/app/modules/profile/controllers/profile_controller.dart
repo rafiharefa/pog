@@ -15,6 +15,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../data/persons.dart';
+import '../../../../data/variable.dart';
 import '../../component/fast_snack.dart';
 
 class ProfileController extends GetxController {
@@ -66,8 +67,7 @@ class ProfileController extends GetxController {
   Future fetchUser() async {
     final email = user.email;
 
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/users/$email'));
+    final response = await http.get(Uri.parse('${Gvar.url}/users/$email'));
 
     userDetail.value = jsonDecode(response.body);
 
@@ -95,7 +95,7 @@ class ProfileController extends GetxController {
     String sex = formKey.currentState!.value['sex'];
 
     final response = await http.put(
-      Uri.parse('https://api.pog.otech.id/users/updateUser/$user_id'),
+      Uri.parse('${Gvar.url}/users/updateUser/$user_id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8'
       },

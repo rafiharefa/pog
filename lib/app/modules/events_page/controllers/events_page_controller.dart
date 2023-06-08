@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, non_constant_identifier_names, unused_local_variable, avoid_print
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -7,15 +7,15 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:http/http.dart' as http;
-import 'package:pog/app/modules/home_page/controllers/home_page_controller.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/profile/controllers/profile_controller.dart';
 
 import '../../../../data/events.dart';
+import '../../../../data/variable.dart';
 import '../../component/fast_snack.dart';
 
 class EventsPageController extends GetxController {
-  OrganizationPageController _organizationPageController =
+  final OrganizationPageController _organizationPageController =
       Get.put(OrganizationPageController());
 
   ProfileController profileController = Get.put(ProfileController());
@@ -29,8 +29,8 @@ class EventsPageController extends GetxController {
   Future fetchUnRegisteredEvents() async {
     String user_id = profileController.thisUser.first.user_id;
 
-    final response = await http.get(Uri.parse(
-        'https://api.pog.otech.id/applications/unRegistered/$user_id'));
+    final response = await http
+        .get(Uri.parse('${Gvar.url}/applications/unRegistered/$user_id'));
 
     unreg_events.value = jsonDecode(response.body);
   }
@@ -47,8 +47,7 @@ class EventsPageController extends GetxController {
   RxInt lastEventId = 0.obs;
 
   Future fetchEvent() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/events'));
+    final response = await http.get(Uri.parse('${Gvar.url}/events'));
 
     events.value = jsonDecode(response.body);
 
@@ -62,12 +61,12 @@ class EventsPageController extends GetxController {
     } else {
       totalEventString.value =
           events.map((element) => element['event_id']).toList();
-      totalEventString.forEach((element) {
+      for (var element in totalEventString) {
         totalEventRemovedString.add(element.replaceAll(RegExp(r'[^0-9]'), ''));
-      });
-      totalEventRemovedString.forEach((element) {
+      }
+      for (var element in totalEventRemovedString) {
         totalEventInt.add(int.tryParse(element) ?? 0);
-      });
+      }
       lastEventId.value = totalEventInt
           .reduce((value, element) => value > element ? value : element);
     }
@@ -90,19 +89,19 @@ class EventsPageController extends GetxController {
           'https://firebasestorage.googleapis.com/v0/b/piorganizer.appspot.com/o/assets%2Fdummy_card.jpg?alt=media&token=f1f5986a-a3da-4b8f-a450-75e8533f62af&_gl=1*1wpnn9p*_ga*MTQ1NjYxNTMxMC4xNjY0MTI0ODU3*_ga_CW55HF8NVT*MTY4NjEyODUzOC4zNy4xLjE2ODYxMzIwMzUuMC4wLjA.';
     }
 
-    final response = await http.post(
-        Uri.parse('https://api.pog.otech.id/events/createEvent'),
-        headers: {'Content-Type': 'application/json; charset=UTF-8'},
-        body: jsonEncode({
-          'event_id': event_id,
-          'event_name': event_name,
-          'event_desc': event_desc,
-          'event_date': event_date,
-          'committee_amount': '0',
-          'participant_amount': '0',
-          'image_url': imageUrl.value,
-          'organization_id': organization_id
-        }));
+    final response =
+        await http.post(Uri.parse('${Gvar.url}/events/createEvent'),
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: jsonEncode({
+              'event_id': event_id,
+              'event_name': event_name,
+              'event_desc': event_desc,
+              'event_date': event_date,
+              'committee_amount': '0',
+              'participant_amount': '0',
+              'image_url': imageUrl.value,
+              'organization_id': organization_id
+            }));
 
     FastSnack('EVENT CREATED');
   }

@@ -39,7 +39,7 @@ class OrgNavBar extends StatelessWidget {
               TextButton(
                   key: UniqueKey(),
                   onPressed: () {
-                    Get.to(CreateEventView());
+                    Get.off(const CreateEventView());
                   },
                   child: Text('CREATE EVENT',
                       style: GoogleFonts.notoSans(
@@ -49,8 +49,12 @@ class OrgNavBar extends StatelessWidget {
               const SizedBox(width: 20),
               TextButton(
                   key: UniqueKey(),
-                  onPressed: () {
-                    Get.to(const EditOrganization());
+                  onPressed: () async {
+                    Get.off(const EditOrganization());
+                    await controller.fetchOrganization();
+                    await controller
+                        .selectOrganization(organization.organization_id);
+                    await controller.fetchOrganizationEvents();
                   },
                   child: Text('EDIT ORGANIZATION',
                       style: GoogleFonts.notoSans(

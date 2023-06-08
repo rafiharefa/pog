@@ -34,14 +34,14 @@ class LandingCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               //gambar
-              Container(
+              SizedBox(
                 height: 300,
                 child: Image.network(
                   image,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               //title
@@ -52,7 +52,7 @@ class LandingCard extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: Colors.black),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               //detail

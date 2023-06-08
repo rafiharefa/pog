@@ -3,9 +3,10 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:pog/app/modules/events_page/controllers/events_page_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:pog/data/events.dart';
+
+import '../../../../data/variable.dart';
 
 class LandingController extends GetxController {
   var center = 0.obs;
@@ -14,8 +15,7 @@ class LandingController extends GetxController {
   RxList<Event> thisEvent = <Event>[].obs;
 
   Future fetchEvent() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/events'));
+    final response = await http.get(Uri.parse('${Gvar.url}/events'));
 
     events.value = jsonDecode(response.body);
 

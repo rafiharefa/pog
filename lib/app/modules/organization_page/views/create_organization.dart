@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/app/modules/organization_page/views/author.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pog/app/modules/component/footer.dart';
-import 'package:pog/app/modules/organization_page/views/organization_page_view.dart';
 import 'package:pog/data/app_color.dart';
 
 import '../../../../data/variable.dart';

@@ -9,7 +9,6 @@ import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/controllers/organization_page_controller.dart';
 import 'package:pog/data/app_color.dart';
-import 'package:pog/data/persons.dart';
 import 'package:pog/data/variable.dart';
 
 class MyOrganizationsView extends GetView {
@@ -27,7 +26,7 @@ class MyOrganizationsView extends GetView {
         future: controller.fetchMemberOrganizations(),
         builder: (context, snapshot) {
           return snapshot.connectionState == ConnectionState.waiting
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : Scaffold(
@@ -71,7 +70,7 @@ class MyOrganizationsView extends GetView {
                                       ))),
                                 )
                               : Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Colors.transparent,
                                       border: Border.symmetric(
                                           horizontal: BorderSide(
@@ -109,7 +108,7 @@ class MyOrganizationsView extends GetView {
                                                         .withOpacity(.3),
                                                     blurRadius: 5,
                                                     spreadRadius: 2,
-                                                    offset: Offset(4, 4),
+                                                    offset: const Offset(4, 4),
                                                   ),
                                                 ]),
                                             child: Row(
