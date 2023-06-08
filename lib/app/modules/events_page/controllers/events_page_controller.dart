@@ -29,8 +29,8 @@ class EventsPageController extends GetxController {
   Future fetchUnRegisteredEvents() async {
     String user_id = profileController.thisUser.first.user_id;
 
-    final response = await http.get(
-        Uri.parse('http://localhost:8000/applications/unRegistered/$user_id'));
+    final response = await http.get(Uri.parse(
+        'https://api.pog.otech.id/applications/unRegistered/$user_id'));
 
     unreg_events.value = jsonDecode(response.body);
   }
@@ -47,7 +47,8 @@ class EventsPageController extends GetxController {
   RxInt lastEventId = 0.obs;
 
   Future fetchEvent() async {
-    final response = await http.get(Uri.parse('http://localhost:8000/events'));
+    final response =
+        await http.get(Uri.parse('https://api.pog.otech.id/events'));
 
     events.value = jsonDecode(response.body);
 
@@ -89,19 +90,19 @@ class EventsPageController extends GetxController {
           'https://firebasestorage.googleapis.com/v0/b/piorganizer.appspot.com/o/assets%2Fdummy_card.jpg?alt=media&token=f1f5986a-a3da-4b8f-a450-75e8533f62af&_gl=1*1wpnn9p*_ga*MTQ1NjYxNTMxMC4xNjY0MTI0ODU3*_ga_CW55HF8NVT*MTY4NjEyODUzOC4zNy4xLjE2ODYxMzIwMzUuMC4wLjA.';
     }
 
-    final response =
-        await http.post(Uri.parse('http://localhost:8000/events/createEvent'),
-            headers: {'Content-Type': 'application/json; charset=UTF-8'},
-            body: jsonEncode({
-              'event_id': event_id,
-              'event_name': event_name,
-              'event_desc': event_desc,
-              'event_date': event_date,
-              'committee_amount': '0',
-              'participant_amount': '0',
-              'image_url': imageUrl.value,
-              'organization_id': organization_id
-            }));
+    final response = await http.post(
+        Uri.parse('https://api.pog.otech.id/events/createEvent'),
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode({
+          'event_id': event_id,
+          'event_name': event_name,
+          'event_desc': event_desc,
+          'event_date': event_date,
+          'committee_amount': '0',
+          'participant_amount': '0',
+          'image_url': imageUrl.value,
+          'organization_id': organization_id
+        }));
 
     FastSnack('EVENT CREATED');
   }

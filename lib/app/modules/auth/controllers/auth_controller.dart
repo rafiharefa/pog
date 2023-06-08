@@ -15,7 +15,8 @@ class AuthController extends GetxController {
   RxList users = [].obs;
 
   Future fetchUsers() async {
-    final response = await http.get(Uri.parse('http://localhost:8000/users'));
+    final response =
+        await http.get(Uri.parse('https://api.pog.otech.id/users'));
     users.value = jsonDecode(response.body);
   }
 
@@ -34,7 +35,7 @@ class AuthController extends GetxController {
 
     try {
       final response = await http.post(
-          Uri.parse('http://localhost:8000/users/createUser'),
+          Uri.parse('https://api.pog.otech.id/users/createUser'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },
