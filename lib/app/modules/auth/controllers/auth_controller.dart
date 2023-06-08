@@ -9,14 +9,15 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../data/variable.dart';
+
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
 
   RxList users = [].obs;
 
   Future fetchUsers() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/users'));
+    final response = await http.get(Uri.parse('${Gvar.url}/users'));
     users.value = jsonDecode(response.body);
   }
 
@@ -35,7 +36,7 @@ class AuthController extends GetxController {
 
     try {
       final response = await http.post(
-          Uri.parse('https://api.pog.otech.id/users/createUser'),
+          Uri.parse('${Gvar.url}/users/createUser'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
           },

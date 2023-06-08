@@ -16,21 +16,22 @@ import 'package:pog/data/applications.dart';
 
 import 'package:pog/data/persons.dart';
 import '../../../../data/organizations.dart';
+import '../../../../data/variable.dart';
 import '../../component/fast_snack.dart';
 
 class OrganizationPageController extends GetxController {
   var center = 0.obs;
 
   Future deleteApplicant(String event_id) async {
-    final response = await http.delete(Uri.parse(
-        'https://api.pog.otech.id/applications/deleteApplicant/$event_id'));
+    final response = await http.delete(
+        Uri.parse('${Gvar.url}/applications/deleteApplicant/$event_id'));
   }
 
   void deleteEvent(String event_id) async {
     await deleteApplicant(event_id);
 
-    final response = await http.delete(
-        Uri.parse('https://api.pog.otech.id/events/deleteEvent/$event_id'));
+    final response = await http
+        .delete(Uri.parse('${Gvar.url}/events/deleteEvent/$event_id'));
 
     FastSnack('SUCCESSFULLY DELETE EVENT $event_id');
     applications.clear();
@@ -50,8 +51,7 @@ class OrganizationPageController extends GetxController {
   RxInt lastApplicantId = 0.obs;
 
   Future fetchApplicants() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/applications'));
+    final response = await http.get(Uri.parse('${Gvar.url}/applications'));
 
     applications.value = await jsonDecode(response.body);
 
@@ -87,15 +87,15 @@ class OrganizationPageController extends GetxController {
     Person person = thisUser.first;
 
     try {
-      final response = await http.post(
-          Uri.parse('https://api.pog.otech.id/applications/insertApplicant'),
-          headers: {'Content-Type': 'application/json; charset=UTF-8'},
-          body: jsonEncode({
-            'application_id': application_id,
-            'application_type': type,
-            'user_id': person.user_id,
-            'event_id': event_id,
-          }));
+      final response =
+          await http.post(Uri.parse('${Gvar.url}/applications/insertApplicant'),
+              headers: {'Content-Type': 'application/json; charset=UTF-8'},
+              body: jsonEncode({
+                'application_id': application_id,
+                'application_type': type,
+                'user_id': person.user_id,
+                'event_id': event_id,
+              }));
 
       fetchApplicants();
       hc.fetchUserEvents();
@@ -120,8 +120,7 @@ class OrganizationPageController extends GetxController {
     }
 
     final response = await http.put(
-        Uri.parse(
-            'https://api.pog.otech.id/organizations/updateOrganization/$id'),
+        Uri.parse('${Gvar.url}/organizations/updateOrganization/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8'
         },
@@ -143,8 +142,8 @@ class OrganizationPageController extends GetxController {
 
     String organization_id = organization.organization_id;
 
-    final response = await http
-        .get(Uri.parse('https://api.pog.otech.id/events/$organization_id'));
+    final response =
+        await http.get(Uri.parse('${Gvar.url}/events/$organization_id'));
 
     organizationEvents.value = jsonDecode(response.body);
   }
@@ -211,8 +210,7 @@ class OrganizationPageController extends GetxController {
   Future fetchUser() async {
     final email = user.email;
 
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/users/$email'));
+    final response = await http.get(Uri.parse('${Gvar.url}/users/$email'));
 
     userDetail.value = jsonDecode(response.body);
 
@@ -230,15 +228,14 @@ class OrganizationPageController extends GetxController {
     await fetchUser();
     String user_id;
     user_id = thisUser.first.user_id;
-    final response = await http.get(
-        Uri.parse('https://api.pog.otech.id/members/organizations/$user_id'));
+    final response =
+        await http.get(Uri.parse('${Gvar.url}/members/organizations/$user_id'));
 
     memberOrganizations.value = jsonDecode(response.body);
   }
 
   Future fetchMembers() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/members'));
+    final response = await http.get(Uri.parse('${Gvar.url}/members'));
 
     members.value = jsonDecode(response.body);
   }
@@ -248,14 +245,14 @@ class OrganizationPageController extends GetxController {
 
     String member_id = 'MEM${members.length + 1}';
 
-    final response = await http.post(
-        Uri.parse('https://api.pog.otech.id/members/insertMember'),
-        headers: {'Content-Type': 'application/json; charset=UTF-8'},
-        body: jsonEncode({
-          'member_id': member_id,
-          'user_id': person.user_id,
-          'organization_id': organization_id
-        }));
+    final response =
+        await http.post(Uri.parse('${Gvar.url}/members/insertMember'),
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: jsonEncode({
+              'member_id': member_id,
+              'user_id': person.user_id,
+              'organization_id': organization_id
+            }));
 
     fetchMembers().then((value) => FastSnack('Successfully Joined'));
     fetchMemberOrganizations();
@@ -269,8 +266,7 @@ class OrganizationPageController extends GetxController {
   RxBool isAuthor = false.obs;
 
   Future fetchOrganization() async {
-    final response =
-        await http.get(Uri.parse('https://api.pog.otech.id/organizations'));
+    final response = await http.get(Uri.parse('${Gvar.url}/organizations'));
 
     organizations.value = jsonDecode(response.body);
   }
@@ -292,8 +288,7 @@ class OrganizationPageController extends GetxController {
 
     try {
       final response = await http.post(
-          Uri.parse(
-              'https://api.pog.otech.id/organizations/createOrganization'),
+          Uri.parse('${Gvar.url}/organizations/createOrganization'),
           headers: {'Content-Type': 'application/json; charset=UTF-8'},
           body: jsonEncode({
             'organization_id': id,
@@ -322,8 +317,8 @@ class OrganizationPageController extends GetxController {
   RxList<Organization> thisOrganization = <Organization>[].obs;
 
   Future selectOrganization(String organization_id) async {
-    final response = await http.get(
-        Uri.parse('https://api.pog.otech.id/organizations/$organization_id'));
+    final response =
+        await http.get(Uri.parse('${Gvar.url}/organizations/$organization_id'));
 
     organizationDetail.value = jsonDecode(response.body);
 
