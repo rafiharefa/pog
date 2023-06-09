@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/component/fast_snack.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
@@ -26,14 +27,20 @@ class MyOrganizationsView extends GetView {
         future: controller.fetchMemberOrganizations(),
         builder: (context, snapshot) {
           return snapshot.connectionState == ConnectionState.waiting
-              ? const Center(
-                  child: CircularProgressIndicator(),
+              ? Center(
+                  child: Lottie.network(
+                      'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'),
                 )
               : Scaffold(
                   extendBodyBehindAppBar: true,
                   backgroundColor: AppColor.grey,
                   appBar: AppBar(
-                    title: const NavBar(),
+                    automaticallyImplyLeading: false,
+                    title: NavBar(),
+                    flexibleSpace: FlexibleSpaceBar(
+                      background:
+                          Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+                    ),
                   ),
                   body: Container(
                     width: double.infinity,
@@ -63,11 +70,8 @@ class MyOrganizationsView extends GetView {
                                       width: double.infinity,
                                       height: 500,
                                       child: Center(
-                                          child: Text(
-                                        'YOU HAVE NOT JOINED ANY ORGANIZATIONS',
-                                        style: GoogleFonts.bebasNeue(
-                                            fontSize: 30, color: Colors.white),
-                                      ))),
+                                          child: Lottie.network(
+                                              'https://assets1.lottiefiles.com/private_files/lf30_oqpbtola.json'))),
                                 )
                               : Container(
                                   decoration: const BoxDecoration(

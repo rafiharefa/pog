@@ -29,6 +29,9 @@ class CreateEventView extends GetView {
         backgroundColor: AppColor.grey,
         appBar: AppBar(
           title: const OrgNavBar(),
+          flexibleSpace: FlexibleSpaceBar(
+            background: Image.network(Gvar.card_bg, fit: BoxFit.cover),
+          ),
           centerTitle: true,
         ),
         body: Container(
@@ -188,7 +191,19 @@ class CreateEventView extends GetView {
                           child: FormBuilderDateTimePicker(
                               name: 'event_date',
                               inputType: InputType.date,
-                              validator: FormBuilderValidators.required(),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                                (value) {
+                                  final selectedDate = (value as DateTime)
+                                      .millisecondsSinceEpoch;
+                                  final currentDate =
+                                      DateTime.now().millisecondsSinceEpoch;
+                                  if (selectedDate < currentDate) {
+                                    return 'Date must be later than or equal to today';
+                                  }
+                                  return null;
+                                }
+                              ]),
                               format: DateFormat('yyyy-MM-dd'),
                               decoration: InputDecoration(
                                 labelText: 'Event Date',

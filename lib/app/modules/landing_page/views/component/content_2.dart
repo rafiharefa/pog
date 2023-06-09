@@ -2,6 +2,7 @@ import 'package:carousel_widget_3d/carousel_widget_3d.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/landing_page/controllers/landing_controller.dart';
 import 'package:pog/data/app_color.dart';
 
@@ -54,24 +55,26 @@ class Content2 extends GetView<LandingController> {
                   height: 600,
                   child: FutureBuilder(
                     future: controller.fetchEvent(),
-                    builder: (context, snapshot) =>
-                        snapshot.connectionState == ConnectionState.waiting
-                            ? const Center(child: CircularProgressIndicator())
-                            : Obx(
-                                () => Carousel3d(
-                                    displayRadius: 1,
-                                    center: controller.center.value,
-                                    items: List.generate(
-                                        controller.events.length, (index) {
-                                      return LandingCard(
-                                          image: controller.events[index]
-                                              ['image_url'],
-                                          title: controller.events[index]
-                                              ['event_name'],
-                                          detail: controller.events[index]
-                                              ['event_desc']);
-                                    })),
-                              ),
+                    builder: (context, snapshot) => snapshot.connectionState ==
+                            ConnectionState.waiting
+                        ? Center(
+                            child: Lottie.network(
+                                'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'))
+                        : Obx(
+                            () => Carousel3d(
+                                displayRadius: 1,
+                                center: controller.center.value,
+                                items: List.generate(controller.events.length,
+                                    (index) {
+                                  return LandingCard(
+                                      image: controller.events[index]
+                                          ['image_url'],
+                                      title: controller.events[index]
+                                          ['event_name'],
+                                      detail: controller.events[index]
+                                          ['event_desc']);
+                                })),
+                          ),
                   ),
                 ),
                 InkWell(

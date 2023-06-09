@@ -21,7 +21,10 @@ class LandingView extends GetView<LandingController> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
-        title: const LandingNavbar(),
+        title: LandingNavbar(),
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
       ),
       body: Container(
         width: double.infinity,

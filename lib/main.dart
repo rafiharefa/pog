@@ -22,7 +22,7 @@ void main() async {
       transitionDuration: const Duration(seconds: 1),
       theme: ThemeData(
           appBarTheme: AppBarTheme(
-              backgroundColor: Colors.white.withOpacity(.5),
+              backgroundColor: Colors.white,
               iconTheme: const IconThemeData(color: Colors.black),
               elevation: 0,
               toolbarHeight: 100),

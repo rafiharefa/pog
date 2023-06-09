@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -25,6 +26,9 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
       backgroundColor: AppColor.grey,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
         title: controller.isAuthor.value == true
             ? const OrgNavBar()
             : const NavBar(),
@@ -79,7 +83,8 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                               radius: 100,
                               // ignore: unrelated_type_equality_checks
                               child: controller.isLoading == true
-                                  ? const CircularProgressIndicator()
+                                  ? Lottie.network(
+                                      'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json')
                                   : null,
                             ),
                           ),
@@ -141,20 +146,16 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
                                         controller.thisOrganization.first;
                                     return snapshot.connectionState ==
                                             ConnectionState.waiting
-                                        ? const Center(
-                                            child: CircularProgressIndicator())
+                                        ? Center(
+                                            child: Lottie.network(
+                                                'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'))
                                         : controller.organizationEvents.isEmpty
                                             ? SizedBox(
                                                 width: double.infinity,
                                                 height: 100,
                                                 child: Center(
-                                                  child: Text(
-                                                    'NO EVENTS FROM THIS ORGANIZATION',
-                                                    style:
-                                                        GoogleFonts.bebasNeue(
-                                                            color: Colors.black,
-                                                            fontSize: 30),
-                                                  ),
+                                                  child: Lottie.network(
+                                                      'https://assets1.lottiefiles.com/private_files/lf30_oqpbtola.json'),
                                                 ),
                                               )
                                             : Obx(() => Carousel3d(

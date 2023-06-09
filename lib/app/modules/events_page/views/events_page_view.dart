@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -28,6 +29,9 @@ class EventsPageView extends GetView<EventsPageController> {
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         title: const NavBar(),
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: Container(
@@ -40,8 +44,9 @@ class EventsPageView extends GetView<EventsPageController> {
             future: controller.fetchUnRegisteredEvents(),
             builder: (context, snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Center(
+                      child: Lottie.network(
+                          'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'),
                     )
                   : Center(
                       child: SingleChildScrollView(
@@ -66,10 +71,8 @@ class EventsPageView extends GetView<EventsPageController> {
                                       width: double.infinity,
                                       height: 500,
                                       child: Center(
-                                        child: Text('NO EVENTS ARE AVAILABLE',
-                                            style: GoogleFonts.bebasNeue(
-                                                fontSize: 30,
-                                                color: Colors.white)),
+                                        child: Lottie.network(
+                                            'https://assets1.lottiefiles.com/private_files/lf30_oqpbtola.json'),
                                       ),
                                     )
                                   : SizedBox(

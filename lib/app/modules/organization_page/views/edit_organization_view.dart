@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/white_container.dart';
 import 'package:pog/app/modules/organization_page/views/component/org_navbar.dart';
@@ -28,6 +29,9 @@ class EditOrganization extends GetView {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const OrgNavBar(),
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
         automaticallyImplyLeading: false,
       ),
       body: Container(
@@ -88,7 +92,8 @@ class EditOrganization extends GetView {
                                             'https://firebasestorage.googleapis.com/v0/b/piorganizer.appspot.com/o/assets%2Fdummy_card.jpg?alt=media&token=f1f5986a-a3da-4b8f-a450-75e8533f62af&_gl=1*1wpnn9p*_ga*MTQ1NjYxNTMxMC4xNjY0MTI0ODU3*_ga_CW55HF8NVT*MTY4NjEyODUzOC4zNy4xLjE2ODYxMzIwMzUuMC4wLjA.'),
                                     radius: 100,
                                     child: controller.isLoading == true
-                                        ? const CircularProgressIndicator()
+                                        ? Lottie.network(
+                                            'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json')
                                         : null,
                                   ),
                                 ),

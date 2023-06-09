@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pog/app/modules/component/footer.dart';
 import 'package:pog/app/modules/component/nav_bar.dart';
 import 'package:pog/app/modules/component/white_container.dart';
@@ -29,6 +30,9 @@ class HomePageView extends GetView<HomePageController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const NavBar(),
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
       ),
       body: Container(
         width: double.infinity,
@@ -41,8 +45,9 @@ class HomePageView extends GetView<HomePageController> {
             future: controller.fetchUserEvents(),
             builder: (context, snapshot) {
               return snapshot.connectionState == ConnectionState.waiting
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Center(
+                      child: Lottie.network(
+                          'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'),
                     )
                   : Center(
                       child: SingleChildScrollView(
@@ -68,11 +73,8 @@ class HomePageView extends GetView<HomePageController> {
                                       width: double.infinity,
                                       height: 500,
                                       child: Center(
-                                          child: Text(
-                                        'NO EVENTS ARE REGISTERED!',
-                                        style: GoogleFonts.bebasNeue(
-                                            fontSize: 30, color: Colors.white),
-                                      )))
+                                          child: Lottie.network(
+                                              'https://assets1.lottiefiles.com/private_files/lf30_oqpbtola.json')))
                                   : Container(
                                       width: 1095,
                                       height: 500,
@@ -369,8 +371,7 @@ class HomePageView extends GetView<HomePageController> {
                   height: 10,
                 ),
                 Text(
-                  controller.userEvents[index]['participant_amount']
-                      .toString(),
+                  controller.userEvents[index]['participant_amount'].toString(),
                   style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
