@@ -44,6 +44,7 @@ class ProfileView extends GetView<ProfileController> {
                     width: double.infinity,
                     height: double.infinity,
                     decoration: BoxDecoration(
+                        color: Colors.white,
                         image: DecorationImage(
                             image: NetworkImage(Gvar.bg), fit: BoxFit.cover)),
                     child: Center(
