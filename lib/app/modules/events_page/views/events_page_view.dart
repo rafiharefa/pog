@@ -25,7 +25,6 @@ class EventsPageView extends GetView<EventsPageController> {
     OrganizationPageController oc = Get.put(OrganizationPageController());
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         title: const NavBar(),
@@ -53,7 +52,6 @@ class EventsPageView extends GetView<EventsPageController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const WhiteContainer(),
                             const SizedBox(height: 30),
                             Text(
                               'AVAILABLE EVENTS FOR YOU',

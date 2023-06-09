@@ -26,7 +26,6 @@ class EditOrganization extends GetView {
     GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
     return Scaffold(
       backgroundColor: AppColor.grey,
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const OrgNavBar(),
         flexibleSpace: FlexibleSpaceBar(
@@ -44,7 +43,6 @@ class EditOrganization extends GetView {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const WhiteContainer(),
               Container(
                   width: double.infinity,
                   margin:

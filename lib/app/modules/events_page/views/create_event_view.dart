@@ -25,12 +25,11 @@ class CreateEventView extends GetView {
     final formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
-        extendBodyBehindAppBar: true,
         backgroundColor: AppColor.grey,
         appBar: AppBar(
           title: const OrgNavBar(),
           flexibleSpace: FlexibleSpaceBar(
-            background: Image.network(Gvar.card_bg, fit: BoxFit.cover),
+            background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
           ),
           centerTitle: true,
         ),
@@ -43,7 +42,6 @@ class CreateEventView extends GetView {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const WhiteContainer(),
                 Container(
                   width: 600,
                   height: 800,

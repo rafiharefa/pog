@@ -20,11 +20,13 @@ class CreateOrganizationView extends GetView<OrganizationPageController> {
     controller.fetchOrganization();
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: AppColor.grey,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
         elevation: 0,
       ),
       body: Container(

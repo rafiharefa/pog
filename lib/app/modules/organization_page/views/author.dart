@@ -25,10 +25,12 @@ class AuthorView extends GetView<OrganizationPageController> {
     final formKey = GlobalKey<FormBuilderState>();
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: AppColor.grey,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
+        ),
         elevation: 0,
         leading: IconButton(
           onPressed: () {

@@ -32,7 +32,6 @@ class MyOrganizationsView extends GetView {
                       'https://assets5.lottiefiles.com/private_files/lf30_esg1l8r1.json'),
                 )
               : Scaffold(
-                  extendBodyBehindAppBar: true,
                   backgroundColor: AppColor.grey,
                   appBar: AppBar(
                     automaticallyImplyLeading: false,
@@ -52,7 +51,6 @@ class MyOrganizationsView extends GetView {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const WhiteContainer(),
                           const SizedBox(height: 30),
                           //title
                           Text(
@@ -119,6 +117,8 @@ class MyOrganizationsView extends GetView {
                                               children: [
                                                 const SizedBox(width: 20),
                                                 CircleAvatar(
+                                                  backgroundColor:
+                                                      Colors.transparent,
                                                   backgroundImage: NetworkImage(
                                                       element['image_url']),
                                                   radius: 80,

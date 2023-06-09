@@ -18,7 +18,6 @@ class LandingView extends GetView<LandingController> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         title: LandingNavbar(),
@@ -36,7 +35,6 @@ class LandingView extends GetView<LandingController> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const WhiteContainer(),
                 const SizedBox(height: 50),
                 const Content1(),
                 const SizedBox(height: 150),

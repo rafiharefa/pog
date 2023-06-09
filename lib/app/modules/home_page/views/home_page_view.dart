@@ -25,7 +25,6 @@ class HomePageView extends GetView<HomePageController> {
     HomePageController controller = Get.put(HomePageController());
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: AppColor.grey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -53,7 +52,6 @@ class HomePageView extends GetView<HomePageController> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const WhiteContainer(),
                             const SizedBox(height: 30),
                             //title
                             Text(

@@ -24,7 +24,6 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
     final organization = controller.thisOrganization.first;
     return Scaffold(
       backgroundColor: AppColor.grey,
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         flexibleSpace: FlexibleSpaceBar(
           background: Image.network(Gvar.card_bg_2, fit: BoxFit.cover),
@@ -44,7 +43,6 @@ class OrganizationPageView extends GetView<OrganizationPageController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const WhiteContainer(),
               Container(
                   width: double.infinity,
                   margin:
